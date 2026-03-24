@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HGH Dose Guide</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; padding: 20px; max-width: 800px; margin: 0 auto; }
+  h1 { text-align: center; font-size: 1.8em; margin-bottom: 8px; color: #fff; }
+  .subtitle { text-align: center; color: #888; margin-bottom: 20px; font-size: 0.85em; line-height: 1.4; }
+  .card { background: #161616; border: 1px solid #2a2a2a; border-radius: 12px; margin-bottom: 16px; overflow: hidden; }
+  .card-header { padding: 18px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; }
+  .card-header:hover { background: #1e1e1e; }
+  .card-header h2 { font-size: 1.05em; color: #fff; margin: 0; flex: 1; }
+  .card-header .meta { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
+  .badge { font-size: 0.7em; padding: 4px 10px; border-radius: 20px; font-weight: 600; white-space: nowrap; }
+  .badge.green { background: #1a2d1a; color: #6bff6b; }
+  .badge.yellow { background: #2d2d1a; color: #ffd96b; }
+  .badge.orange { background: #2d221a; color: #ffaa6b; }
+  .badge.red { background: #2d1a1a; color: #ff6b6b; }
+  .badge.blue { background: #1a1a2d; color: #6b8bff; }
+  .badge.purple { background: #231a2d; color: #b08bff; }
+  .arrow { font-size: 1.2em; color: #555; transition: transform 0.3s; }
+  .card.open .arrow { transform: rotate(90deg); }
+  .card-body { display: none; padding: 0 20px 20px; }
+  .card.open .card-body { display: block; }
+  .desc { color: #999; font-size: 0.9em; margin-bottom: 12px; line-height: 1.5; }
+  .section-title { font-size: 0.95em; font-weight: 600; color: #ccc; margin: 16px 0 8px; padding-bottom: 4px; border-bottom: 1px solid #222; }
+  .sub-title { font-size: 0.9em; font-weight: 600; color: #aaa; margin: 12px 0 6px; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 12px; }
+  th { text-align: left; font-size: 0.75em; color: #666; padding: 8px 8px; border-bottom: 1px solid #222; }
+  td { padding: 8px; font-size: 0.85em; border-bottom: 1px solid #1a1a1a; color: #ccc; }
+  tr:last-child td { border-bottom: none; }
+  ul { padding-left: 20px; margin: 8px 0; }
+  li { font-size: 0.85em; color: #999; margin-bottom: 5px; line-height: 1.4; }
+  li strong { color: #ccc; }
+  .quote { border-left: 3px solid #333; padding-left: 12px; margin: 8px 0; font-style: italic; color: #888; font-size: 0.85em; }
+  .ref-table { margin: 20px 0; }
+  .ref-table td:first-child { font-weight: 600; color: #aaa; white-space: nowrap; }
+  .highlight { color: #ffd96b; }
+  .warn { color: #ff6b6b; }
+  .good { color: #6bff6b; }
+</style>
+</head>
+<body>
+
+<h1>HGH Dose Guide</h1>
+<p class="subtitle">Clinical literature, practitioner protocols, community reports<br>Compiled March 2026</p>
+
+<!-- QUICK REFERENCE (always visible) -->
+<div style="background:#161616;border:1px solid #2a2a2a;border-radius:12px;padding:16px 20px;margin-bottom:24px;">
+  <h2 style="font-size:1em;color:#fff;margin-bottom:12px;">Quick Reference</h2>
+  <table>
+    <tr><th>Dose</th><th>Goal</th><th>Fat Loss</th><th>Sides</th><th>BG Impact</th><th>Duration</th></tr>
+    <tr><td><span class="good">1-2 IU</span></td><td>Anti-aging, sleep</td><td>Subtle</td><td>Very low</td><td>+2-5</td><td>Indefinite</td></tr>
+    <tr><td><span class="highlight">2-4 IU</span></td><td>Recomp, healing</td><td>Significant</td><td>Manageable</td><td>+5-15</td><td>w/ monitoring</td></tr>
+    <tr><td style="color:#ffaa6b;">4-6 IU</td><td>Performance</td><td>Dramatic</td><td>Mod-high</td><td>+10-20</td><td>3-4 mo phases</td></tr>
+    <tr><td><span class="warn">6-10+ IU</span></td><td>Bodybuilding</td><td>Maximum</td><td>Serious</td><td>+15-30+</td><td>Short cycles</td></tr>
+  </table>
+  <p style="font-size:0.75em;color:#555;margin-top:8px;">1 mg = 3 IU. Healthy adult produces ~1.2-3 IU/day endogenously. BG = fasting blood glucose change (mg/dL).</p>
+</div>
+
+<!-- 1-2 IU -->
+<div class="card">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>1-2 IU/day — Replacement / Longevity</h2>
+    <div class="meta"><span class="badge green">Low</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <p class="section-title">Timeline</p>
+    <ul>
+      <li><strong>Week 1-2:</strong> Better sleep quality (often first thing noticed)</li>
+      <li><strong>Week 4-6:</strong> More energy, faster workout recovery</li>
+      <li><strong>Month 2-3:</strong> Skin elasticity improves, nails/hair quality up</li>
+      <li><strong>Month 3-6:</strong> Subtle body composition shift, reduced joint stiffness</li>
+    </ul>
+    <p class="section-title">Benefits</p>
+    <ul>
+      <li>Deeper slow-wave sleep</li>
+      <li>Better skin thickness, elasticity, hydration</li>
+      <li>Faster recovery from training and minor injuries</li>
+      <li>Gradual visceral fat reduction</li>
+      <li>Improved mood and cognitive sharpness</li>
+    </ul>
+    <p class="section-title">Side Effects</p>
+    <ul>
+      <li>Minimal. Occasional mild water retention first 2-4 weeks</li>
+      <li>Fasting glucose: may bump 2-5 mg/dL initially, often normalizes</li>
+      <li>Long-term low-dose GH can actually <em>improve</em> insulin sensitivity through visceral fat reduction</li>
+    </ul>
+    <p class="section-title">Community</p>
+    <div class="quote">"The sweet spot for anti-aging if you're 40+"</div>
+    <div class="quote">"Changes are subtle week to week but obvious over months"</div>
+    <div class="quote">"A dose many people run long-term"</div>
+    <p class="section-title">Protocol</p>
+    <ul>
+      <li>Single injection — evening or morning fasted</li>
+      <li>5 on/2 off or daily — both work at this dose</li>
+      <li>Can run indefinitely with monitoring</li>
+      <li>Monitor IGF-1 and fasting glucose every 6 months</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 2-4 IU -->
+<div class="card">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>2-4 IU/day — The Sweet Spot</h2>
+    <div class="meta"><span class="badge yellow">Moderate</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <p class="section-title">Timeline</p>
+    <ul>
+      <li><strong>Week 2-4:</strong> Water retention peaks then subsides. Energy boost.</li>
+      <li><strong>Month 1-2:</strong> Fat loss becomes noticeable, especially midsection</li>
+      <li><strong>Month 2-4:</strong> Significant recomp. Visibly "cleaner" — more defined, not necessarily bigger.</li>
+      <li><strong>Month 4-6:</strong> Full fat loss and body comp effects realized</li>
+    </ul>
+    <p class="section-title">Benefits</p>
+    <ul>
+      <li>Significant fat loss, particularly visceral/abdominal</li>
+      <li>Lean mass retention during caloric deficit</li>
+      <li>Accelerated wound healing and injury recovery</li>
+      <li>Enhanced collagen synthesis (joints, tendons)</li>
+      <li>Improved lipid profiles (decreased LDL, total cholesterol)</li>
+      <li>Fuller, denser muscle appearance</li>
+    </ul>
+    <p class="section-title">Side Effects</p>
+    <ul>
+      <li><strong>Water retention:</strong> moderate first 3-6 weeks (hands, face). Subsides.</li>
+      <li><strong>Carpal tunnel:</strong> 5-10% of users. Numbness/tingling, worse at night.</li>
+      <li><strong>Joint stiffness:</strong> 10-15% incidence</li>
+      <li><strong>Fasting glucose:</strong> +5-15 mg/dL. HbA1c +0.1-0.2%.</li>
+      <li>All reversible with dose reduction</li>
+    </ul>
+    <p class="section-title">Community</p>
+    <div class="quote">"4 IU is the go-to bodybuilding dose"</div>
+    <div class="quote">"HGH allows you to GROW LEAN — less time dieting, more time building"</div>
+    <div class="quote">"Keeps me stupid lean no matter what I eat"</div>
+    <div class="quote">"3 IU on cruise, 4 IU on blast — great results"</div>
+    <p class="section-title">Protocol</p>
+    <ul>
+      <li>At 2-3 IU: single injection (AM fasted or PM pre-bed)</li>
+      <li>At 4 IU: split — 2 IU AM fasted + 2 IU PM pre-bed</li>
+      <li>Always inject in low-insulin state (2+ hrs after eating)</li>
+      <li>5 on/2 off or daily</li>
+      <li>Jay Campbell: max 6 months, then 2-3 month break</li>
+      <li>Monitor fasting glucose, HbA1c, IGF-1 every 3 months</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 4-6 IU -->
+<div class="card">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>4-6 IU/day — Aggressive Recomp</h2>
+    <div class="meta"><span class="badge orange">High</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <p class="section-title">Timeline</p>
+    <ul>
+      <li><strong>Week 1-4:</strong> Water retention, possible carpal tunnel, energy shifts</li>
+      <li><strong>Month 1-2:</strong> Strength increases noticeable</li>
+      <li><strong>Month 2-4:</strong> Visible muscle gains and fat loss, enhanced vascularity</li>
+      <li><strong>Month 4-6:</strong> Peak recomp. Dramatic fullness and muscle density.</li>
+    </ul>
+    <p class="section-title">Benefits</p>
+    <ul>
+      <li>Lean muscle gains: 1-3 kg over 16 weeks with TRT (clinical data)</li>
+      <li>Strength: 14-35% improvement (clinical trials)</li>
+      <li>Major fat loss (1-2+ kg fat mass reduction)</li>
+      <li>Improved tendon/ligament integrity</li>
+      <li>Dramatic fullness and vascularity</li>
+    </ul>
+    <p class="section-title">Side Effects — Escalate Here</p>
+    <ul>
+      <li><strong>Water retention:</strong> significant. Puffy face, swollen extremities.</li>
+      <li><strong>Carpal tunnel:</strong> 15-25%. Can persist 2-3 months after dropping dose.</li>
+      <li><strong>Insulin resistance:</strong> clinically significant. FBG +10-20 mg/dL. HbA1c +0.2-0.3%.</li>
+      <li><strong>Blood pressure:</strong> ~12/8 mmHg increase</li>
+      <li><strong>Thyroid:</strong> GH increases T4→T3 conversion. Monitor.</li>
+      <li>Possible gynecomastia, digestive sluggishness</li>
+    </ul>
+    <p class="section-title">Community</p>
+    <div class="quote">"When you go up to 6 IU, the side effects start to hit hard"</div>
+    <div class="quote">"Reserved for experienced users"</div>
+    <div class="quote">"Risk/benefit tips past the sweet spot for non-competitive users"</div>
+    <p class="section-title">Protocol</p>
+    <ul>
+      <li>Split dosing mandatory: 2-3 IU AM + 2-3 IU PM</li>
+      <li>3-4 months on, 1-2 months off</li>
+      <li>5 on/2 off during active cycles</li>
+      <li>Monitor every 3 months minimum</li>
+      <li>Diet quality, sleep, carb timing all become critical</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 6-10+ IU -->
+<div class="card">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>6-10+ IU/day — Pro Bodybuilding</h2>
+    <div class="meta"><span class="badge red">Extreme</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <p class="desc">Not a longevity dose. Not a lifestyle dose. Most elite users cycle in and out of this range. They do not live here.</p>
+    <p class="section-title">Side Effects — Serious</p>
+    <ul>
+      <li><strong class="warn">Insulin resistance / T2 diabetes:</strong> major risk. Many run exogenous insulin.</li>
+      <li><strong>Carpal tunnel:</strong> 30%+ incidence</li>
+      <li><strong>Acromegaly features:</strong> jaw, hands, feet, brow ridge (chronic use)</li>
+      <li><strong>"GH gut":</strong> organ/intestinal hypertrophy</li>
+      <li><strong>Cardiovascular:</strong> hypertension, cardiac hypertrophy</li>
+      <li><strong>Cancer risk:</strong> chronically elevated IGF-1 linked to increased mortality</li>
+    </ul>
+    <p class="section-title">Protocol</p>
+    <ul>
+      <li>Split into 2-3 injections, all fasted</li>
+      <li>Max 3-4 months on, min 2-3 months off</li>
+      <li>Requires concurrent metabolic management</li>
+    </ul>
+  </div>
+</div>
+
+<!-- BLOOD SUGAR -->
+<div class="card">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>Blood Sugar — The Real Gatekeeper</h2>
+    <div class="meta"><span class="badge red">Critical</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <ul>
+      <li><strong>"HGH causes diabetes" is overstated</strong> — it temporarily reduces insulin sensitivity. In healthy people, adaptive and reversible. In unhealthy people, exposes existing dysfunction.</li>
+      <li><strong>Insulin sensitivity determines your GH experience.</strong> Leaner = better. Sleep deprivation worsens it. Diet quality matters more than dose.</li>
+      <li><strong>Onset isn't always gradual.</strong> One user: "You're humming along fine, then bang, literally overnight." Another: 85→115 mg/dL over 9 months on just 2 IU.</li>
+      <li><strong>GLP-1 agonists are the game-changer.</strong> Tirzepatide directly counteracts GH-induced insulin resistance.</li>
+      <li><strong>Mitigation stack:</strong> Berberine, metformin, ALA, cardio, staying lean, clean diet.</li>
+      <li><strong>You don't need insulin at low-moderate doses.</strong> That's a bodybuilding myth. Insulin misuse introduces far more risk.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- TIMING -->
+<div class="card">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>Injection Timing</h2>
+    <div class="meta"><span class="badge blue">Guide</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <p class="sub-title">Morning Fasted — Best for Fat Loss</p>
+    <ul>
+      <li>Enhanced lipolysis, especially with fasted cardio 15-30 min later</li>
+      <li>Jay Campbell: no food 30 min before, 1.5 hrs after</li>
+      <li>Downside: many report afternoon sleepiness/crash</li>
+    </ul>
+    <p class="sub-title">Bedtime — Best for Recovery / Anti-Aging</p>
+    <ul>
+      <li>Mimics natural nocturnal GH spike</li>
+      <li>Better sleep quality reported by most</li>
+      <li>SubQ peaks ~4 hrs post-injection — still provides next-day fat loss benefits</li>
+      <li>Counterargument: may interfere with natural GH release during sleep</li>
+    </ul>
+    <p class="sub-title">Split Dose — Best for 4+ IU</p>
+    <ul>
+      <li>Half AM fasted + half PM pre-bed</li>
+      <li>Reduces side effects vs single large dose</li>
+      <li>More stable IGF-1 levels</li>
+    </ul>
+    <div class="quote">"You'll get benefits pinning regardless of time of day." Consistency > timing.</div>
+  </div>
+</div>
+
+<!-- CYCLING -->
+<div class="card">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>Cycling Protocols</h2>
+    <div class="meta"><span class="badge blue">Guide</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <table>
+      <tr><th>Protocol</th><th>When</th><th>Notes</th></tr>
+      <tr><td>Daily, no cycling</td><td>1-2 IU</td><td>Many longevity clinics do this</td></tr>
+      <tr><td>5 on / 2 off</td><td>Any dose</td><td>Cost-saving + helps manage sides</td></tr>
+      <tr><td>Every day (ED)</td><td>If budget allows</td><td>More consistent IGF-1</td></tr>
+      <tr><td>6 mo on / 2-3 mo off</td><td>2-4 IU</td><td>Jay Campbell standard</td></tr>
+      <tr><td>3-4 mo on / 1-2 mo off</td><td>4-6 IU</td><td>Higher dose = shorter cycle</td></tr>
+      <tr><td>6 wk on / 6 wk off</td><td>6+ IU</td><td>Aggressive high-dose cycling</td></tr>
+    </table>
+    <div class="quote">"If you can afford it, daily at a lower dose beats 5/2 at higher dose."</div>
+  </div>
+</div>
+
+<!-- STACKING -->
+<div class="card">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>Stacking Interactions</h2>
+    <div class="meta"><span class="badge purple">Synergy</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <p class="sub-title">GH + TRT — Strong Synergy</p>
+    <ul>
+      <li>Near-unanimous: GH works dramatically better with a testosterone base</li>
+      <li>Testosterone enhances GH→IGF-1 conversion — may need less GH on TRT</li>
+      <li>2-4 IU GH + TRT is the standard stack</li>
+    </ul>
+    <div class="quote">"HGH was the key to unlocking my TRT"</div>
+    <div class="quote">"To use GH alone without an anabolic base would be a mistake"</div>
+
+    <p class="sub-title">GH + Tirzepatide/GLP-1 — "The Holy Trinity" (with TRT)</p>
+    <ul>
+      <li><strong>GH increases insulin resistance → tirzepatide counteracts it.</strong> Key synergy.</li>
+      <li>GH can restore some appetite on GLP-1s (feature, not bug)</li>
+      <li>TRT + HGH + GLP-1 is being called "the holy trinity"</li>
+    </ul>
+    <div class="quote">"I seem to be a metabolic powerhouse on this stack" — test 250 + GH 6 IU + reta 10mg</div>
+    <div class="quote">Test 120 + reta 8mg + GH 2→4 IU: 255 to 200 lbs over 8 months, strength still progressing</div>
+
+    <p class="sub-title">GH + Peptide Stacking</p>
+    <ul>
+      <li>Low-dose GH (1-2 IU) + secretagogues for combined amplification</li>
+      <li>Peptides during GH off-cycles to maintain some elevation</li>
+      <li>CJC-1295 (no DAC) + Ipamorelin = "gold standard" combo (2-5x GH release)</li>
+    </ul>
+  </div>
+</div>
+
+<!-- PHARMA vs GENERIC -->
+<div class="card">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>Pharma vs Generic</h2>
+    <div class="meta"><span class="badge blue">Guide</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <table>
+      <tr><th>Factor</th><th>Pharma</th><th>Generic / UGL</th></tr>
+      <tr><td>Consistency</td><td class="good">100% — FDA regulated</td><td>Highly variable</td></tr>
+      <tr><td>Cost</td><td>$800-2000+/mo</td><td class="good">Fraction</td></tr>
+      <tr><td>Quality</td><td>Guaranteed</td><td>Some test equivalent; others underdosed</td></tr>
+    </table>
+    <ul>
+      <li>Verify generics with bloodwork: inject 5 IU, test serum GH at 90-120 min</li>
+      <li>With generics, may need 20-30% higher dose to match pharma</li>
+      <li>Quality gap has narrowed significantly in recent years</li>
+    </ul>
+    <div class="quote">"Good GH is good GH whether it's pharma or UGL — but you have to verify"</div>
+  </div>
+</div>
+
+<!-- IGF-1 TARGETS -->
+<div class="card">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>IGF-1 Targets</h2>
+    <div class="meta"><span class="badge blue">Guide</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <table>
+      <tr><th>Context</th><th>IGF-1 (ng/mL)</th></tr>
+      <tr><td>Normal adult</td><td>100-300</td></tr>
+      <tr><td>Anti-aging optimization</td><td>200-250</td></tr>
+      <tr><td>Performance / recomp</td><td>250-350</td></tr>
+      <tr><td style="color:#ffaa6b;">Supraphysiologic (caution)</td><td>350+</td></tr>
+      <tr><td class="warn">Cancer risk concern</td><td>Chronically >300-350</td></tr>
+    </table>
+    <p class="desc" style="margin-top:12px;">Peter Attia: chronically elevated IGF-1 above reference range is associated with increased cancer-related mortality. The goal is appropriate IGF-1 for the objective, not maximum IGF-1.</p>
+  </div>
+</div>
+
+<!-- CONSENSUS -->
+<div class="card">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>Where Sources Agree vs Disagree</h2>
+    <div class="meta"><span class="badge purple">Analysis</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <p class="sub-title">Agreement</p>
+    <ul>
+      <li>Sleep improvement is earliest and most consistent benefit</li>
+      <li>2-4 IU is the sweet spot for most non-competitive users</li>
+      <li>Blood sugar is the primary risk to manage</li>
+      <li>GH works dramatically better with a testosterone base</li>
+      <li>Split dosing is better at 4+ IU</li>
+      <li>Side effects are dose-dependent and mostly reversible</li>
+      <li>GLP-1 agonists are the ideal co-therapy for metabolic protection</li>
+    </ul>
+    <p class="sub-title">Disagreement</p>
+    <ul>
+      <li><strong>Timing:</strong> AM vs PM genuinely debated with good arguments both ways</li>
+      <li><strong>Cycling at low doses:</strong> Some say indefinite is fine; others insist on breaks</li>
+      <li><strong>Secretagogues vs real GH:</strong> AntiDoc says C-tier (pointless). Elevate sees them as complementary. Jay Campbell includes both.</li>
+      <li><strong>IGF-1 targets:</strong> Wide range of opinions on optimal levels</li>
+      <li><strong>Cancer risk:</strong> Attia emphasizes IGF-1/cancer link; bodybuilding community largely dismisses it</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ADAM -->
+<div class="card" style="border-color:#333;">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>For Adam — Practical Implications</h2>
+    <div class="meta"><span class="badge purple">Personal</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <p class="desc">Given current stack: TRT 20mg/day, tirzepatide, DSIP, supplements</p>
+    <ul>
+      <li><strong>Starting dose:</strong> 2 IU is the logical entry point. Already on TRT = enhanced response.</li>
+      <li><strong>Tirzepatide synergy:</strong> Directly protects against GH's insulin resistance. Major advantage most GH users don't have.</li>
+      <li><strong>Timing:</strong> PM pre-bed — synergizes with DSIP for sleep, mimics natural rhythm. Or AM fasted if prioritizing fat loss.</li>
+      <li><strong>Monitoring:</strong> Fasting glucose, HbA1c, IGF-1 at baseline and 3 months (via Bolt bloodwork).</li>
+      <li><strong>Cycling:</strong> At 2 IU with good metabolic markers, can likely run extended. 5 on/2 off is conservative and reasonable.</li>
+      <li><strong>The "holy trinity":</strong> TRT + GH + GLP-1 is exactly the stack the community is most excited about. You're already 2/3 of the way there.</li>
+    </ul>
+  </div>
+</div>
+
+<p style="text-align:center;color:#444;font-size:0.75em;margin-top:30px;">Sources: PubMed, JCEM, Diabetes Care, Jay Campbell, Peter Attia, AntiDoc, Elevate Biohacking, Reddit r/steroids, r/PEDs, r/Testosterone</p>
+
+<script>
+function toggle(header) {
+  header.parentElement.classList.toggle('open');
+}
+</script>
+
+</body>
+</html>
