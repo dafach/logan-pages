@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adam's Training Program</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; padding: 16px; max-width: 800px; margin: 0 auto; -webkit-font-smoothing: antialiased; }
+  h1 { text-align: center; font-size: 1.6em; margin-bottom: 8px; color: #fff; }
+  .subtitle { text-align: center; color: #888; margin-bottom: 20px; font-size: 0.85em; line-height: 1.4; }
+  .card { background: #161616; border: 1px solid #2a2a2a; border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+  .card-header { padding: 16px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; gap: 12px; -webkit-tap-highlight-color: rgba(255,255,255,0.05); }
+  .card-header:hover { background: #1e1e1e; }
+  .card-header:active { background: #222; }
+  .card-header h2 { font-size: 1em; color: #fff; margin: 0; flex: 1; min-width: 0; }
+  .card-header .meta { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
+  .badge { font-size: 0.7em; padding: 4px 10px; border-radius: 20px; font-weight: 600; white-space: nowrap; }
+  .badge.blue { background: #1a1a2d; color: #6b8bff; }
+  .badge.green { background: #1a2d1a; color: #6bff6b; }
+  .badge.purple { background: #231a2d; color: #b08bff; }
+  .badge.yellow { background: #2d2d1a; color: #ffd96b; }
+  .badge.orange { background: #2d221a; color: #ffaa6b; }
+  .arrow { font-size: 1.2em; color: #555; transition: transform 0.3s; flex-shrink: 0; }
+  .card.open .arrow { transform: rotate(90deg); }
+  .card-body { display: none; padding: 0 16px 16px; }
+  .card.open .card-body { display: block; }
+  .static-card { background: #161616; border: 1px solid #2a2a2a; border-radius: 12px; margin-bottom: 12px; overflow: hidden; padding: 16px; }
+  .static-card h2 { font-size: 1em; color: #fff; margin: 0 0 12px; }
+  .desc { color: #999; font-size: 0.9em; margin-bottom: 12px; line-height: 1.5; }
+  .section-title { font-size: 0.95em; font-weight: 600; color: #ccc; margin: 16px 0 8px; padding-bottom: 4px; border-bottom: 1px solid #222; }
+  .sub-title { font-size: 0.9em; font-weight: 600; color: #aaa; margin: 12px 0 6px; }
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 12px; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 12px; }
+  th { text-align: left; font-size: 0.72em; color: #666; padding: 8px 6px; border-bottom: 1px solid #222; white-space: nowrap; }
+  td { padding: 8px 6px; font-size: 0.83em; border-bottom: 1px solid #1a1a1a; color: #ccc; }
+  tr:last-child td { border-bottom: none; }
+  ul { padding-left: 20px; margin: 8px 0; }
+  li { font-size: 0.85em; color: #999; margin-bottom: 5px; line-height: 1.5; }
+  li strong { color: #ccc; }
+  .exercise-num { color: #555; font-weight: 600; font-size: 0.78em; }
+  .highlight { color: #ffd96b; }
+  .warn { color: #ff6b6b; }
+  .good { color: #6bff6b; }
+  em { color: #888; font-style: italic; }
+  @media (max-width: 480px) {
+    body { padding: 12px; }
+    h1 { font-size: 1.35em; }
+    .card-header { padding: 14px 12px; }
+    .card-header h2 { font-size: 0.9em; }
+    .card-body { padding: 0 12px 14px; }
+    .static-card { padding: 14px 12px; }
+    th, td { padding: 6px 4px; font-size: 0.78em; }
+    .badge { font-size: 0.62em; padding: 3px 8px; }
+    li { font-size: 0.82em; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Adam's 3x/Week Full Body Program</h1>
+<p class="subtitle">Strong + shredded for summer. 45-50 min sessions. Cardio on 2 off-days.<br>Equipment: PRX Halo arms, Ancore cables, DBs to 90 lbs, leg extension, hamstring curl, dip/pull-up station.<br>Last updated: March 25, 2026</p>
+
+<!-- WEEKLY SCHEDULE (always visible) -->
+<div class="static-card">
+  <h2>Weekly Schedule</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Day</th><th>Activity</th></tr>
+    <tr><td><strong>Monday</strong></td><td>Session A</td></tr>
+    <tr><td><strong>Tuesday</strong></td><td>Cardio (20-30 min — walk, bike, or HIIT)</td></tr>
+    <tr><td><strong>Wednesday</strong></td><td>Session B</td></tr>
+    <tr><td><strong>Thursday</strong></td><td>Cardio (20-30 min)</td></tr>
+    <tr><td><strong>Friday</strong></td><td>Session C</td></tr>
+    <tr><td><strong>Saturday</strong></td><td>Rest or light activity</td></tr>
+    <tr><td><strong>Sunday</strong></td><td>Rest</td></tr>
+  </table></div>
+  <p style="font-size:0.78em;color:#555;">Flexible — shift days as needed. Just keep at least one rest day between lifting sessions.</p>
+</div>
+
+<!-- SHOULDER MAINTENANCE (always visible) -->
+<div class="static-card">
+  <h2>Shoulder Maintenance (Every Session, 5 min)</h2>
+  <p class="desc">Do these before your first working set:</p>
+  <ul>
+    <li><strong>Band Pull-Aparts</strong> — 2x20 (light band, warm-up)</li>
+    <li><strong>Cable External Rotation</strong> — 2x15/side (Ancore, light weight)</li>
+    <li><strong>Dead Hangs</strong> — 2x20-30 sec (pull-up bar)</li>
+  </ul>
+  <p style="font-size:0.78em;color:#ff6b6b;margin-top:10px;">Non-negotiable while the shoulder is healing. 5 minutes. Protects everything else in the session.</p>
+</div>
+
+<!-- SESSION A -->
+<div class="card open">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>Session A — Push + Pull + Legs</h2>
+    <div class="meta"><span class="badge blue">14 sets · ~45 min</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <div class="table-wrap"><table>
+      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>Progression</th><th>Notes</th></tr>
+      <tr><td class="exercise-num">1</td><td>DB Low-Incline Bench Press</td><td>3</td><td>8-10</td><td>Dynamic Double</td><td>PRX Halo arms. Slight incline, neutral or standard grip.</td></tr>
+      <tr><td class="exercise-num">2</td><td>Chin-Up (underhand)</td><td>3</td><td>6-8</td><td>Dynamic Double</td><td>Add weight via belt/DB between feet when BW gets easy.</td></tr>
+      <tr><td class="exercise-num">3</td><td>Bulgarian Split Squat</td><td>3</td><td>8-10/side</td><td>Dynamic Double</td><td>Hold DBs. Rear foot on bench or dip station.</td></tr>
+      <tr><td class="exercise-num">4</td><td>Cable Face Pull</td><td>3</td><td>14-16</td><td>Rep Range All</td><td>Ancore cables. Shoulder health — never skip.</td></tr>
+      <tr><td class="exercise-num">5</td><td>Incline DB Curl</td><td>2</td><td>12-14</td><td>Rep Range Double</td><td>PRX Halo arms set to incline.</td></tr>
+    </table></div>
+  </div>
+</div>
+
+<!-- SESSION B -->
+<div class="card open">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>Session B — Push + Pull + Legs</h2>
+    <div class="meta"><span class="badge green">14 sets · ~45 min</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <div class="table-wrap"><table>
+      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>Progression</th><th>Notes</th></tr>
+      <tr><td class="exercise-num">1</td><td>DB Step-Up</td><td>3</td><td>8-10/side</td><td>Dynamic Double</td><td>Hold DBs. Use a sturdy bench. Alternate legs.</td></tr>
+      <tr><td class="exercise-num">2</td><td>Cable Row (seated or standing)</td><td>3</td><td>10-12</td><td>Rep Range Double</td><td>Ancore cables. Squeeze at contraction.</td></tr>
+      <tr><td class="exercise-num">3</td><td>Weighted Push-Up</td><td>3</td><td>12-16</td><td>Rep Range Double</td><td>Plate on back or weighted vest.</td></tr>
+      <tr><td class="exercise-num">4</td><td>Lying Leg Curl</td><td>3</td><td>10-12</td><td>Rep Range Double</td><td>Hamstring curl machine.</td></tr>
+      <tr><td class="exercise-num">5</td><td>Egyptian Lateral Raise</td><td>2</td><td>12-14/side</td><td>Rep Range All</td><td>Cable or DB. One arm at a time, lean away.</td></tr>
+    </table></div>
+  </div>
+</div>
+
+<!-- SESSION C -->
+<div class="card open">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>Session C — Push + Pull + Legs</h2>
+    <div class="meta"><span class="badge purple">15 sets · ~48 min</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <div class="table-wrap"><table>
+      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>Progression</th><th>Notes</th></tr>
+      <tr><td class="exercise-num">1</td><td>DB Bench Press</td><td>3</td><td>8-10</td><td>Dynamic Double</td><td>Flat or very slight incline. PRX Halo arms.</td></tr>
+      <tr><td class="exercise-num">2</td><td>DB Romanian Deadlift</td><td>3</td><td>10-12</td><td>Rep Range Double</td><td>Both DBs. Hinge at hips, feel the hamstrings.</td></tr>
+      <tr><td class="exercise-num">3</td><td>DB Bent-Over Row</td><td>3</td><td>10-12/side</td><td>Rep Range Double</td><td>One arm, knee on bench. Pull to hip.</td></tr>
+      <tr><td class="exercise-num">4</td><td>Leg Extension</td><td>3</td><td>12-14</td><td>Rep Range Double</td><td>Quad isolation. Controlled eccentric.</td></tr>
+      <tr><td class="exercise-num">5</td><td>Overhead Cable Triceps Extension</td><td>2</td><td>12-14</td><td>Rep Range Double</td><td>Ancore cables. Rope or single handle.</td></tr>
+      <tr><td class="exercise-num">6</td><td>Reverse Fly (cable or DB)</td><td>1</td><td>14-16</td><td>Rep Range All</td><td>Rear delt/upper back. Light, squeeze hard.</td></tr>
+    </table></div>
+  </div>
+</div>
+
+<!-- PROGRESSION RULES -->
+<div class="card">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>Progression Rules</h2>
+    <div class="meta"><span class="badge yellow">System</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <p class="section-title">Rep Range Double</p>
+    <ul>
+      <li>Hit top of rep range on <strong>Set 1</strong> → increase weight next session</li>
+      <li>Other sets: keep same weight as long as you get more than half the target reps</li>
+      <li>If you can't get half the reps on a later set, reduce weight by one increment</li>
+    </ul>
+    <p class="section-title">Dynamic Double</p>
+    <ul>
+      <li>Hit top of rep range on <strong>Set 1</strong> → increase weight next session</li>
+      <li>If Set 1 stalls (same reps two sessions in a row) → drop 5%, rebuild</li>
+      <li>Later sets naturally trail behind — that's fine</li>
+    </ul>
+    <p class="section-title">Rest Periods</p>
+    <ul>
+      <li><strong>Compound lifts:</strong> 90 seconds</li>
+      <li><strong>Isolation/accessories:</strong> 60 seconds</li>
+      <li>Keep it honest — this is how you stay under 50 min</li>
+    </ul>
+  </div>
+</div>
+
+<!-- PROGRESSIVE OVERLOAD TRACKING -->
+<div class="card">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>Progressive Overload Tracking</h2>
+    <div class="meta"><span class="badge orange">Benchmarks</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <p class="desc">Track these 5 anchor lifts every session. These are your strength benchmarks.</p>
+    <div class="table-wrap"><table>
+      <tr><th>Lift</th><th>Current</th><th>4-Week Goal</th><th>8-Week Goal</th></tr>
+      <tr><td>DB Incline Bench (per hand)</td><td>TBD</td><td>+5-10 lbs</td><td>+10-15 lbs</td></tr>
+      <tr><td>Chin-Up</td><td>BW / BW+?</td><td>+5 lbs</td><td>+10 lbs</td></tr>
+      <tr><td>Bulgarian Split Squat (per hand)</td><td>TBD</td><td>+5-10 lbs</td><td>+10-15 lbs</td></tr>
+      <tr><td>DB Romanian Deadlift (per hand)</td><td>TBD</td><td>+5-10 lbs</td><td>+10-15 lbs</td></tr>
+      <tr><td>DB Row (per hand)</td><td>TBD</td><td>+5-10 lbs</td><td>+10-15 lbs</td></tr>
+    </table></div>
+    <p style="font-size:0.78em;color:#555;">Fill in your starting weights Session 1. We'll track from there.</p>
+  </div>
+</div>
+
+<!-- WHY THIS PROGRAM -->
+<div class="card">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>Why This Program</h2>
+    <div class="meta"><span class="badge purple">Rationale</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <ul>
+      <li><strong>3x/week full body</strong> — miss a day, every muscle still gets hit 2x that week</li>
+      <li><strong>Push/Pull/Legs every session</strong> — balanced, no anterior dominance</li>
+      <li><strong>14-15 sets per session</strong> — fits 45-50 min with proper rest periods</li>
+      <li><strong>Mario's progression system</strong> — clear rules for when to add weight, when to deload</li>
+      <li><strong>Posterior chain covered</strong> — chin-ups, rows, face pulls, RDLs, leg curls, reverse flyes</li>
+      <li><strong>Shoulder-friendly</strong> — no overhead pressing, face pulls every Session A, prehab built in</li>
+      <li><strong>Equipment-matched</strong> — everything uses your PRX, Ancore, DBs, machines, and dip/pull-up station</li>
+      <li><strong>Pairs with your pharmacology</strong> — train for strength, let tirzepatide handle the shredding</li>
+    </ul>
+  </div>
+</div>
+
+<p style="text-align:center;color:#444;font-size:0.75em;margin-top:30px;">Program designed by Logan. Based on Mario Tomic's training methodology.</p>
+
+<script>
+function toggle(header) {
+  header.parentElement.classList.toggle('open');
+}
+</script>
+
+</body>
+</html>
