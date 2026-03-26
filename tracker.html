@@ -11,7 +11,38 @@
   h1 { text-align: center; font-size: 1.6em; margin-bottom: 8px; color: #fff; }
   .subtitle { text-align: center; color: #888; margin-bottom: 20px; font-size: 0.85em; line-height: 1.4; }
 
-  /* Anchor lifts */
+  /* Tab bar — neutral colors, sticky below header */
+  .tab-bar { display: flex; gap: 8px; position: sticky; top: 0; z-index: 100; background: #0a0a0a; padding: 12px 0; margin-bottom: 12px; }
+  .tab-btn { flex: 1; min-height: 52px; border-radius: 10px; font-size: 1.05em; font-weight: 700; cursor: pointer; transition: all 0.2s; -webkit-tap-highlight-color: rgba(255,255,255,0.05); border: 2px solid #555; background: transparent; color: #777; letter-spacing: 0.5px; }
+  .tab-btn:active { transform: scale(0.97); }
+  .tab-btn.active { background: #333; color: #fff; border-color: #555; }
+
+  /* Tab content */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* Collapsible session cards (At a Glance) */
+  .session-card { background: #161616; border: 1px solid #2a2a2a; border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+  .session-toggle { width: 100%; padding: 14px 16px; background: none; border: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; -webkit-tap-highlight-color: rgba(255,255,255,0.05); }
+  .session-toggle:active { background: rgba(255,255,255,0.03); }
+  .session-toggle-left { display: flex; align-items: center; gap: 10px; }
+  .session-badge { display: inline-block; padding: 3px 10px; border-radius: 6px; font-size: 0.8em; font-weight: 700; color: #fff; }
+  .badge-a { background: #4a9eff; }
+  .badge-b { background: #4ade80; color: #0a0a0a; }
+  .badge-c { background: #a78bfa; }
+  .session-toggle-title { color: #fff; font-size: 1em; font-weight: 600; }
+  .session-arrow { color: #666; font-size: 1.2em; transition: transform 0.25s ease; }
+  .session-card.open .session-arrow { transform: rotate(180deg); }
+  .session-body { display: none; border-top: 1px solid #222; padding: 12px 16px; }
+  .session-card.open .session-body { display: block; }
+
+  /* Glance table */
+  .glance-table { width: 100%; border-collapse: collapse; }
+  .glance-table th { text-align: left; font-size: 0.72em; color: #666; padding: 6px 6px; border-bottom: 1px solid #222; white-space: nowrap; }
+  .glance-table td { padding: 8px 6px; font-size: 0.83em; border-bottom: 1px solid #1a1a1a; color: #ccc; }
+  .glance-table tr:last-child td { border-bottom: none; }
+
+  /* Anchor lifts (History tab) */
   .static-card { background: #161616; border: 1px solid #2a2a2a; border-radius: 12px; margin-bottom: 12px; overflow: hidden; padding: 16px; }
   .static-card h2 { font-size: 1em; color: #fff; margin: 0 0 12px; }
   .section-label { font-size: 0.75em; color: #555; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
@@ -20,31 +51,12 @@
   .anchor-weight { font-size: 1.1em; color: #fff; font-weight: 600; }
   .anchor-label { color: #999; font-size: 0.85em; }
 
-  /* Tab bar */
-  .tab-bar { display: flex; gap: 8px; position: sticky; top: 0; z-index: 100; background: #0a0a0a; padding: 12px 0; margin-bottom: 12px; }
-  .tab-btn { flex: 1; min-height: 48px; border-radius: 10px; font-size: 1em; font-weight: 700; cursor: pointer; transition: all 0.2s; -webkit-tap-highlight-color: rgba(255,255,255,0.05); border: 2px solid; background: transparent; letter-spacing: 0.5px; }
-  .tab-btn:active { transform: scale(0.97); }
+  /* History section headers */
+  .history-session-header { display: flex; align-items: center; gap: 10px; margin: 20px 0 12px; }
+  .history-session-header:first-of-type { margin-top: 8px; }
+  .history-session-title { font-size: 1em; font-weight: 700; color: #fff; }
 
-  /* Tab A - Blue */
-  .tab-btn[data-tab="A"] { border-color: #4a9eff; color: #4a9eff; }
-  .tab-btn[data-tab="A"].active { background: #4a9eff; color: #fff; border-color: #4a9eff; }
-  .tab-btn[data-tab="A"]:not(.active) { opacity: 0.5; }
-
-  /* Tab B - Green */
-  .tab-btn[data-tab="B"] { border-color: #4ade80; color: #4ade80; }
-  .tab-btn[data-tab="B"].active { background: #4ade80; color: #0a0a0a; border-color: #4ade80; }
-  .tab-btn[data-tab="B"]:not(.active) { opacity: 0.5; }
-
-  /* Tab C - Purple */
-  .tab-btn[data-tab="C"] { border-color: #a78bfa; color: #a78bfa; }
-  .tab-btn[data-tab="C"].active { background: #a78bfa; color: #fff; border-color: #a78bfa; }
-  .tab-btn[data-tab="C"]:not(.active) { opacity: 0.5; }
-
-  /* Session panels */
-  .session-panel { display: none; }
-  .session-panel.active { display: block; }
-
-  /* Exercise cards */
+  /* Exercise cards (History tab) */
   .exercise-card { background: #161616; border: 1px solid #2a2a2a; border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
   .exercise-header { padding: 14px 16px; border-bottom: 1px solid #222; }
   .exercise-header h3 { font-size: 0.95em; color: #fff; margin: 0; }
@@ -70,13 +82,16 @@
   @media (max-width: 480px) {
     body { padding: 12px; }
     h1 { font-size: 1.35em; }
-    .tab-btn { font-size: 0.9em; min-height: 48px; }
+    .tab-btn { font-size: 0.95em; min-height: 48px; }
     .anchor-grid { grid-template-columns: 1fr; }
     .anchor-item { padding: 10px; }
     .static-card { padding: 14px 12px; }
+    .session-toggle { padding: 12px; }
+    .session-body { padding: 10px 12px; }
     .exercise-header { padding: 12px; }
     .exercise-body { padding: 0 12px 12px; }
     th, td { padding: 6px 4px; font-size: 0.78em; }
+    .glance-table th, .glance-table td { padding: 6px 4px; font-size: 0.78em; }
   }
 </style>
 </head>
@@ -85,24 +100,17 @@
 <h1>Training Progress Tracker</h1>
 <p class="subtitle">Last Updated: March 25, 2026</p>
 
-<!-- ANCHOR LIFTS SUMMARY (always visible) -->
-<div class="static-card" id="anchor-lifts">
-  <h2>Anchor Lifts</h2>
-  <p class="section-label">Current working weights</p>
-  <div class="anchor-grid" id="anchor-grid"></div>
-</div>
-
 <!-- TAB BAR -->
 <div class="tab-bar">
-  <button class="tab-btn" data-tab="A" onclick="switchTab('A')">Session A</button>
-  <button class="tab-btn" data-tab="B" onclick="switchTab('B')">Session B</button>
-  <button class="tab-btn" data-tab="C" onclick="switchTab('C')">Session C</button>
+  <button class="tab-btn active" data-tab="glance" onclick="switchTab('glance')">At a Glance</button>
+  <button class="tab-btn" data-tab="history" onclick="switchTab('history')">History</button>
 </div>
 
-<!-- SESSION PANELS -->
-<div class="session-panel" id="panel-A"></div>
-<div class="session-panel" id="panel-B"></div>
-<div class="session-panel" id="panel-C"></div>
+<!-- AT A GLANCE TAB -->
+<div class="tab-content active" id="tab-glance"></div>
+
+<!-- HISTORY TAB -->
+<div class="tab-content" id="tab-history"></div>
 
 <p class="footer">Progress tracked by Logan. Data updates after each session.</p>
 
@@ -208,93 +216,143 @@ const DATA = {
   "lastUpdated": "March 25, 2026"
 };
 
-// Render anchor lifts
-function renderAnchors() {
-  const grid = document.getElementById('anchor-grid');
-  grid.innerHTML = DATA.anchorLifts.map(a =>
-    `<div class="anchor-item">
+const SESSION_META = {
+  A: { label: 'Session A', badgeClass: 'badge-a' },
+  B: { label: 'Session B', badgeClass: 'badge-b' },
+  C: { label: 'Session C', badgeClass: 'badge-c' }
+};
+
+function fmtWeight(w) {
+  return typeof w === 'number' ? w + ' lbs' : w;
+}
+
+function verdictClass(v) {
+  return v === 'up' ? 'verdict-up' : 'verdict-hold';
+}
+
+// ── AT A GLANCE ──
+function renderGlance() {
+  const container = document.getElementById('tab-glance');
+  let html = '';
+
+  for (const key of ['A', 'B', 'C']) {
+    const meta = SESSION_META[key];
+    const session = DATA.sessions[key];
+    const hasData = session && session.exercises.length > 0;
+
+    html += `<div class="session-card${key === 'A' ? ' open' : ''}" id="glance-${key}">
+      <button class="session-toggle" onclick="toggleCard('glance-${key}')">
+        <span class="session-toggle-left">
+          <span class="session-badge ${meta.badgeClass}">${key}</span>
+          <span class="session-toggle-title">${meta.label}</span>
+        </span>
+        <span class="session-arrow">▾</span>
+      </button>
+      <div class="session-body">`;
+
+    if (!hasData) {
+      html += `<p class="no-data">No data yet — complete ${meta.label} to start tracking</p>`;
+    } else {
+      // Show most recent data for each exercise
+      html += `<div class="table-wrap"><table class="glance-table">
+        <tr><th>Exercise</th><th>Weight</th><th>Sets</th><th>Target</th><th>Next</th></tr>`;
+      for (const ex of session.exercises) {
+        const latest = ex.history[0]; // newest first
+        const setsStr = latest.sets.join(' / ');
+        html += `<tr>
+          <td>${ex.name}</td>
+          <td>${fmtWeight(latest.weight)}</td>
+          <td>${setsStr}</td>
+          <td>${ex.target}</td>
+          <td class="${verdictClass(latest.verdict)}">${latest.next}</td>
+        </tr>`;
+      }
+      html += `</table></div>`;
+    }
+
+    html += `</div></div>`;
+  }
+
+  container.innerHTML = html;
+}
+
+// ── HISTORY ──
+function renderHistory() {
+  const container = document.getElementById('tab-history');
+  let html = '';
+
+  // Anchor Lifts
+  html += `<div class="static-card">
+    <h2>Anchor Lifts</h2>
+    <p class="section-label">Current working weights</p>
+    <div class="anchor-grid">`;
+  for (const a of DATA.anchorLifts) {
+    html += `<div class="anchor-item">
       <span class="anchor-label">${a.name}</span>
       <span class="anchor-weight">${a.current}</span>
-    </div>`
-  ).join('');
-  document.querySelector('.subtitle').textContent = 'Last Updated: ' + DATA.lastUpdated;
-}
-
-// Render a session panel
-function renderSession(key) {
-  const panel = document.getElementById('panel-' + key);
-  const session = DATA.sessions[key];
-
-  if (!session || session.exercises.length === 0) {
-    panel.innerHTML = '<div class="exercise-card"><p class="no-data">No data yet \u2014 complete Session ' + key + ' to start tracking</p></div>';
-    return;
-  }
-
-  panel.innerHTML = session.exercises.map(ex => {
-    const rows = ex.history.map(h => {
-      const w = typeof h.weight === 'number' ? h.weight + ' lbs' : h.weight;
-      const verdictClass = h.verdict === 'up' ? 'verdict-up' : 'verdict-hold';
-      return `<tr>
-        <td>${h.date}</td>
-        <td>${w}</td>
-        <td>${h.sets[0] || '-'}</td>
-        <td>${h.sets[1] || '-'}</td>
-        <td>${h.sets[2] || '-'}</td>
-        <td class="${verdictClass}">${h.next}</td>
-      </tr>`;
-    }).join('');
-
-    return `<div class="exercise-card">
-      <div class="exercise-header">
-        <h3>${ex.name}</h3>
-        <div class="target">Target: ${ex.target} reps</div>
-      </div>
-      <div class="exercise-body">
-        <div class="table-wrap">
-          <table>
-            <tr><th>Date</th><th>Weight</th><th>Set 1</th><th>Set 2</th><th>Set 3</th><th>Next</th></tr>
-            ${rows}
-          </table>
-        </div>
-      </div>
     </div>`;
-  }).join('');
-}
+  }
+  html += `</div></div>`;
 
-// Tab switching
-function switchTab(key) {
-  document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-  document.querySelectorAll('.session-panel').forEach(p => p.classList.remove('active'));
-  document.querySelector('.tab-btn[data-tab="' + key + '"]').classList.add('active');
-  document.getElementById('panel-' + key).classList.add('active');
-}
+  // Each session
+  for (const key of ['A', 'B', 'C']) {
+    const meta = SESSION_META[key];
+    const session = DATA.sessions[key];
 
-// Find most recently updated session
-function getMostRecentTab() {
-  let latest = null;
-  let latestKey = 'A';
-  for (const [key, session] of Object.entries(DATA.sessions)) {
-    if (session.exercises.length === 0) continue;
+    html += `<div class="history-session-header">
+      <span class="session-badge ${meta.badgeClass}">${key}</span>
+      <span class="history-session-title">${meta.label}</span>
+    </div>`;
+
+    if (!session || session.exercises.length === 0) {
+      html += `<div class="exercise-card"><p class="no-data">No data yet</p></div>`;
+      continue;
+    }
+
     for (const ex of session.exercises) {
+      html += `<div class="exercise-card">
+        <div class="exercise-header">
+          <h3>${ex.name}</h3>
+          <div class="target">Target: ${ex.target} reps</div>
+        </div>
+        <div class="exercise-body"><div class="table-wrap"><table>
+          <tr><th>Date</th><th>Weight</th><th>Set 1</th><th>Set 2</th><th>Set 3</th><th>Next</th></tr>`;
+
       for (const h of ex.history) {
-        // Simple comparison — dates like "Mar 25" are ordered by position in data
-        // Since C has Mar 25 and A has Mar 23, C is most recent
-        if (!latest) { latest = h.date; latestKey = key; }
-        else {
-          // Compare month-day roughly; newest data wins
-          latest = h.date;
-          latestKey = key;
-        }
+        html += `<tr>
+          <td>${h.date}</td>
+          <td>${fmtWeight(h.weight)}</td>
+          <td>${h.sets[0] || '-'}</td>
+          <td>${h.sets[1] || '-'}</td>
+          <td>${h.sets[2] || '-'}</td>
+          <td class="${verdictClass(h.verdict)}">${h.next}</td>
+        </tr>`;
       }
+
+      html += `</table></div></div></div>`;
     }
   }
-  return latestKey;
+
+  container.innerHTML = html;
 }
 
-// Initialize
-renderAnchors();
-['A', 'B', 'C'].forEach(renderSession);
-switchTab(getMostRecentTab());
+// ── TAB SWITCHING ──
+function switchTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  document.querySelector(`.tab-btn[data-tab="${tab}"]`).classList.add('active');
+  document.getElementById('tab-' + tab).classList.add('active');
+}
+
+// ── COLLAPSIBLE CARDS ──
+function toggleCard(id) {
+  document.getElementById(id).classList.toggle('open');
+}
+
+// ── INIT ──
+document.querySelector('.subtitle').textContent = 'Last Updated: ' + DATA.lastUpdated;
+renderGlance();
+renderHistory();
 </script>
 
 </body>
