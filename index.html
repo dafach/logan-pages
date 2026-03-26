@@ -3,339 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kino Body Programs</title>
+<title>Adam's Health Hub</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { -webkit-text-size-adjust: 100%; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; padding: 16px; max-width: 800px; margin: 0 auto; -webkit-font-smoothing: antialiased; }
-  h1 { text-align: center; font-size: 1.6em; margin-bottom: 8px; color: #fff; }
-  .subtitle { text-align: center; color: #888; margin-bottom: 24px; font-size: 0.9em; }
-  .card { background: #161616; border: 1px solid #2a2a2a; border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
-  .card-header { padding: 16px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; gap: 12px; -webkit-tap-highlight-color: rgba(255,255,255,0.05); }
-  .card-header:hover { background: #1e1e1e; }
-  .card-header:active { background: #222; }
-  .card-header h2 { font-size: 1em; color: #fff; margin: 0; flex: 1; min-width: 0; }
-  .card-header .meta { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
-  .badge { font-size: 0.7em; padding: 4px 10px; border-radius: 20px; font-weight: 600; white-space: nowrap; }
-  .badge.cut { background: #2d1a1a; color: #ff6b6b; }
-  .badge.bulk { background: #1a2d1a; color: #6bff6b; }
-  .badge.maintain { background: #1a1a2d; color: #6b8bff; }
-  .arrow { font-size: 1.2em; color: #555; transition: transform 0.3s; flex-shrink: 0; }
-  .card.open .arrow { transform: rotate(90deg); }
-  .card-body { display: none; padding: 0 16px 16px; }
-  .card.open .card-body { display: block; }
-  .desc { color: #999; font-size: 0.9em; margin-bottom: 16px; line-height: 1.5; }
-  .info-row { display: flex; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
-  .info-item { font-size: 0.85em; color: #777; }
-  .info-item strong { color: #bbb; }
-  .workout-title { font-size: 0.95em; font-weight: 600; color: #ccc; margin: 16px 0 8px; padding-bottom: 4px; border-bottom: 1px solid #222; }
-  table { width: 100%; border-collapse: collapse; margin-bottom: 12px; }
-  th { text-align: left; font-size: 0.75em; color: #666; padding: 8px 6px; border-bottom: 1px solid #222; }
-  td { padding: 8px 6px; font-size: 0.85em; border-bottom: 1px solid #1a1a1a; }
-  td:first-child { color: #555; width: 24px; }
-  tr:last-child td { border-bottom: none; }
-  .roadmap-table { margin: 12px 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .roadmap-table td { font-size: 0.8em; }
-  .roadmap-table td:nth-child(3) { color: #888; }
-  .section-title { font-size: 0.9em; font-weight: 600; color: #aaa; margin: 12px 0 6px; }
-  ul { padding-left: 20px; margin: 8px 0; }
-  li { font-size: 0.85em; color: #999; margin-bottom: 4px; line-height: 1.5; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; padding: 16px; max-width: 800px; margin: 0 auto; -webkit-font-smoothing: antialiased; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
+  h1 { text-align: center; font-size: 1.6em; margin-bottom: 6px; color: #fff; }
+  .subtitle { text-align: center; color: #888; margin-bottom: 32px; font-size: 0.85em; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  a.card { display: block; background: #161616; border: 1px solid #2a2a2a; border-radius: 12px; padding: 24px 20px; text-decoration: none; transition: background 0.2s, border-color 0.2s; -webkit-tap-highlight-color: rgba(255,255,255,0.05); }
+  a.card:hover { background: #1e1e1e; border-color: #3a3a3a; }
+  a.card:active { background: #222; }
+  .card-icon { font-size: 1.6em; margin-bottom: 10px; display: block; }
+  .card-title { font-size: 1em; font-weight: 600; color: #fff; margin-bottom: 6px; }
+  .card-desc { font-size: 0.8em; color: #777; line-height: 1.45; }
   @media (max-width: 480px) {
-    body { padding: 12px; }
-    h1 { font-size: 1.4em; }
-    .card-header { padding: 14px 12px; }
-    .card-header h2 { font-size: 0.92em; }
-    .card-body { padding: 0 12px 14px; }
-    th, td { padding: 6px 4px; font-size: 0.8em; }
-    td:first-child { width: 20px; }
-    .badge { font-size: 0.65em; padding: 3px 8px; }
+    body { padding: 12px; justify-content: flex-start; padding-top: 48px; }
+    h1 { font-size: 1.35em; }
+    .grid { grid-template-columns: 1fr; }
+    a.card { padding: 20px 16px; }
   }
 </style>
 </head>
 <body>
 
-<h1>Kino Body Programs</h1>
-<p class="subtitle">All programs from the Kinobody app</p>
+<h1>Adam's Health Hub</h1>
+<p class="subtitle">Training, tracking, and protocols — all in one place.</p>
 
-<!-- ROADMAP -->
-<div class="card">
-  <div class="card-header" onclick="toggle(this)">
-    <h2>The Kinobody Roadmap</h2>
-    <div class="meta">
-      <span class="badge" style="background:#1a1a2d;color:#9b8bff;">Guide</span>
-      <span class="arrow">&#9654;</span>
-    </div>
-  </div>
-  <div class="card-body">
-    <p class="desc">All programs share ~80% of the same structure. The remaining 20% changes based on your goal. Get lean first, then build.</p>
-    <p class="section-title">Step 1: Get Lean</p>
-    <p class="desc">Target waist = ~44-45% of height (6'0" = ~32" waist). If 3" above target, that's ~15 lbs to lose (~5 lbs/inch).</p>
-    <p class="section-title">The Progression</p>
-    <table class="roadmap-table">
-      <tr><th>Phase</th><th>Program</th><th>Goal</th><th>When</th></tr>
-      <tr><td>1</td><td>Warrior Movie Star Cut</td><td>Cut</td><td>Starting point. Deficit + 10k steps. Until abs are sharp.</td></tr>
-      <tr><td>2</td><td>Greek God Strength Accelerator</td><td>Lean Bulk</td><td>Once lean. Rapid strength. Run until progress slows.</td></tr>
-      <tr><td>3</td><td>Greek God Physique Mastery</td><td>Lean Bulk</td><td>After Accelerator. Refine proportions. Maintenance/surplus.</td></tr>
-      <tr><td>4</td><td>Specialization (Man of Steel)</td><td>Lean Bulk</td><td>Sculpt lagging areas. Not for cutting.</td></tr>
-      <tr><td>5</td><td>Ripped Artiste</td><td>Maintain</td><td>Lifestyle phase. Stay sharp year-round.</td></tr>
-    </table>
-    <p class="section-title">Key Principles</p>
-    <ul>
-      <li>Train for strength, not exhaustion</li>
-      <li>Keep one rep in the tank on key lifts</li>
-      <li>Stick with each program 2-4 months minimum</li>
-      <li>Plateau? Switch to a close exercise variation for 3-4 weeks</li>
-      <li>Cutting = Warrior or Ripped Artiste</li>
-      <li>Building = Greek God or Specialization</li>
-    </ul>
-  </div>
+<div class="grid">
+  <a class="card" href="program.html">
+    <span class="card-icon">&#x1F3CB;&#xFE0F;</span>
+    <div class="card-title">My Program</div>
+    <div class="card-desc">3x/week full body training program. Sessions, exercises, progression.</div>
+  </a>
+
+  <a class="card" href="tracker.html">
+    <span class="card-icon">&#x1F4CA;</span>
+    <div class="card-title">Progress Tracker</div>
+    <div class="card-desc">Log workouts, track weights, and monitor progress over time.</div>
+  </a>
+
+  <a class="card" href="hgh.html">
+    <span class="card-icon">&#x1F9EC;</span>
+    <div class="card-title">HGH Dose Guide</div>
+    <div class="card-desc">Dosing protocols, timing, and reconstitution reference.</div>
+  </a>
+
+  <a class="card" href="kino.html">
+    <span class="card-icon">&#x1F4D6;</span>
+    <div class="card-title">Kino Body Programs</div>
+    <div class="card-desc">Kino program breakdowns — workout structures, phases, and progressions.</div>
+  </a>
 </div>
-
-<!-- 1. RIPPED ARTISTE -->
-<div class="card">
-  <div class="card-header" onclick="toggle(this)">
-    <h2>1. 3-Day Ripped Artiste</h2>
-    <div class="meta">
-      <span class="badge cut">Cut</span>
-      <span style="font-size:0.8em;color:#666;">12 wk</span>
-      <span class="arrow">&#9654;</span>
-    </div>
-  </div>
-  <div class="card-body">
-    <p class="desc">Blueprint for staying movie-ready year-round. ~10 working sets/session. 3 days/week, 60 min each.</p>
-    <div class="info-row">
-      <span class="info-item"><strong>Frequency:</strong> 3x/week (M/W/F)</span>
-      <span class="info-item"><strong>Focus:</strong> Incline press, shoulder press, chin-ups</span>
-    </div>
-
-    <div class="workout-title">Workout A — Chest, Biceps, Triceps, Shoulders</div>
-    <table>
-      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th></tr>
-      <tr><td>1</td><td>Incline Hammer Machine</td><td>3</td><td>4-10</td></tr>
-      <tr><td>2</td><td>Machine Curls</td><td>3</td><td>4-10</td></tr>
-      <tr><td>3</td><td>Triceps Pushdowns</td><td>2</td><td>8-12</td></tr>
-      <tr><td>4</td><td>Standing Lateral Raises</td><td>2</td><td>8-12</td></tr>
-    </table>
-
-    <div class="workout-title">Workout B — Legs & Shrugs</div>
-    <table>
-      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th></tr>
-      <tr><td>1</td><td>Bulgarian Split Squats</td><td>3</td><td>6-8</td></tr>
-      <tr><td>2</td><td>DB Single Leg RDL</td><td>3</td><td>6-8</td></tr>
-      <tr><td>3</td><td>Leg Extensions</td><td>2</td><td>8-10</td></tr>
-      <tr><td>4</td><td>Standing DB Shrugs</td><td>2</td><td>13-15</td></tr>
-    </table>
-
-    <div class="workout-title">Workout C — Shoulder, Back, & Chest</div>
-    <table>
-      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th></tr>
-      <tr><td>1</td><td>DB Shoulder Press</td><td>3</td><td>6-10</td></tr>
-      <tr><td>2</td><td>Chin Ups</td><td>3</td><td>4-10</td></tr>
-      <tr><td>3</td><td>Machine Fly</td><td>2</td><td>8-12</td></tr>
-      <tr><td>4</td><td>Face Pulls</td><td>2</td><td>8-12</td></tr>
-    </table>
-  </div>
-</div>
-
-<!-- 2. WARRIOR SHRED -->
-<div class="card">
-  <div class="card-header" onclick="toggle(this)">
-    <h2>2. Warrior Shred</h2>
-    <div class="meta">
-      <span class="badge cut">Cut</span>
-      <span style="font-size:0.8em;color:#666;">12 wk</span>
-      <span class="arrow">&#9654;</span>
-    </div>
-  </div>
-  <div class="card-body">
-    <p class="desc">The bread-and-butter routine. Upper-lower split: two upper days (chest-focused + shoulder-focused) and one lower day. Minimalist — just the key movements.</p>
-    <div class="info-row">
-      <span class="info-item"><strong>Frequency:</strong> 3x/week</span>
-      <span class="info-item"><strong>Split:</strong> Upper (Chest) / Lower / Upper (Shoulders)</span>
-    </div>
-
-    <div class="workout-title">Day 1 — Upper Body (Chest Focused)</div>
-    <table>
-      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th></tr>
-      <tr><td>1</td><td>Incline DB Press</td><td>2</td><td>6-10</td></tr>
-      <tr><td>2</td><td>Barbell Bench Press</td><td>2</td><td>6-10</td></tr>
-      <tr><td>3</td><td>Incline DB Curls</td><td>2</td><td>6-10</td></tr>
-      <tr><td>4</td><td>Bent Over Flyes</td><td>4</td><td>4-15</td></tr>
-    </table>
-
-    <div class="workout-title">Day 2 — Lower Body</div>
-    <table>
-      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th></tr>
-      <tr><td>1</td><td>Single Leg Box Squat</td><td>4</td><td>6-8</td></tr>
-      <tr><td>2</td><td>DB RDL</td><td>3</td><td>10-12</td></tr>
-      <tr><td>3</td><td>Leg Extensions</td><td>3</td><td>10-12</td></tr>
-      <tr><td>4</td><td>Standing Calf Raises</td><td>3</td><td>10-12</td></tr>
-    </table>
-
-    <div class="workout-title">Day 3 — Upper Body (Shoulder Focused)</div>
-    <table>
-      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th></tr>
-      <tr><td>1</td><td>DB Shoulder Press</td><td>2</td><td>6-10</td></tr>
-      <tr><td>2</td><td>Lat Pull Down</td><td>2</td><td>6-10</td></tr>
-      <tr><td>3</td><td>Triceps Pushdowns</td><td>2</td><td>8-12</td></tr>
-      <tr><td>4</td><td>Standing Lateral Raises</td><td>4</td><td>4-15</td></tr>
-    </table>
-  </div>
-</div>
-
-<!-- 3. GREEK GOD PHYSIQUE MASTERY -->
-<div class="card">
-  <div class="card-header" onclick="toggle(this)">
-    <h2>3. Greek God Physique Mastery</h2>
-    <div class="meta">
-      <span class="badge bulk">Lean Bulk</span>
-      <span style="font-size:0.8em;color:#666;">12 wk</span>
-      <span class="arrow">&#9654;</span>
-    </div>
-  </div>
-  <div class="card-body">
-    <p class="desc">For advanced lifters. Upper/Lower/Upper split using Reverse Pyramid, Kino Rep, and Rest Pause training. Manages volume carefully — heavier loads = more fatigue. Slight caloric surplus recommended.</p>
-    <div class="info-row">
-      <span class="info-item"><strong>Frequency:</strong> 3x/week</span>
-      <span class="info-item"><strong>Level:</strong> Advanced</span>
-    </div>
-
-    <div class="workout-title">Day 1 — Chest & Arms | Light Shoulders</div>
-    <table>
-      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th></tr>
-      <tr><td>1</td><td>Incline DB Press</td><td>2</td><td>6-10</td></tr>
-      <tr><td>2</td><td>Barbell Bench Press</td><td>2</td><td>8-12</td></tr>
-      <tr><td>3</td><td>Incline DB Curls</td><td>2</td><td>6-10</td></tr>
-      <tr><td>4</td><td>Bent Over Flyes</td><td>4</td><td>4-15</td></tr>
-      <tr><td>5</td><td>Hanging Knee Raises</td><td>2</td><td>13-15</td></tr>
-    </table>
-
-    <div class="workout-title">Day 2 — Legs & Traps</div>
-    <table>
-      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th></tr>
-      <tr><td>1</td><td>Bulgarian Split Squats</td><td>4</td><td>8-10</td></tr>
-      <tr><td>2</td><td>Barbell Romanian Deadlifts</td><td>4</td><td>10-12</td></tr>
-      <tr><td>3</td><td>ATG Split Squats</td><td>3</td><td>10-12</td></tr>
-      <tr><td>4</td><td>Standing Calf Raises</td><td>3</td><td>10-12</td></tr>
-      <tr><td>5</td><td>DB Leaning Shrugs</td><td>3</td><td>10-12</td></tr>
-    </table>
-
-    <div class="workout-title">Day 3 — Shoulders & Back | Light Chest & Arms</div>
-    <table>
-      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th></tr>
-      <tr><td>1</td><td>DB Shoulder Press</td><td>2</td><td>6-10</td></tr>
-      <tr><td>2</td><td>Weighted Hammer Chin Ups</td><td>2</td><td>6-8</td></tr>
-      <tr><td>3</td><td>Incline DB Triceps</td><td>2</td><td>8-12</td></tr>
-      <tr><td>4</td><td>Cable Rows</td><td>2</td><td>8-12</td></tr>
-      <tr><td>5</td><td>Standing Lateral Raises</td><td>4</td><td>4-15</td></tr>
-    </table>
-  </div>
-</div>
-
-<!-- 4. GREEK GOD STRENGTH ACCELERATOR -->
-<div class="card">
-  <div class="card-header" onclick="toggle(this)">
-    <h2>4. Greek God Strength Accelerator</h2>
-    <div class="meta">
-      <span class="badge bulk">Lean Bulk</span>
-      <span style="font-size:0.8em;color:#666;">12 wk</span>
-      <span class="arrow">&#9654;</span>
-    </div>
-  </div>
-  <div class="card-body">
-    <p class="desc">A/B rotation — same key lifts every 5 days for rapid strength gains. Week A: A/B/A, Week B: B/A/B. Best for beginners, intermediates, or anyone rebuilding after time off.</p>
-    <div class="info-row">
-      <span class="info-item"><strong>Frequency:</strong> 3x/week (alternating)</span>
-      <span class="info-item"><strong>Level:</strong> Beginner / Intermediate</span>
-    </div>
-
-    <div class="workout-title">Workout A — Chest, Shoulders, Triceps, Abs</div>
-    <table>
-      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th></tr>
-      <tr><td>1</td><td>Incline Barbell Press</td><td>3</td><td>4-8</td></tr>
-      <tr><td>2</td><td>Barbell Standing Press</td><td>3</td><td>4-8</td></tr>
-      <tr><td>3</td><td>Standing Lateral Raises</td><td>2</td><td>10-15</td></tr>
-      <tr><td>4</td><td>Incline DB Triceps</td><td>3</td><td>6-12</td></tr>
-      <tr><td>5</td><td>Hanging Knee Raises</td><td>3</td><td>13-15</td></tr>
-    </table>
-
-    <div class="workout-title">Workout B — Back, Biceps, Legs</div>
-    <table>
-      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th></tr>
-      <tr><td>1</td><td>Weighted Pull Ups</td><td>3</td><td>3-8</td></tr>
-      <tr><td>2</td><td>Incline DB Hammer Curls</td><td>3</td><td>6-12</td></tr>
-      <tr><td>3</td><td>Bulgarian Split Squats</td><td>3</td><td>6-8</td></tr>
-      <tr><td>4</td><td>Barbell Romanian Deadlifts</td><td>3</td><td>10-12</td></tr>
-      <tr><td>5</td><td>Bent Over Flyes</td><td>4</td><td>4-15</td></tr>
-    </table>
-  </div>
-</div>
-
-<!-- 5. MAN OF STEEL -->
-<div class="card">
-  <div class="card-header" onclick="toggle(this)">
-    <h2>5. Man of Steel — Chest & Leg</h2>
-    <div class="meta">
-      <span class="badge bulk">Lean Bulk</span>
-      <span style="font-size:0.8em;color:#666;">16 wk</span>
-      <span class="arrow">&#9654;</span>
-    </div>
-  </div>
-  <div class="card-body">
-    <p class="desc">8-day rotation (train/rest/train/rest). Reverse Pyramid Training. Phase 1 (months 1-2): chest emphasis. Phase 2 (months 3-4): leg emphasis. Repeat cycle.</p>
-    <div class="info-row">
-      <span class="info-item"><strong>Frequency:</strong> 4 sessions per 8-day rotation</span>
-      <span class="info-item"><strong>Split:</strong> Upper A / Lower A / Upper B / Lower B</span>
-    </div>
-
-    <div class="workout-title">Upper Body A (6 exercises)</div>
-    <table>
-      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th></tr>
-      <tr><td>1</td><td>Incline DB Press</td><td>3</td><td>4-10</td></tr>
-      <tr><td>2</td><td>Machine Chest Press</td><td>2</td><td>6-10</td></tr>
-      <tr><td>3</td><td>Incline DB Triceps</td><td>2</td><td>8-12</td></tr>
-      <tr><td>4</td><td>Incline DB Curls</td><td>2</td><td>6-10</td></tr>
-      <tr><td>5</td><td>Cable Rows</td><td>2</td><td>6-10</td></tr>
-      <tr><td>6</td><td>Cuban Press</td><td>2</td><td>6-10</td></tr>
-    </table>
-
-    <div class="workout-title">Lower Body A (5 exercises)</div>
-    <table>
-      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th></tr>
-      <tr><td>1</td><td>Leg Press Calf Raise</td><td>2</td><td>8-12</td></tr>
-      <tr><td>2</td><td>Bulgarian Split Squats</td><td>2</td><td>6-10</td></tr>
-      <tr><td>3</td><td>Nordic Curls</td><td>2</td><td>8-12</td></tr>
-      <tr><td>4</td><td>Back Extension</td><td>2</td><td>10-12</td></tr>
-      <tr><td>5</td><td>Incline DB Shrug</td><td>2</td><td>8-12</td></tr>
-    </table>
-
-    <div class="workout-title">Upper Body B (5 exercises)</div>
-    <table>
-      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th></tr>
-      <tr><td>1</td><td>DB Shoulder Press</td><td>2</td><td>6-10</td></tr>
-      <tr><td>2</td><td>Lat Pull Down</td><td>2</td><td>6-10</td></tr>
-      <tr><td>3</td><td>DB Chest Fly</td><td>3</td><td>6-12</td></tr>
-      <tr><td>4</td><td>Rear Delt Machine</td><td>2</td><td>8-12</td></tr>
-      <tr><td>5</td><td>Triceps Pushdowns</td><td>2</td><td>8-12</td></tr>
-    </table>
-
-    <div class="workout-title">Lower Body B (5 exercises)</div>
-    <table>
-      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th></tr>
-      <tr><td>1</td><td>Single Leg Calf Raise</td><td>2</td><td>8-12</td></tr>
-      <tr><td>2</td><td>DB Step Ups</td><td>2</td><td>6-10</td></tr>
-      <tr><td>3</td><td>Barbell Romanian Deadlifts</td><td>2</td><td>6-10</td></tr>
-      <tr><td>4</td><td>Leg Extensions</td><td>2</td><td>8-12</td></tr>
-      <tr><td>5</td><td>Cable Shrugs</td><td>2</td><td>8-12</td></tr>
-    </table>
-  </div>
-</div>
-
-<script>
-function toggle(header) {
-  header.parentElement.classList.toggle('open');
-}
-</script>
 
 </body>
 </html>
