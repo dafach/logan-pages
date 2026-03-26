@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Training Progress Tracker</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; padding: 16px; max-width: 800px; margin: 0 auto; -webkit-font-smoothing: antialiased; }
+  h1 { text-align: center; font-size: 1.6em; margin-bottom: 8px; color: #fff; }
+  .subtitle { text-align: center; color: #888; margin-bottom: 20px; font-size: 0.85em; line-height: 1.4; }
+  .card { background: #161616; border: 1px solid #2a2a2a; border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+  .card-header { padding: 16px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; gap: 12px; -webkit-tap-highlight-color: rgba(255,255,255,0.05); }
+  .card-header:hover { background: #1e1e1e; }
+  .card-header:active { background: #222; }
+  .card-header h2 { font-size: 1em; color: #fff; margin: 0; flex: 1; min-width: 0; }
+  .card-header .meta { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
+  .badge { font-size: 0.7em; padding: 4px 10px; border-radius: 20px; font-weight: 600; white-space: nowrap; }
+  .badge.blue { background: #1a1a2d; color: #6b8bff; }
+  .badge.green { background: #1a2d1a; color: #6bff6b; }
+  .badge.purple { background: #231a2d; color: #b08bff; }
+  .arrow { font-size: 1.2em; color: #555; transition: transform 0.3s; flex-shrink: 0; }
+  .card.open .arrow { transform: rotate(90deg); }
+  .card-body { display: none; padding: 0 16px 16px; }
+  .card.open .card-body { display: block; }
+  .static-card { background: #161616; border: 1px solid #2a2a2a; border-radius: 12px; margin-bottom: 12px; overflow: hidden; padding: 16px; }
+  .static-card h2 { font-size: 1em; color: #fff; margin: 0 0 12px; }
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 12px; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 12px; }
+  th { text-align: left; font-size: 0.72em; color: #666; padding: 8px 6px; border-bottom: 1px solid #222; white-space: nowrap; }
+  td { padding: 8px 6px; font-size: 0.83em; border-bottom: 1px solid #1a1a1a; color: #ccc; }
+  tr:last-child td { border-bottom: none; }
+  .no-data { color: #666; font-style: italic; font-size: 0.9em; padding: 8px 0; }
+  .verdict-up { color: #6bff6b; font-weight: 600; }
+  .verdict-hold { color: #ffd96b; font-weight: 600; }
+  .verdict-deload { color: #ff6b6b; font-weight: 600; }
+  .anchor-weight { font-size: 1.1em; color: #fff; font-weight: 600; }
+  .anchor-label { color: #999; font-size: 0.85em; }
+  .anchor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .anchor-item { background: #1a1a1a; border-radius: 8px; padding: 12px; display: flex; justify-content: space-between; align-items: center; }
+  .section-label { font-size: 0.75em; color: #555; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+  @media (max-width: 480px) {
+    body { padding: 12px; }
+    h1 { font-size: 1.35em; }
+    .card-header { padding: 14px 12px; }
+    .card-header h2 { font-size: 0.9em; }
+    .card-body { padding: 0 12px 14px; }
+    .static-card { padding: 14px 12px; }
+    th, td { padding: 6px 4px; font-size: 0.78em; }
+    .badge { font-size: 0.62em; padding: 3px 8px; }
+    .anchor-grid { grid-template-columns: 1fr; }
+    .anchor-item { padding: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Training Progress Tracker</h1>
+<p class="subtitle">Last Updated: March 25, 2026</p>
+
+<!-- ANCHOR LIFTS SUMMARY -->
+<div class="static-card">
+  <h2>Anchor Lifts</h2>
+  <p class="section-label">Current working weights</p>
+  <div class="anchor-grid">
+    <div class="anchor-item">
+      <span class="anchor-label">DB Incline Bench</span>
+      <span class="anchor-weight">50 lbs</span>
+    </div>
+    <div class="anchor-item">
+      <span class="anchor-label">Chin-Up</span>
+      <span class="anchor-weight">BW</span>
+    </div>
+    <div class="anchor-item">
+      <span class="anchor-label">Bulgarian Split Squat</span>
+      <span class="anchor-weight">50 lbs</span>
+    </div>
+    <div class="anchor-item">
+      <span class="anchor-label">SL DB RDL</span>
+      <span class="anchor-weight">60 lbs</span>
+    </div>
+    <div class="anchor-item">
+      <span class="anchor-label">Chest Supported Row</span>
+      <span class="anchor-weight">50 lbs</span>
+    </div>
+  </div>
+</div>
+
+<!-- SESSION A -->
+<div class="card open">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>Session A — March 23, 2026</h2>
+    <div class="meta"><span class="badge blue">A</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <div class="table-wrap"><table>
+      <tr><th>Exercise</th><th>Weight</th><th>Sets</th><th>Target</th><th>Next</th></tr>
+      <tr>
+        <td>DB Incline Bench</td>
+        <td>50 lbs</td>
+        <td>10, 10, 10</td>
+        <td>8-10</td>
+        <td class="verdict-up">&#9650; 55 lbs</td>
+      </tr>
+      <tr>
+        <td>Chin-Up</td>
+        <td>BW</td>
+        <td>10, 10, 10</td>
+        <td>6-8</td>
+        <td class="verdict-up">&#9650; BW+10</td>
+      </tr>
+      <tr>
+        <td>Bulgarian Split Squat</td>
+        <td>50 lbs</td>
+        <td>10, 10, 10</td>
+        <td>8-10</td>
+        <td class="verdict-up">&#9650; 55 lbs</td>
+      </tr>
+      <tr>
+        <td>Cable Face Pull</td>
+        <td>30 lbs</td>
+        <td>12, 12, 12</td>
+        <td>14-16</td>
+        <td class="verdict-hold">&#9644; Hold 30, push for 14+</td>
+      </tr>
+      <tr>
+        <td>Incline DB Curl</td>
+        <td>25 lbs</td>
+        <td>10, 10, 10</td>
+        <td>12-14</td>
+        <td class="verdict-hold">&#9644; Hold 25, push for 12+</td>
+      </tr>
+    </table></div>
+  </div>
+</div>
+
+<!-- SESSION B -->
+<div class="card">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>Session B</h2>
+    <div class="meta"><span class="badge green">B</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <p class="no-data">No data yet</p>
+  </div>
+</div>
+
+<!-- SESSION C -->
+<div class="card open">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>Session C — March 25, 2026</h2>
+    <div class="meta"><span class="badge purple">C</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <div class="table-wrap"><table>
+      <tr><th>Exercise</th><th>Weight</th><th>Sets</th><th>Target</th><th>Next</th></tr>
+      <tr>
+        <td>DB Bench Press</td>
+        <td>50 lbs</td>
+        <td>12, 12, 12</td>
+        <td>8-10</td>
+        <td class="verdict-up">&#9650; 60 lbs</td>
+      </tr>
+      <tr>
+        <td>SL DB RDL</td>
+        <td>60 lbs</td>
+        <td>12, 12, 12</td>
+        <td>10-12</td>
+        <td class="verdict-up">&#9650; 65 lbs</td>
+      </tr>
+      <tr>
+        <td>Chest Supported Row</td>
+        <td>50 lbs</td>
+        <td>12, 12, 12</td>
+        <td>10-12</td>
+        <td class="verdict-up">&#9650; 55 lbs</td>
+      </tr>
+      <tr>
+        <td>Tricep Pushdown</td>
+        <td>25 lbs</td>
+        <td>12, 12, 12</td>
+        <td>12-14</td>
+        <td class="verdict-hold">&#9644; Hold 25, push for 14+</td>
+      </tr>
+      <tr>
+        <td>Reverse Fly</td>
+        <td>5 lbs</td>
+        <td>12, 12, 12</td>
+        <td>14-16</td>
+        <td class="verdict-hold">&#9644; Hold 5, push for 14+</td>
+      </tr>
+      <tr>
+        <td>Leg Extension</td>
+        <td>55 lbs</td>
+        <td>12, 10, 10</td>
+        <td>12-14</td>
+        <td class="verdict-hold">&#9644; Hold 55, push for 12+</td>
+      </tr>
+    </table></div>
+  </div>
+</div>
+
+<p style="text-align:center;color:#444;font-size:0.75em;margin-top:30px;">Progress tracked by Logan. Data updates after each session.</p>
+
+<script>
+// Training data (update this JSON as new sessions come in)
+const TRAINING_DATA = {
+  "sessions": [
+    {
+      "name": "A",
+      "date": "2026-03-23",
+      "exercises": [
+        {"name": "DB Incline Bench", "weight": 50, "sets": [10,10,10], "target": "8-10", "next": "55 lbs"},
+        {"name": "Chin-Up", "weight": "BW", "sets": [10,10,10], "target": "6-8", "next": "BW+10"},
+        {"name": "Bulgarian Split Squat", "weight": 50, "sets": [10,10,10], "target": "8-10", "next": "55 lbs"},
+        {"name": "Cable Face Pull", "weight": 30, "sets": [12,12,12], "target": "14-16", "next": "Hold 30, push for 14+"},
+        {"name": "Incline DB Curl", "weight": 25, "sets": [10,10,10], "target": "12-14", "next": "Hold 25, push for 12+"}
+      ]
+    },
+    {
+      "name": "C",
+      "date": "2026-03-25",
+      "exercises": [
+        {"name": "DB Bench Press", "weight": 50, "sets": [12,12,12], "target": "8-10", "next": "60 lbs"},
+        {"name": "SL DB RDL", "weight": 60, "sets": [12,12,12], "target": "10-12", "next": "65 lbs"},
+        {"name": "Chest Supported Row", "weight": 50, "sets": [12,12,12], "target": "10-12", "next": "55 lbs"},
+        {"name": "Tricep Pushdown", "weight": 25, "sets": [12,12,12], "target": "12-14", "next": "Hold 25, push for 14+"},
+        {"name": "Reverse Fly", "weight": 5, "sets": [12,12,12], "target": "14-16", "next": "Hold 5, push for 14+"},
+        {"name": "Leg Extension", "weight": 55, "sets": [12,10,10], "target": "12-14", "next": "Hold 55, push for 12+"}
+      ]
+    }
+  ]
+};
+
+function toggle(header) {
+  header.parentElement.classList.toggle('open');
+}
+</script>
+
+</body>
+</html>
