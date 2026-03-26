@@ -264,7 +264,7 @@ function renderGlance() {
           <td>${fmtWeight(latest.weight)}</td>
           <td>${setsStr}</td>
           <td>${ex.target}</td>
-          <td class="${verdictClass(latest.verdict)}">${latest.next}</td>
+          <td class="${verdictClass(latest.verdict)}">${latest.verdict === 'up' ? '▲ ' : '▬ '}${latest.next}</td>
         </tr>`;
       }
       html += `</table></div>`;
@@ -325,7 +325,7 @@ function renderHistory() {
           <td>${h.sets[0] || '-'}</td>
           <td>${h.sets[1] || '-'}</td>
           <td>${h.sets[2] || '-'}</td>
-          <td class="${verdictClass(h.verdict)}">${h.next}</td>
+          <td class="${verdictClass(h.verdict)}">${h.verdict === 'up' ? '▲ ' : '▬ '}${h.next}</td>
         </tr>`;
       }
 
