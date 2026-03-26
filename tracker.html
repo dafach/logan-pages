@@ -10,47 +10,73 @@
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; padding: 16px; max-width: 800px; margin: 0 auto; -webkit-font-smoothing: antialiased; }
   h1 { text-align: center; font-size: 1.6em; margin-bottom: 8px; color: #fff; }
   .subtitle { text-align: center; color: #888; margin-bottom: 20px; font-size: 0.85em; line-height: 1.4; }
-  .card { background: #161616; border: 1px solid #2a2a2a; border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
-  .card-header { padding: 16px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; gap: 12px; -webkit-tap-highlight-color: rgba(255,255,255,0.05); }
-  .card-header:hover { background: #1e1e1e; }
-  .card-header:active { background: #222; }
-  .card-header h2 { font-size: 1em; color: #fff; margin: 0; flex: 1; min-width: 0; }
-  .card-header .meta { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
-  .badge { font-size: 0.7em; padding: 4px 10px; border-radius: 20px; font-weight: 600; white-space: nowrap; }
-  .badge.blue { background: #1a1a2d; color: #6b8bff; }
-  .badge.green { background: #1a2d1a; color: #6bff6b; }
-  .badge.purple { background: #231a2d; color: #b08bff; }
-  .arrow { font-size: 1.2em; color: #555; transition: transform 0.3s; flex-shrink: 0; }
-  .card.open .arrow { transform: rotate(90deg); }
-  .card-body { display: none; padding: 0 16px 16px; }
-  .card.open .card-body { display: block; }
+
+  /* Anchor lifts */
   .static-card { background: #161616; border: 1px solid #2a2a2a; border-radius: 12px; margin-bottom: 12px; overflow: hidden; padding: 16px; }
   .static-card h2 { font-size: 1em; color: #fff; margin: 0 0 12px; }
-  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 12px; }
-  table { width: 100%; border-collapse: collapse; margin-bottom: 12px; }
+  .section-label { font-size: 0.75em; color: #555; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+  .anchor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .anchor-item { background: #1a1a1a; border-radius: 8px; padding: 12px; display: flex; justify-content: space-between; align-items: center; }
+  .anchor-weight { font-size: 1.1em; color: #fff; font-weight: 600; }
+  .anchor-label { color: #999; font-size: 0.85em; }
+
+  /* Tab bar */
+  .tab-bar { display: flex; gap: 8px; position: sticky; top: 0; z-index: 100; background: #0a0a0a; padding: 12px 0; margin-bottom: 12px; }
+  .tab-btn { flex: 1; min-height: 48px; border-radius: 10px; font-size: 1em; font-weight: 700; cursor: pointer; transition: all 0.2s; -webkit-tap-highlight-color: rgba(255,255,255,0.05); border: 2px solid; background: transparent; letter-spacing: 0.5px; }
+  .tab-btn:active { transform: scale(0.97); }
+
+  /* Tab A - Blue */
+  .tab-btn[data-tab="A"] { border-color: #4a9eff; color: #4a9eff; }
+  .tab-btn[data-tab="A"].active { background: #4a9eff; color: #fff; border-color: #4a9eff; }
+  .tab-btn[data-tab="A"]:not(.active) { opacity: 0.5; }
+
+  /* Tab B - Green */
+  .tab-btn[data-tab="B"] { border-color: #4ade80; color: #4ade80; }
+  .tab-btn[data-tab="B"].active { background: #4ade80; color: #0a0a0a; border-color: #4ade80; }
+  .tab-btn[data-tab="B"]:not(.active) { opacity: 0.5; }
+
+  /* Tab C - Purple */
+  .tab-btn[data-tab="C"] { border-color: #a78bfa; color: #a78bfa; }
+  .tab-btn[data-tab="C"].active { background: #a78bfa; color: #fff; border-color: #a78bfa; }
+  .tab-btn[data-tab="C"]:not(.active) { opacity: 0.5; }
+
+  /* Session panels */
+  .session-panel { display: none; }
+  .session-panel.active { display: block; }
+
+  /* Exercise cards */
+  .exercise-card { background: #161616; border: 1px solid #2a2a2a; border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+  .exercise-header { padding: 14px 16px; border-bottom: 1px solid #222; }
+  .exercise-header h3 { font-size: 0.95em; color: #fff; margin: 0; }
+  .exercise-header .target { font-size: 0.75em; color: #666; margin-top: 2px; }
+  .exercise-body { padding: 0 16px 14px; }
+
+  /* Tables */
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table { width: 100%; border-collapse: collapse; }
   th { text-align: left; font-size: 0.72em; color: #666; padding: 8px 6px; border-bottom: 1px solid #222; white-space: nowrap; }
   td { padding: 8px 6px; font-size: 0.83em; border-bottom: 1px solid #1a1a1a; color: #ccc; }
   tr:last-child td { border-bottom: none; }
-  .no-data { color: #666; font-style: italic; font-size: 0.9em; padding: 8px 0; }
+
+  /* Verdict colors */
   .verdict-up { color: #6bff6b; font-weight: 600; }
   .verdict-hold { color: #ffd96b; font-weight: 600; }
-  .verdict-deload { color: #ff6b6b; font-weight: 600; }
-  .anchor-weight { font-size: 1.1em; color: #fff; font-weight: 600; }
-  .anchor-label { color: #999; font-size: 0.85em; }
-  .anchor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .anchor-item { background: #1a1a1a; border-radius: 8px; padding: 12px; display: flex; justify-content: space-between; align-items: center; }
-  .section-label { font-size: 0.75em; color: #555; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+
+  /* No data message */
+  .no-data { color: #666; font-style: italic; font-size: 0.9em; padding: 24px 16px; text-align: center; }
+
+  .footer { text-align: center; color: #444; font-size: 0.75em; margin-top: 30px; }
+
   @media (max-width: 480px) {
     body { padding: 12px; }
     h1 { font-size: 1.35em; }
-    .card-header { padding: 14px 12px; }
-    .card-header h2 { font-size: 0.9em; }
-    .card-body { padding: 0 12px 14px; }
-    .static-card { padding: 14px 12px; }
-    th, td { padding: 6px 4px; font-size: 0.78em; }
-    .badge { font-size: 0.62em; padding: 3px 8px; }
+    .tab-btn { font-size: 0.9em; min-height: 48px; }
     .anchor-grid { grid-template-columns: 1fr; }
     .anchor-item { padding: 10px; }
+    .static-card { padding: 14px 12px; }
+    .exercise-header { padding: 12px; }
+    .exercise-body { padding: 0 12px 12px; }
+    th, td { padding: 6px 4px; font-size: 0.78em; }
   }
 </style>
 </head>
@@ -59,183 +85,216 @@
 <h1>Training Progress Tracker</h1>
 <p class="subtitle">Last Updated: March 25, 2026</p>
 
-<!-- ANCHOR LIFTS SUMMARY -->
-<div class="static-card">
+<!-- ANCHOR LIFTS SUMMARY (always visible) -->
+<div class="static-card" id="anchor-lifts">
   <h2>Anchor Lifts</h2>
   <p class="section-label">Current working weights</p>
-  <div class="anchor-grid">
-    <div class="anchor-item">
-      <span class="anchor-label">DB Incline Bench</span>
-      <span class="anchor-weight">50 lbs</span>
-    </div>
-    <div class="anchor-item">
-      <span class="anchor-label">Chin-Up</span>
-      <span class="anchor-weight">BW</span>
-    </div>
-    <div class="anchor-item">
-      <span class="anchor-label">Bulgarian Split Squat</span>
-      <span class="anchor-weight">50 lbs</span>
-    </div>
-    <div class="anchor-item">
-      <span class="anchor-label">SL DB RDL</span>
-      <span class="anchor-weight">60 lbs</span>
-    </div>
-    <div class="anchor-item">
-      <span class="anchor-label">Chest Supported Row</span>
-      <span class="anchor-weight">50 lbs</span>
-    </div>
-  </div>
+  <div class="anchor-grid" id="anchor-grid"></div>
 </div>
 
-<!-- SESSION A -->
-<div class="card open">
-  <div class="card-header" onclick="toggle(this)">
-    <h2>Session A — March 23, 2026</h2>
-    <div class="meta"><span class="badge blue">A</span><span class="arrow">&#9654;</span></div>
-  </div>
-  <div class="card-body">
-    <div class="table-wrap"><table>
-      <tr><th>Exercise</th><th>Weight</th><th>Sets</th><th>Target</th><th>Next</th></tr>
-      <tr>
-        <td>DB Incline Bench</td>
-        <td>50 lbs</td>
-        <td>10, 10, 10</td>
-        <td>8-10</td>
-        <td class="verdict-up">&#9650; 55 lbs</td>
-      </tr>
-      <tr>
-        <td>Chin-Up</td>
-        <td>BW</td>
-        <td>10, 10, 10</td>
-        <td>6-8</td>
-        <td class="verdict-up">&#9650; BW+10</td>
-      </tr>
-      <tr>
-        <td>Bulgarian Split Squat</td>
-        <td>50 lbs</td>
-        <td>10, 10, 10</td>
-        <td>8-10</td>
-        <td class="verdict-up">&#9650; 55 lbs</td>
-      </tr>
-      <tr>
-        <td>Cable Face Pull</td>
-        <td>30 lbs</td>
-        <td>12, 12, 12</td>
-        <td>14-16</td>
-        <td class="verdict-hold">&#9644; Hold 30, push for 14+</td>
-      </tr>
-      <tr>
-        <td>Incline DB Curl</td>
-        <td>25 lbs</td>
-        <td>10, 10, 10</td>
-        <td>12-14</td>
-        <td class="verdict-hold">&#9644; Hold 25, push for 12+</td>
-      </tr>
-    </table></div>
-  </div>
+<!-- TAB BAR -->
+<div class="tab-bar">
+  <button class="tab-btn" data-tab="A" onclick="switchTab('A')">Session A</button>
+  <button class="tab-btn" data-tab="B" onclick="switchTab('B')">Session B</button>
+  <button class="tab-btn" data-tab="C" onclick="switchTab('C')">Session C</button>
 </div>
 
-<!-- SESSION B -->
-<div class="card">
-  <div class="card-header" onclick="toggle(this)">
-    <h2>Session B</h2>
-    <div class="meta"><span class="badge green">B</span><span class="arrow">&#9654;</span></div>
-  </div>
-  <div class="card-body">
-    <p class="no-data">No data yet</p>
-  </div>
-</div>
+<!-- SESSION PANELS -->
+<div class="session-panel" id="panel-A"></div>
+<div class="session-panel" id="panel-B"></div>
+<div class="session-panel" id="panel-C"></div>
 
-<!-- SESSION C -->
-<div class="card open">
-  <div class="card-header" onclick="toggle(this)">
-    <h2>Session C — March 25, 2026</h2>
-    <div class="meta"><span class="badge purple">C</span><span class="arrow">&#9654;</span></div>
-  </div>
-  <div class="card-body">
-    <div class="table-wrap"><table>
-      <tr><th>Exercise</th><th>Weight</th><th>Sets</th><th>Target</th><th>Next</th></tr>
-      <tr>
-        <td>DB Bench Press</td>
-        <td>50 lbs</td>
-        <td>12, 12, 12</td>
-        <td>8-10</td>
-        <td class="verdict-up">&#9650; 60 lbs</td>
-      </tr>
-      <tr>
-        <td>SL DB RDL</td>
-        <td>60 lbs</td>
-        <td>12, 12, 12</td>
-        <td>10-12</td>
-        <td class="verdict-up">&#9650; 65 lbs</td>
-      </tr>
-      <tr>
-        <td>Chest Supported Row</td>
-        <td>50 lbs</td>
-        <td>12, 12, 12</td>
-        <td>10-12</td>
-        <td class="verdict-up">&#9650; 55 lbs</td>
-      </tr>
-      <tr>
-        <td>Tricep Pushdown</td>
-        <td>25 lbs</td>
-        <td>12, 12, 12</td>
-        <td>12-14</td>
-        <td class="verdict-hold">&#9644; Hold 25, push for 14+</td>
-      </tr>
-      <tr>
-        <td>Reverse Fly</td>
-        <td>5 lbs</td>
-        <td>12, 12, 12</td>
-        <td>14-16</td>
-        <td class="verdict-hold">&#9644; Hold 5, push for 14+</td>
-      </tr>
-      <tr>
-        <td>Leg Extension</td>
-        <td>55 lbs</td>
-        <td>12, 10, 10</td>
-        <td>12-14</td>
-        <td class="verdict-hold">&#9644; Hold 55, push for 12+</td>
-      </tr>
-    </table></div>
-  </div>
-</div>
-
-<p style="text-align:center;color:#444;font-size:0.75em;margin-top:30px;">Progress tracked by Logan. Data updates after each session.</p>
+<p class="footer">Progress tracked by Logan. Data updates after each session.</p>
 
 <script>
-// Training data (update this JSON as new sessions come in)
-const TRAINING_DATA = {
-  "sessions": [
-    {
-      "name": "A",
-      "date": "2026-03-23",
+const DATA = {
+  "anchorLifts": [
+    {"name": "DB Incline Bench", "current": "50 lbs"},
+    {"name": "Chin-Up", "current": "BW"},
+    {"name": "Bulgarian Split Squat", "current": "50 lbs"},
+    {"name": "SL DB RDL", "current": "60 lbs"},
+    {"name": "Chest Supported Row", "current": "50 lbs"}
+  ],
+  "sessions": {
+    "A": {
       "exercises": [
-        {"name": "DB Incline Bench", "weight": 50, "sets": [10,10,10], "target": "8-10", "next": "55 lbs"},
-        {"name": "Chin-Up", "weight": "BW", "sets": [10,10,10], "target": "6-8", "next": "BW+10"},
-        {"name": "Bulgarian Split Squat", "weight": 50, "sets": [10,10,10], "target": "8-10", "next": "55 lbs"},
-        {"name": "Cable Face Pull", "weight": 30, "sets": [12,12,12], "target": "14-16", "next": "Hold 30, push for 14+"},
-        {"name": "Incline DB Curl", "weight": 25, "sets": [10,10,10], "target": "12-14", "next": "Hold 25, push for 12+"}
+        {
+          "name": "DB Incline Bench",
+          "target": "8-10",
+          "history": [
+            {"date": "Mar 23", "weight": 50, "sets": [10,10,10], "next": "UP to 55", "verdict": "up"}
+          ]
+        },
+        {
+          "name": "Chin-Up",
+          "target": "6-8",
+          "history": [
+            {"date": "Mar 23", "weight": "BW", "sets": [10,10,10], "next": "UP \u2014 add BW+10", "verdict": "up"}
+          ]
+        },
+        {
+          "name": "Bulgarian Split Squat",
+          "target": "8-10/side",
+          "history": [
+            {"date": "Mar 23", "weight": 50, "sets": [10,10,10], "next": "UP to 55", "verdict": "up"}
+          ]
+        },
+        {
+          "name": "Cable Face Pull",
+          "target": "14-16",
+          "history": [
+            {"date": "Mar 23", "weight": 30, "sets": [12,12,12], "next": "Hold 30, push for 14+", "verdict": "hold"}
+          ]
+        },
+        {
+          "name": "Incline DB Curl",
+          "target": "12-14",
+          "history": [
+            {"date": "Mar 23", "weight": 25, "sets": [10,10,10], "next": "Hold 25, push for 12+", "verdict": "hold"}
+          ]
+        }
       ]
     },
-    {
-      "name": "C",
-      "date": "2026-03-25",
+    "B": {
+      "exercises": []
+    },
+    "C": {
       "exercises": [
-        {"name": "DB Bench Press", "weight": 50, "sets": [12,12,12], "target": "8-10", "next": "60 lbs"},
-        {"name": "SL DB RDL", "weight": 60, "sets": [12,12,12], "target": "10-12", "next": "65 lbs"},
-        {"name": "Chest Supported Row", "weight": 50, "sets": [12,12,12], "target": "10-12", "next": "55 lbs"},
-        {"name": "Tricep Pushdown", "weight": 25, "sets": [12,12,12], "target": "12-14", "next": "Hold 25, push for 14+"},
-        {"name": "Reverse Fly", "weight": 5, "sets": [12,12,12], "target": "14-16", "next": "Hold 5, push for 14+"},
-        {"name": "Leg Extension", "weight": 55, "sets": [12,10,10], "target": "12-14", "next": "Hold 55, push for 12+"}
+        {
+          "name": "DB Bench Press",
+          "target": "8-10",
+          "history": [
+            {"date": "Mar 25", "weight": 50, "sets": [12,12,12], "next": "UP to 60", "verdict": "up"}
+          ]
+        },
+        {
+          "name": "SL DB RDL",
+          "target": "10-12/side",
+          "history": [
+            {"date": "Mar 25", "weight": 60, "sets": [12,12,12], "next": "UP to 65", "verdict": "up"}
+          ]
+        },
+        {
+          "name": "Chest Supported Row",
+          "target": "10-12",
+          "history": [
+            {"date": "Mar 25", "weight": 50, "sets": [12,12,12], "next": "UP to 55", "verdict": "up"}
+          ]
+        },
+        {
+          "name": "Tricep Pushdown",
+          "target": "12-14",
+          "history": [
+            {"date": "Mar 25", "weight": 25, "sets": [12,12,12], "next": "Hold 25, push for 14+", "verdict": "hold"}
+          ]
+        },
+        {
+          "name": "Reverse Fly",
+          "target": "14-16",
+          "history": [
+            {"date": "Mar 25", "weight": 5, "sets": [12,12,12], "next": "Hold 5, push for 14+", "verdict": "hold"}
+          ]
+        },
+        {
+          "name": "Leg Extension",
+          "target": "12-14",
+          "history": [
+            {"date": "Mar 25", "weight": 55, "sets": [12,10,10], "next": "Hold 55, push for 12+", "verdict": "hold"}
+          ]
+        }
       ]
     }
-  ]
+  },
+  "lastUpdated": "March 25, 2026"
 };
 
-function toggle(header) {
-  header.parentElement.classList.toggle('open');
+// Render anchor lifts
+function renderAnchors() {
+  const grid = document.getElementById('anchor-grid');
+  grid.innerHTML = DATA.anchorLifts.map(a =>
+    `<div class="anchor-item">
+      <span class="anchor-label">${a.name}</span>
+      <span class="anchor-weight">${a.current}</span>
+    </div>`
+  ).join('');
+  document.querySelector('.subtitle').textContent = 'Last Updated: ' + DATA.lastUpdated;
 }
+
+// Render a session panel
+function renderSession(key) {
+  const panel = document.getElementById('panel-' + key);
+  const session = DATA.sessions[key];
+
+  if (!session || session.exercises.length === 0) {
+    panel.innerHTML = '<div class="exercise-card"><p class="no-data">No data yet \u2014 complete Session ' + key + ' to start tracking</p></div>';
+    return;
+  }
+
+  panel.innerHTML = session.exercises.map(ex => {
+    const rows = ex.history.map(h => {
+      const w = typeof h.weight === 'number' ? h.weight + ' lbs' : h.weight;
+      const verdictClass = h.verdict === 'up' ? 'verdict-up' : 'verdict-hold';
+      return `<tr>
+        <td>${h.date}</td>
+        <td>${w}</td>
+        <td>${h.sets[0] || '-'}</td>
+        <td>${h.sets[1] || '-'}</td>
+        <td>${h.sets[2] || '-'}</td>
+        <td class="${verdictClass}">${h.next}</td>
+      </tr>`;
+    }).join('');
+
+    return `<div class="exercise-card">
+      <div class="exercise-header">
+        <h3>${ex.name}</h3>
+        <div class="target">Target: ${ex.target} reps</div>
+      </div>
+      <div class="exercise-body">
+        <div class="table-wrap">
+          <table>
+            <tr><th>Date</th><th>Weight</th><th>Set 1</th><th>Set 2</th><th>Set 3</th><th>Next</th></tr>
+            ${rows}
+          </table>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// Tab switching
+function switchTab(key) {
+  document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelectorAll('.session-panel').forEach(p => p.classList.remove('active'));
+  document.querySelector('.tab-btn[data-tab="' + key + '"]').classList.add('active');
+  document.getElementById('panel-' + key).classList.add('active');
+}
+
+// Find most recently updated session
+function getMostRecentTab() {
+  let latest = null;
+  let latestKey = 'A';
+  for (const [key, session] of Object.entries(DATA.sessions)) {
+    if (session.exercises.length === 0) continue;
+    for (const ex of session.exercises) {
+      for (const h of ex.history) {
+        // Simple comparison — dates like "Mar 25" are ordered by position in data
+        // Since C has Mar 25 and A has Mar 23, C is most recent
+        if (!latest) { latest = h.date; latestKey = key; }
+        else {
+          // Compare month-day roughly; newest data wins
+          latest = h.date;
+          latestKey = key;
+        }
+      }
+    }
+  }
+  return latestKey;
+}
+
+// Initialize
+renderAnchors();
+['A', 'B', 'C'].forEach(renderSession);
+switchTab(getMostRecentTab());
 </script>
 
 </body>
