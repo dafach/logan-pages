@@ -282,55 +282,69 @@ function renderHistory() {
   let html = '';
 
   // Anchor Lifts
-  html += `<div class="static-card">
-    <h2>Anchor Lifts</h2>
-    <p class="section-label">Current working weights</p>
-    <div class="anchor-grid">`;
+  // Anchor Lifts — collapsible
+  html += `<div class="session-card">
+    <button class="session-toggle" onclick="this.parentElement.classList.toggle('open')">
+      <span class="session-toggle-left">
+        <span class="session-toggle-title">Anchor Lifts</span>
+      </span>
+      <span class="session-arrow">▾</span>
+    </button>
+    <div class="session-body">
+      <p class="section-label">Current working weights</p>
+      <div class="anchor-grid">`;
   for (const a of DATA.anchorLifts) {
     html += `<div class="anchor-item">
       <span class="anchor-label">${a.name}</span>
       <span class="anchor-weight">${a.current}</span>
     </div>`;
   }
-  html += `</div></div>`;
+  html += `</div></div></div>`;
 
-  // Each session
+  // Each session — collapsible
   for (const key of ['A', 'B', 'C']) {
     const meta = SESSION_META[key];
     const session = DATA.sessions[key];
+    const hasData = session && session.exercises.length > 0;
 
-    html += `<div class="history-session-header">
-      <span class="session-badge ${meta.badgeClass}">${key}</span>
-      <span class="history-session-title">${meta.label}</span>
-    </div>`;
+    html += `<div class="session-card">
+      <button class="session-toggle" onclick="this.parentElement.classList.toggle('open')">
+        <span class="session-toggle-left">
+          <span class="session-badge ${meta.badgeClass}">${key}</span>
+          <span class="session-toggle-title">${meta.label} History</span>
+        </span>
+        <span class="session-arrow">▾</span>
+      </button>
+      <div class="session-body">`;
 
-    if (!session || session.exercises.length === 0) {
-      html += `<div class="exercise-card"><p class="no-data">No data yet</p></div>`;
-      continue;
-    }
+    if (!hasData) {
+      html += `<p class="no-data">No data yet</p>`;
+    } else {
+      for (const ex of session.exercises) {
+        html += `<div class="exercise-card">
+          <div class="exercise-header">
+            <h3>${ex.name}</h3>
+            <div class="target">Target: ${ex.target} reps</div>
+          </div>
+          <div class="exercise-body"><div class="table-wrap"><table>
+            <tr><th>Date</th><th>Weight</th><th>Set 1</th><th>Set 2</th><th>Set 3</th><th>Next</th></tr>`;
 
-    for (const ex of session.exercises) {
-      html += `<div class="exercise-card">
-        <div class="exercise-header">
-          <h3>${ex.name}</h3>
-          <div class="target">Target: ${ex.target} reps</div>
-        </div>
-        <div class="exercise-body"><div class="table-wrap"><table>
-          <tr><th>Date</th><th>Weight</th><th>Set 1</th><th>Set 2</th><th>Set 3</th><th>Next</th></tr>`;
+        for (const h of ex.history) {
+          html += `<tr>
+            <td>${h.date}</td>
+            <td>${fmtWeight(h.weight)}</td>
+            <td>${h.sets[0] || '-'}</td>
+            <td>${h.sets[1] || '-'}</td>
+            <td>${h.sets[2] || '-'}</td>
+            <td class="${verdictClass(h.verdict)}">${h.verdict === 'up' ? '▲ ' : '▬ '}${h.next}</td>
+          </tr>`;
+        }
 
-      for (const h of ex.history) {
-        html += `<tr>
-          <td>${h.date}</td>
-          <td>${fmtWeight(h.weight)}</td>
-          <td>${h.sets[0] || '-'}</td>
-          <td>${h.sets[1] || '-'}</td>
-          <td>${h.sets[2] || '-'}</td>
-          <td class="${verdictClass(h.verdict)}">${h.verdict === 'up' ? '▲ ' : '▬ '}${h.next}</td>
-        </tr>`;
+        html += `</table></div></div></div>`;
       }
-
-      html += `</table></div></div></div>`;
     }
+
+    html += `</div></div>`;
   }
 
   container.innerHTML = html;
