@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dean Turner Routines</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; padding: 16px; max-width: 800px; margin: 0 auto; -webkit-font-smoothing: antialiased; }
+  h1 { text-align: center; font-size: 1.6em; margin-bottom: 8px; color: #fff; }
+  .subtitle { text-align: center; color: #888; margin-bottom: 20px; font-size: 0.85em; line-height: 1.4; }
+  .card { background: #161616; border: 1px solid #2a2a2a; border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+  .card-header { padding: 16px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; gap: 12px; -webkit-tap-highlight-color: rgba(255,255,255,0.05); }
+  .card-header:hover { background: #1e1e1e; }
+  .card-header:active { background: #222; }
+  .card-header h2 { font-size: 1em; color: #fff; margin: 0; flex: 1; min-width: 0; }
+  .card-header .meta { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
+  .badge { font-size: 0.7em; padding: 4px 10px; border-radius: 20px; font-weight: 600; white-space: nowrap; }
+  .badge.blue { background: #1a1a2d; color: #6b8bff; }
+  .badge.green { background: #1a2d1a; color: #6bff6b; }
+  .badge.purple { background: #231a2d; color: #b08bff; }
+  .badge.yellow { background: #2d2d1a; color: #ffd96b; }
+  .badge.orange { background: #2d221a; color: #ffaa6b; }
+  .badge.red { background: #2d1a1a; color: #ff6b6b; }
+  .badge.teal { background: #1a2d2d; color: #6bffdd; }
+  .badge.pink { background: #2d1a28; color: #ff8bcc; }
+  .arrow { font-size: 1.2em; color: #555; transition: transform 0.3s; flex-shrink: 0; }
+  .card.open .arrow { transform: rotate(90deg); }
+  .card-body { display: none; padding: 0 16px 16px; }
+  .card.open .card-body { display: block; }
+  .static-card { background: #161616; border: 1px solid #2a2a2a; border-radius: 12px; margin-bottom: 12px; overflow: hidden; padding: 16px; }
+  .static-card h2 { font-size: 1em; color: #fff; margin: 0 0 12px; }
+  .desc { color: #999; font-size: 0.9em; margin-bottom: 12px; line-height: 1.5; }
+  .section-title { font-size: 0.95em; font-weight: 600; color: #ccc; margin: 16px 0 8px; padding-bottom: 4px; border-bottom: 1px solid #222; }
+  .sub-title { font-size: 0.9em; font-weight: 600; color: #aaa; margin: 12px 0 6px; }
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 12px; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 12px; }
+  th { text-align: left; font-size: 0.72em; color: #666; padding: 8px 6px; border-bottom: 1px solid #222; white-space: nowrap; }
+  td { padding: 8px 6px; font-size: 0.83em; border-bottom: 1px solid #1a1a1a; color: #ccc; }
+  tr:last-child td { border-bottom: none; }
+  ul { padding-left: 20px; margin: 8px 0; }
+  li { font-size: 0.85em; color: #999; margin-bottom: 5px; line-height: 1.5; }
+  li strong { color: #ccc; }
+  .exercise-num { color: #555; font-weight: 600; font-size: 0.78em; }
+  .highlight { color: #ffd96b; }
+  .warn { color: #ff6b6b; }
+  .good { color: #6bff6b; }
+  .total-row td { color: #ffd96b; font-weight: 600; border-top: 1px solid #333; }
+  em { color: #888; font-style: italic; }
+  .schedule-day { font-weight: 600; color: #ccc; }
+  .schedule-off { color: #555; }
+  .comparison-table td { font-size: 0.78em; }
+  .comparison-table th { font-size: 0.68em; }
+  @media (max-width: 480px) {
+    body { padding: 12px; }
+    h1 { font-size: 1.35em; }
+    .card-header { padding: 14px 12px; }
+    .card-header h2 { font-size: 0.9em; }
+    .card-body { padding: 0 12px 14px; }
+    .static-card { padding: 14px 12px; }
+    th, td { padding: 6px 4px; font-size: 0.78em; }
+    .badge { font-size: 0.62em; padding: 3px 8px; }
+    li { font-size: 0.82em; }
+    .comparison-table td { font-size: 0.7em; }
+    .comparison-table th { font-size: 0.62em; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Dean Turner Routines</h1>
+<p class="subtitle">All 8 routines from @DeanTTraining — side by side comparison.<br>Low volume, high intensity, machine-heavy training.<br>Last updated: March 29, 2026</p>
+
+<!-- COMPARISON TABLE (always visible) -->
+<div class="static-card">
+  <h2>Routine Comparison</h2>
+  <div class="table-wrap"><table class="comparison-table">
+    <tr>
+      <th>Routine</th>
+      <th>Frequency</th>
+      <th>Days/Wk</th>
+      <th>Sets/Session</th>
+      <th>RIR</th>
+      <th>Best For</th>
+    </tr>
+    <tr>
+      <td><span class="badge blue">1</span> Upper Focused 4x</td>
+      <td>U/L/Push/Pull</td>
+      <td>4</td>
+      <td>14-19</td>
+      <td>0-1</td>
+      <td>Upper body priority</td>
+    </tr>
+    <tr>
+      <td><span class="badge blue">2</span> Minimalist 4x U/L</td>
+      <td>Upper/Lower</td>
+      <td>4</td>
+      <td>15</td>
+      <td>0-1</td>
+      <td>Any gym, customizable</td>
+    </tr>
+    <tr>
+      <td><span class="badge purple">3</span> Dean's Personal</td>
+      <td>Upper/Lower</td>
+      <td>4</td>
+      <td>10-12</td>
+      <td>0</td>
+      <td>Advanced, ultra-low vol</td>
+    </tr>
+    <tr>
+      <td><span class="badge blue">4</span> Standard U/L 4x</td>
+      <td>Upper/Lower</td>
+      <td>4</td>
+      <td>13-20</td>
+      <td>0-1</td>
+      <td>Balanced, scalable</td>
+    </tr>
+    <tr>
+      <td><span class="badge red">5</span> Quad Builder</td>
+      <td>Lower only</td>
+      <td>2</td>
+      <td>9-10</td>
+      <td>0-1</td>
+      <td>Quad specialization</td>
+    </tr>
+    <tr>
+      <td><span class="badge purple">6</span> Dean's Current (Mar 26)</td>
+      <td>Upper/Lower</td>
+      <td>4</td>
+      <td>14-16</td>
+      <td>~1</td>
+      <td>Latest evolution</td>
+    </tr>
+    <tr>
+      <td><span class="badge green">7</span> Home Gym 3x</td>
+      <td>Rotating U/L</td>
+      <td>3</td>
+      <td>14-19</td>
+      <td>~1</td>
+      <td>Home gym, free weights</td>
+    </tr>
+    <tr>
+      <td><span class="badge teal">8a</span> 3x U/L/U</td>
+      <td>Upper/Lower/Upper</td>
+      <td>3</td>
+      <td>13-14</td>
+      <td>0-1</td>
+      <td>Upper priority, busy</td>
+    </tr>
+    <tr>
+      <td><span class="badge green">8b</span> 3x Full Body</td>
+      <td>Full Body A/B/C</td>
+      <td>3</td>
+      <td>13-15</td>
+      <td>0-1</td>
+      <td>Balanced 3x/week</td>
+    </tr>
+  </table></div>
+</div>
+
+<!-- ROUTINE 1 -->
+<div class="card">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>1. Upper Body Focused 4x/Week</h2>
+    <div class="meta"><span class="badge blue">U/L/Push/Pull</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <p class="desc">Upper/Lower/Push/Pull split — extra upper volume for those prioritizing chest, back, shoulders, and arms.</p>
+
+    <p class="section-title">Schedule</p>
+    <div class="table-wrap"><table>
+      <tr><th>Day</th><th>Session</th></tr>
+      <tr><td class="schedule-day">Day 1</td><td>Upper</td></tr>
+      <tr><td class="schedule-day">Day 2</td><td>Lower</td></tr>
+      <tr><td class="schedule-off">Day 3</td><td class="schedule-off">OFF / Zone 2 Cardio</td></tr>
+      <tr><td class="schedule-day">Day 4</td><td>Push</td></tr>
+      <tr><td class="schedule-day">Day 5</td><td>Pull</td></tr>
+      <tr><td class="schedule-off">Day 6-7</td><td class="schedule-off">OFF / Zone 2 Cardio</td></tr>
+    </table></div>
+
+    <p class="section-title">Day 1 — Upper <span class="highlight">(16 sets)</span></p>
+    <div class="table-wrap"><table>
+      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>RIR</th></tr>
+      <tr><td class="exercise-num">1</td><td>Incline Machine Press</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">2</td><td>Wide Grip Lat Pulldown</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">3</td><td>Pec Fly Machine</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">4</td><td>Chest Supported Machine Row (pronated)</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">5</td><td>Seated Machine OHP</td><td>3</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">6</td><td>Seated DB Curls</td><td>3</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">7</td><td>Dip Machine</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+    </table></div>
+
+    <p class="section-title">Day 2 — Lower <span class="highlight">(19 sets)</span></p>
+    <div class="table-wrap"><table>
+      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>RIR</th></tr>
+      <tr><td class="exercise-num">1</td><td>Leg Extensions</td><td>3</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">2</td><td>Seated Leg Curls</td><td>3</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">3</td><td>Hack or Pendulum Squats</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">4</td><td>45 Degree Extensions</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">5</td><td>Adduction Machine</td><td>3</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">6</td><td>Calf Press</td><td>3</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">7</td><td>Ab Crunch Machine</td><td>3</td><td>5-10</td><td>0-1</td></tr>
+    </table></div>
+
+    <p class="section-title">Day 4 — Push <span class="highlight">(14 sets)</span></p>
+    <div class="table-wrap"><table>
+      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>RIR</th></tr>
+      <tr><td class="exercise-num">1</td><td>Seated/Flat Machine Press</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">2</td><td>Seated Low-to-High Cable Flys</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">3</td><td>Pec Fly Machine</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">4</td><td>Seated Machine OHP</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">5</td><td>Cuffed SA Cable Lateral Raises</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">6</td><td>SA Tricep Pushdowns</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">7</td><td>Overhead Tricep Extensions</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+    </table></div>
+
+    <p class="section-title">Day 5 — Pull <span class="highlight">(14 sets)</span></p>
+    <div class="table-wrap"><table>
+      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>RIR</th></tr>
+      <tr><td class="exercise-num">1</td><td>Chest Supported Machine Row (pronated)</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">2</td><td>SA Lat Pulldown</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">3</td><td>Chest Supported Machine Row (neutral)</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">4</td><td>Wide Grip Lat Pulldown</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">5</td><td>Rear Delt Fly Machine</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">6</td><td>SA Preacher Cable Curls</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">7</td><td>Seated DB Curls (hammer, arm support)</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+    </table></div>
+  </div>
+</div>
+
+<!-- ROUTINE 2 -->
+<div class="card">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>2. Minimalist 4x/Week Upper Lower</h2>
+    <div class="meta"><span class="badge blue">Customizable</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <p class="desc">5 exercises per session, 3 sets each. Fully customizable to any gym — pick from the options that match your equipment.</p>
+
+    <p class="section-title">Schedule</p>
+    <div class="table-wrap"><table>
+      <tr><th>Day</th><th>Session</th></tr>
+      <tr><td class="schedule-day">Mon</td><td>Upper A</td></tr>
+      <tr><td class="schedule-day">Tue</td><td>Lower A</td></tr>
+      <tr><td class="schedule-off">Wed</td><td class="schedule-off">OFF</td></tr>
+      <tr><td class="schedule-day">Thu</td><td>Upper B</td></tr>
+      <tr><td class="schedule-day">Fri</td><td>Lower B</td></tr>
+      <tr><td class="schedule-off">Sat-Sun</td><td class="schedule-off">OFF</td></tr>
+    </table></div>
+
+    <p class="section-title">Upper A <span class="highlight">(15 sets)</span></p>
+    <div class="table-wrap"><table>
+      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>RIR</th></tr>
+      <tr><td class="exercise-num">1</td><td>Sternal Pecs Press</td><td>3</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">2</td><td>Chest Supported Row</td><td>3</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">3</td><td>Seated Overhead Press</td><td>3</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">4</td><td>Elbow Flexion (curls)</td><td>3</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">5</td><td>Elbow Extension (triceps)</td><td>3</td><td>5-10</td><td>0-1</td></tr>
+    </table></div>
+
+    <p class="section-title">Lower A <span class="highlight">(15 sets)</span></p>
+    <div class="table-wrap"><table>
+      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>RIR</th></tr>
+      <tr><td class="exercise-num">1</td><td>Squat Pattern</td><td>3</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">2</td><td>Hinge Pattern</td><td>3</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">3</td><td>Bridge Exercise</td><td>3</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">4</td><td>Calf Exercise</td><td>3</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">5</td><td>Spinal Flexion (abs)</td><td>3</td><td>5-10</td><td>0-1</td></tr>
+    </table></div>
+
+    <p class="section-title">Upper B <span class="highlight">(15 sets)</span></p>
+    <div class="table-wrap"><table>
+      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>RIR</th></tr>
+      <tr><td class="exercise-num">1</td><td>Clavicular Pecs Press</td><td>3</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">2</td><td>Vertical Pull</td><td>3</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">3</td><td>Lateral Raise</td><td>3</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">4</td><td>Elbow Flexion (curls)</td><td>3</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">5</td><td>Elbow Extension (triceps)</td><td>3</td><td>5-10</td><td>0-1</td></tr>
+    </table></div>
+
+    <p class="section-title">Lower B</p>
+    <p class="desc">Same as Lower A — pick different exercise variations to target muscles from different angles.</p>
+
+    <ul>
+      <li><strong>Fully equipped gym?</strong> Swap squat → leg extension, hinge → leg curl, bridge → adduction machine</li>
+      <li><strong>Rest:</strong> 3+ min between working sets (2 min absolute floor)</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ROUTINE 3 -->
+<div class="card">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>3. Dean's Personal Routine (Oct 2024)</h2>
+    <div class="meta"><span class="badge purple">Ultra-Low Vol</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <p class="desc">What he actually runs. Extremely low volume — 10-12 sets per session, ALL to failure (0 RIR). This is what built his physique over years of consistency.</p>
+
+    <p class="section-title">Monday — Upper A <span class="highlight">(10 sets)</span></p>
+    <div class="table-wrap"><table>
+      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>RIR</th></tr>
+      <tr><td class="exercise-num">1</td><td>Clavicular Pecs Machine Press</td><td>2</td><td>5-10</td><td>0</td></tr>
+      <tr><td class="exercise-num">2</td><td>Lat Pulldown</td><td>2</td><td>5-10</td><td>0</td></tr>
+      <tr><td class="exercise-num">3</td><td>Sternal Pecs Machine Press</td><td>1</td><td>5-10</td><td>0</td></tr>
+      <tr><td class="exercise-num">4</td><td>Chest Supported T-Bar Rows</td><td>1</td><td>5-10</td><td>0</td></tr>
+      <tr><td class="exercise-num">5</td><td>SA Cable Lateral Raises</td><td>1</td><td>6-15</td><td>0</td></tr>
+      <tr><td class="exercise-num">6</td><td>Dip Machine</td><td>1</td><td>5-10</td><td>0</td></tr>
+      <tr><td class="exercise-num">7</td><td>SA Preacher Cable Curls</td><td>2</td><td>5-10</td><td>0</td></tr>
+    </table></div>
+
+    <p class="section-title">Tuesday — Lower A <span class="highlight">(12 sets)</span></p>
+    <div class="table-wrap"><table>
+      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>RIR</th></tr>
+      <tr><td class="exercise-num">1</td><td>Hack Squats</td><td>1</td><td>5-10</td><td>0</td></tr>
+      <tr><td class="exercise-num">2</td><td>Leg Extensions</td><td>2</td><td>6-15</td><td>0</td></tr>
+      <tr><td class="exercise-num">3</td><td>Seated Leg Curls</td><td>3</td><td>5-10</td><td>0</td></tr>
+      <tr><td class="exercise-num">4</td><td>Adduction Machine</td><td>2</td><td>6-15</td><td>0</td></tr>
+      <tr><td class="exercise-num">5</td><td>Calf Press on Leg Press</td><td>2</td><td>4-8</td><td>RPE 10</td></tr>
+      <tr><td class="exercise-num">6</td><td>Weighted Decline Sit-Ups</td><td>2</td><td>6-15</td><td>0</td></tr>
+    </table></div>
+
+    <p class="section-title">Thursday — Upper B <span class="highlight">(10 sets)</span></p>
+    <div class="table-wrap"><table>
+      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>RIR</th></tr>
+      <tr><td class="exercise-num">1</td><td>Sternal Pecs Machine Press</td><td>2</td><td>5-10</td><td>0</td></tr>
+      <tr><td class="exercise-num">2</td><td>Chest Supported Seated Cable Rows</td><td>2</td><td>5-10</td><td>0</td></tr>
+      <tr><td class="exercise-num">3</td><td>Clavicular Pecs Machine Press</td><td>1</td><td>5-10</td><td>0</td></tr>
+      <tr><td class="exercise-num">4</td><td>SA Lat Pulldown</td><td>1</td><td>5-10</td><td>0</td></tr>
+      <tr><td class="exercise-num">5</td><td>Seated Machine OHP</td><td>1</td><td>5-10</td><td>0</td></tr>
+      <tr><td class="exercise-num">6</td><td>SA Preacher Cable Curls</td><td>2</td><td>5-10</td><td>0</td></tr>
+      <tr><td class="exercise-num">7</td><td>Dip Machine</td><td>1</td><td>5-10</td><td>0</td></tr>
+    </table></div>
+
+    <p class="section-title">Friday — Lower B <span class="highlight">(10 sets)</span></p>
+    <div class="table-wrap"><table>
+      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>RIR</th></tr>
+      <tr><td class="exercise-num">1</td><td>Leg Press</td><td>1</td><td>6-15</td><td>0</td></tr>
+      <tr><td class="exercise-num">2</td><td>Leg Extensions</td><td>2</td><td>6-15</td><td>0</td></tr>
+      <tr><td class="exercise-num">3</td><td>Seated Leg Curls</td><td>1</td><td>5-10</td><td>0</td></tr>
+      <tr><td class="exercise-num">4</td><td>Barbell RDLs</td><td>1</td><td>5-10</td><td>1</td></tr>
+      <tr><td class="exercise-num">5</td><td>Calf Press on Leg Press</td><td>2</td><td>4-8</td><td>RPE 10</td></tr>
+      <tr><td class="exercise-num">6</td><td>Smith Glute Bridges</td><td>1</td><td>6-15</td><td>0</td></tr>
+      <tr><td class="exercise-num">7</td><td>Ab Crunch Machine</td><td>2</td><td>5-10</td><td>0</td></tr>
+    </table></div>
+  </div>
+</div>
+
+<!-- ROUTINE 4 -->
+<div class="card">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>4. Standard Upper/Lower 4x/Week</h2>
+    <div class="meta"><span class="badge blue">Variable Sets</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <p class="desc">His go-to balanced split. Variable set ranges (2-3) let you scale volume based on time and recovery.</p>
+
+    <p class="section-title">Schedule</p>
+    <div class="table-wrap"><table>
+      <tr><th>Day</th><th>Session</th></tr>
+      <tr><td class="schedule-day">Mon</td><td>Upper A</td></tr>
+      <tr><td class="schedule-day">Tue</td><td>Lower A</td></tr>
+      <tr><td class="schedule-off">Wed</td><td class="schedule-off">OFF</td></tr>
+      <tr><td class="schedule-day">Thu</td><td>Upper B</td></tr>
+      <tr><td class="schedule-day">Fri</td><td>Lower B</td></tr>
+      <tr><td class="schedule-off">Sat-Sun</td><td class="schedule-off">OFF</td></tr>
+    </table></div>
+
+    <p class="section-title">Upper A <span class="highlight">(13-20 sets)</span></p>
+    <div class="table-wrap"><table>
+      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>RIR</th></tr>
+      <tr><td class="exercise-num">1</td><td>Sternal Pecs Machine Press</td><td>2-3</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">2</td><td>Wide Grip Lat Pulldown</td><td>2-3</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">3</td><td>Clavicular Pecs Machine Press</td><td>1-2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">4</td><td>Chest Supported Machine Row (neutral)</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">5</td><td>Seated Machine OHP</td><td>2-3</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">6</td><td>Seated DB Curls</td><td>1-2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">7</td><td>SA Tricep Pushdowns</td><td>2-3</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">8</td><td>Seated Hammer Curls (arm support)</td><td>1-2</td><td>5-10</td><td>0-1</td></tr>
+    </table></div>
+
+    <p class="section-title">Lower A <span class="highlight">(14-20 sets)</span></p>
+    <div class="table-wrap"><table>
+      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>RIR</th></tr>
+      <tr><td class="exercise-num">1</td><td>Leg Extensions</td><td>2-3</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">2</td><td>Seated Leg Curls</td><td>2-3</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">3</td><td>Hack Squats</td><td>2-3</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">4</td><td>45 Degree Extensions</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">5</td><td>Adduction Machine</td><td>2-3</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">6</td><td>Ab Crunch Machine</td><td>2-3</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">7</td><td>Calf Press on Leg Press</td><td>2-3</td><td>5-10</td><td>0-1</td></tr>
+    </table></div>
+
+    <p class="section-title">Upper B <span class="highlight">(13-20 sets)</span></p>
+    <div class="table-wrap"><table>
+      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>RIR</th></tr>
+      <tr><td class="exercise-num">1</td><td>Clavicular Pecs Machine Press</td><td>2-3</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">2</td><td>Chest Supported Machine Row (pronated)</td><td>2-3</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">3</td><td>Sternal Pecs Machine Press</td><td>1-2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">4</td><td>SA Lat Pulldown</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">5</td><td>Cuffed SA Cable Lateral Raises</td><td>2-3</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">6</td><td>SA Preacher Curls</td><td>1-2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">7</td><td>Overhead Tricep Extensions</td><td>2-3</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">8</td><td>Seated Hammer Curls (arm support)</td><td>1-2</td><td>5-10</td><td>0-1</td></tr>
+    </table></div>
+
+    <p class="section-title">Lower B <span class="highlight">(14-19 sets)</span></p>
+    <div class="table-wrap"><table>
+      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>RIR</th></tr>
+      <tr><td class="exercise-num">1</td><td>Seated Leg Curls</td><td>2-3</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">2</td><td>Leg Extensions</td><td>2-3</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">3</td><td>SLDLs</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">4</td><td>Calf Press on Leg Press</td><td>2-3</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">5</td><td>45 Degree Leg Press</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">6</td><td>Ab Crunch Machine</td><td>2-3</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">7</td><td>Smith/Machine Glute Bridges</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+    </table></div>
+
+    <ul>
+      <li><strong>Use 3 sets:</strong> not pressed for time, training less often, rest periods don't need to shrink</li>
+      <li><strong>Use 2 sets:</strong> pressed for time, training 4x/week, would need to cut rest to fit everything</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ROUTINE 5 -->
+<div class="card">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>5. Quad Builder — Dean's Exact Lower Days</h2>
+    <div class="meta"><span class="badge red">Specialization</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <p class="desc">The exact lower days that built his quads. 9-10 sets per session. 7 quad sets/week total. The "ramp" approach: first working set at 1 RIR, second to failure.</p>
+
+    <p class="section-title">Saturday — Lower A <span class="highlight">(9 sets)</span></p>
+    <div class="table-wrap"><table>
+      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>RIR</th><th>Notes</th></tr>
+      <tr><td class="exercise-num">1</td><td>Leg Press</td><td>2</td><td>6-10</td><td>1, 0</td><td>Ramp: 1st set 1 RIR, 2nd to failure</td></tr>
+      <tr><td class="exercise-num">2</td><td>Leg Extensions</td><td>2</td><td>8-15</td><td>0</td><td></td></tr>
+      <tr><td class="exercise-num">3</td><td>Seated Leg Curls</td><td>1</td><td>6-10</td><td>0</td><td></td></tr>
+      <tr><td class="exercise-num">4</td><td>Trap Bar RDLs</td><td>1</td><td>6-10</td><td>1-2</td><td>Only exercise NOT to failure</td></tr>
+      <tr><td class="exercise-num">5</td><td>Standing Calf Raises</td><td>2</td><td>1-6</td><td>0</td><td>8s stretched holds between reps</td></tr>
+      <tr><td class="exercise-num">6</td><td>Smith Glute Bridges</td><td>1</td><td>8-15</td><td>0</td><td></td></tr>
+    </table></div>
+
+    <p class="section-title">Tuesday — Lower B <span class="highlight">(10 sets)</span></p>
+    <div class="table-wrap"><table>
+      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>RIR</th><th>Notes</th></tr>
+      <tr><td class="exercise-num">1</td><td>Reverse Band Smith Squats</td><td>2</td><td>6-10+</td><td>1, 0</td><td>Feet forward, ramp approach</td></tr>
+      <tr><td class="exercise-num">2</td><td>Leg Extensions</td><td>1</td><td>8-15</td><td>0</td><td></td></tr>
+      <tr><td class="exercise-num">3</td><td>Seated Leg Curls</td><td>3</td><td>6-10</td><td>0</td><td></td></tr>
+      <tr><td class="exercise-num">4</td><td>Adduction Machine</td><td>2</td><td>6-10</td><td>0</td><td></td></tr>
+      <tr><td class="exercise-num">5</td><td>Standing Calf Raises</td><td>2</td><td>1-6</td><td>0</td><td>8s stretched holds, max hold to finish</td></tr>
+    </table></div>
+
+    <ul>
+      <li><strong>Calf protocol:</strong> Low reps with 8-second stretched holds between reps, then max isometric hold to finish</li>
+      <li>Quads get 4 direct sets on Lower A, 3 on Lower B — <strong>7 sets/week total</strong> built those quads</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ROUTINE 6 -->
+<div class="card">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>6. Dean's Current Program (Mar 2026)</h2>
+    <div class="meta"><span class="badge purple">Latest</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <p class="desc">His most current split. All sets ~1 RIR (shifted from 0 RIR — more sustainable). 2 sets per exercise, 4-5 min rest. Zone 2 cardio on off days.</p>
+
+    <p class="section-title">Schedule</p>
+    <div class="table-wrap"><table>
+      <tr><th>Day</th><th>Session</th></tr>
+      <tr><td class="schedule-day">Mon</td><td>Upper A</td></tr>
+      <tr><td class="schedule-day">Tue</td><td>Lower A</td></tr>
+      <tr><td class="schedule-off">Wed</td><td class="schedule-off">Zone 2 Cardio</td></tr>
+      <tr><td class="schedule-day">Thu</td><td>Upper B</td></tr>
+      <tr><td class="schedule-day">Fri</td><td>Lower B</td></tr>
+      <tr><td class="schedule-off">Sat-Sun</td><td class="schedule-off">Zone 2 Cardio</td></tr>
+    </table></div>
+
+    <p class="section-title">Upper A <span class="highlight">(16 sets)</span></p>
+    <div class="table-wrap"><table>
+      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>RIR</th></tr>
+      <tr><td class="exercise-num">1</td><td>Supine Plate Loaded Chest Press</td><td>2</td><td>5-7</td><td>~1</td></tr>
+      <tr><td class="exercise-num">2</td><td>Chest Supported T-Bar Row (flared)</td><td>2</td><td>5-8</td><td>~1</td></tr>
+      <tr><td class="exercise-num">3</td><td>Plate Loaded Incline Machine Press</td><td>2</td><td>5-8</td><td>~1</td></tr>
+      <tr><td class="exercise-num">4</td><td>SA Lat Pulldown</td><td>2</td><td>6-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">5</td><td>Cuffed SA Cable Lateral Raises</td><td>2</td><td>6-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">6</td><td>Seated BTB Cable Curls</td><td>2</td><td>6-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">7</td><td>Overhead Tricep Extension Machine</td><td>2</td><td>6-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">8</td><td>DB Hammer Curls (arm support)</td><td>2</td><td>6-10</td><td>~1</td></tr>
+    </table></div>
+
+    <p class="section-title">Lower A <span class="highlight">(14 sets)</span></p>
+    <div class="table-wrap"><table>
+      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>RIR</th></tr>
+      <tr><td class="exercise-num">1</td><td>Pendulum Squats / Leg Press</td><td>2</td><td>5-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">2</td><td>Seated Leg Curls</td><td>2</td><td>6-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">3</td><td>Leg Extensions</td><td>2</td><td>6-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">4</td><td>Plate Stack 45 Degree Extensions</td><td>2</td><td>5-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">5</td><td>Adduction Machine</td><td>2</td><td>6-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">6</td><td>Calf Press</td><td>2</td><td>5-8</td><td>~1</td></tr>
+      <tr><td class="exercise-num">7</td><td>Ab Crunch Machine</td><td>2</td><td>5-10</td><td>~1</td></tr>
+    </table></div>
+
+    <p class="section-title">Upper B <span class="highlight">(16 sets)</span></p>
+    <div class="table-wrap"><table>
+      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>RIR</th></tr>
+      <tr><td class="exercise-num">1</td><td>Seated Plate Loaded Chest Press</td><td>2</td><td>5-7</td><td>~1</td></tr>
+      <tr><td class="exercise-num">2</td><td>Wide Grip Lat Pulldown</td><td>2</td><td>6-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">3</td><td>Plate Loaded Incline Machine Press</td><td>2</td><td>5-8</td><td>~1</td></tr>
+      <tr><td class="exercise-num">4</td><td>Chest Supported Machine Row (tucked)</td><td>2</td><td>5-8</td><td>~1</td></tr>
+      <tr><td class="exercise-num">5</td><td>Seated Pin Loaded Machine OHP</td><td>2</td><td>5-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">6</td><td>SA Preacher Cable Curls</td><td>2</td><td>6-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">7</td><td>Overhead Tricep Extension Machine</td><td>2</td><td>6-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">8</td><td>DB Hammer Curls (arm support)</td><td>2</td><td>6-10</td><td>~1</td></tr>
+    </table></div>
+
+    <p class="section-title">Lower B <span class="highlight">(15 sets)</span></p>
+    <div class="table-wrap"><table>
+      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>RIR</th></tr>
+      <tr><td class="exercise-num">1</td><td>Pendulum Squats / Leg Press</td><td>2</td><td>5-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">2</td><td>Seated Leg Curls</td><td>2</td><td>6-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">3</td><td>Leg Extensions</td><td>2</td><td>6-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">4</td><td>Plate Stack 45 Degree Extensions</td><td>2</td><td>5-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">5</td><td>Adduction Machine</td><td>2</td><td>6-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">6</td><td>Calf Press</td><td>2</td><td>5-8</td><td>~1</td></tr>
+      <tr><td class="exercise-num">7</td><td>Ab Crunch Machine</td><td>2</td><td>5-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">8</td><td>Hip Thrusts Machine</td><td>1</td><td>5-8</td><td>~1</td></tr>
+    </table></div>
+
+    <ul>
+      <li>Lower days nearly identical — swaps squat pattern based on feel</li>
+      <li>Hip thrusts tacked on at end of Lower B only</li>
+      <li><strong>4-5 min rest</strong> between sets (longer than older protocols)</li>
+      <li>Calf press: partial reps from dorsiflexed to neutral</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ROUTINE 7 -->
+<div class="card">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>7. Home Gym 3x/Week (Rotating U/L)</h2>
+    <div class="meta"><span class="badge green">Home Gym</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <p class="desc">Rotating 4 sessions across 3 training days — every session gets hit every ~9 days. Free weights only (barbell, DBs, bench, leg curl/ext). 90 min max.</p>
+
+    <p class="section-title">Rotating Schedule</p>
+    <div class="table-wrap"><table>
+      <tr><th>Week</th><th>Day 1</th><th>Day 3</th><th>Day 5</th></tr>
+      <tr><td class="schedule-day">Wk 1</td><td>Upper A</td><td>Lower A</td><td>Upper B</td></tr>
+      <tr><td class="schedule-day">Wk 2</td><td>Lower B</td><td>Upper A</td><td>Lower A</td></tr>
+      <tr><td class="schedule-day">Wk 3</td><td>Upper B</td><td>Lower B</td><td>Upper A</td></tr>
+      <tr><td class="schedule-day">Wk 4</td><td>Lower A</td><td>Upper B</td><td>Lower B</td></tr>
+    </table></div>
+
+    <p class="section-title">Upper A <span class="highlight">(19 sets)</span></p>
+    <div class="table-wrap"><table>
+      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>RIR</th></tr>
+      <tr><td class="exercise-num">1</td><td>Flat BB Bench Press</td><td>3</td><td>5-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">2</td><td>Wide Grip Pull-Ups</td><td>3</td><td>5-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">3</td><td>Incline DB Press</td><td>2</td><td>5-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">4</td><td>Chest Supported DB Row (pronated)</td><td>2</td><td>5-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">5</td><td>Seated DB OHP</td><td>3</td><td>5-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">6</td><td>Seated DB Curls</td><td>3</td><td>5-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">7</td><td>SA Banded Tricep Pushdowns</td><td>3</td><td>5-10</td><td>~1</td></tr>
+    </table></div>
+
+    <p class="section-title">Lower A <span class="highlight">(14 sets)</span></p>
+    <div class="table-wrap"><table>
+      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>RIR</th></tr>
+      <tr><td class="exercise-num">1</td><td>Barbell Squats</td><td>3</td><td>5-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">2</td><td>Leg Extensions</td><td>3</td><td>5-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">3</td><td>Seated/Lying Leg Curls</td><td>3</td><td>5-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">4</td><td>Barbell Glute Bridges</td><td>2</td><td>5-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">5</td><td>SL DB Standing Calf Raises</td><td>3</td><td>5-10</td><td>~1</td></tr>
+    </table></div>
+
+    <p class="section-title">Upper B <span class="highlight">(18 sets)</span></p>
+    <div class="table-wrap"><table>
+      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>RIR</th></tr>
+      <tr><td class="exercise-num">1</td><td>Incline DB Bench Press</td><td>3</td><td>5-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">2</td><td>Chest Supported DB Rows (neutral)</td><td>3</td><td>5-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">3</td><td>Flat BB Bench Press</td><td>2</td><td>5-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">4</td><td>Wide Grip Pull-Ups</td><td>2</td><td>5-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">5</td><td>Standing DB Lateral Raises</td><td>3</td><td>5-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">6</td><td>Seated DB Hammer Curls</td><td>3</td><td>5-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">7</td><td>Overhead Tricep Extensions</td><td>2</td><td>5-10</td><td>~1</td></tr>
+    </table></div>
+
+    <p class="section-title">Lower B <span class="highlight">(15 sets)</span></p>
+    <div class="table-wrap"><table>
+      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>RIR</th></tr>
+      <tr><td class="exercise-num">1</td><td>Barbell SLDLs</td><td>2</td><td>5-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">2</td><td>DB Bulgarian Split Squats</td><td>3</td><td>5-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">3</td><td>Seated/Lying Leg Curls</td><td>2</td><td>5-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">4</td><td>Leg Extensions</td><td>2</td><td>5-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">5</td><td>Weighted Floor Crunches</td><td>3</td><td>5-10</td><td>~1</td></tr>
+      <tr><td class="exercise-num">6</td><td>SL DB Standing Calf Raises</td><td>3</td><td>5-10</td><td>~1</td></tr>
+    </table></div>
+
+    <ul>
+      <li>Rotating schedule: each muscle hit ~2.3x per 9 days (~1.8x/week)</li>
+      <li>Higher volume per session (compensating for lower frequency)</li>
+      <li>Free weight focused — barbell, DBs, bench, leg curl/ext</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ROUTINE 8a -->
+<div class="card">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>8a. 3x/Week — Upper/Lower/Upper</h2>
+    <div class="meta"><span class="badge teal">3x Upper Priority</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <p class="desc">Best if upper body is the priority and you're fine with one dedicated lower day. Designed for busy schedules.</p>
+
+    <p class="section-title">Schedule</p>
+    <div class="table-wrap"><table>
+      <tr><th>Day</th><th>Session</th></tr>
+      <tr><td class="schedule-day">Day 1</td><td>Upper A</td></tr>
+      <tr><td class="schedule-off">Day 2</td><td class="schedule-off">OFF</td></tr>
+      <tr><td class="schedule-day">Day 3</td><td>Lower</td></tr>
+      <tr><td class="schedule-off">Day 4</td><td class="schedule-off">OFF</td></tr>
+      <tr><td class="schedule-day">Day 5</td><td>Upper B</td></tr>
+      <tr><td class="schedule-off">Day 6-7</td><td class="schedule-off">OFF</td></tr>
+    </table></div>
+
+    <p class="section-title">Upper A <span class="highlight">(13-14 sets)</span></p>
+    <div class="table-wrap"><table>
+      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>RIR</th></tr>
+      <tr><td class="exercise-num">1</td><td>Clavicular Pecs Machine Press</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">2</td><td>Wide Grip Lat Pulldown</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">3</td><td>Pec Fly Machine</td><td>1</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">4</td><td>Chest Supported Machine Row (neutral)</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">5</td><td>Seated Machine OHP</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">6</td><td>Seated DB Curls</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">7</td><td>SA Tricep Pushdowns</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">8</td><td>Ab Crunch Machine <em>(optional)</em></td><td>1-2</td><td>5-10</td><td>0-1</td></tr>
+    </table></div>
+
+    <p class="section-title">Lower <span class="highlight">(14 sets)</span></p>
+    <div class="table-wrap"><table>
+      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>RIR</th></tr>
+      <tr><td class="exercise-num">1</td><td>Leg Extensions</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">2</td><td>Seated Leg Curls</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">3</td><td>Hack or Pendulum Squats</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">4</td><td>SLDLs</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">5</td><td>Adduction Machine</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">6</td><td>Glute Bridges</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">7</td><td>Calf Press</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+    </table></div>
+
+    <p class="section-title">Upper B <span class="highlight">(13-14 sets)</span></p>
+    <div class="table-wrap"><table>
+      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>RIR</th></tr>
+      <tr><td class="exercise-num">1</td><td>Chest Supported Machine Row (pronated)</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">2</td><td>Sternal Pecs Machine Press</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">3</td><td>SA Cable Lat Pulldown</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">4</td><td>Seated Low-to-High Cable Flys</td><td>1</td><td>5-10</td><td>1</td></tr>
+      <tr><td class="exercise-num">5</td><td>SA Cable Lateral Raise</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">6</td><td>Dip Machine</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">7</td><td>Seated DB Hammer Curls</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">8</td><td>Ab Crunch Machine <em>(optional)</em></td><td>1-2</td><td>5-10</td><td>0-1</td></tr>
+    </table></div>
+  </div>
+</div>
+
+<!-- ROUTINE 8b -->
+<div class="card">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>8b. 3x/Week — Full Body A/B/C</h2>
+    <div class="meta"><span class="badge green">Full Body</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <p class="desc">Best for balanced development when training 3x/week. Every muscle hit every session.</p>
+
+    <p class="section-title">Schedule</p>
+    <div class="table-wrap"><table>
+      <tr><th>Day</th><th>Session</th></tr>
+      <tr><td class="schedule-day">Day 1</td><td>Full Body A</td></tr>
+      <tr><td class="schedule-off">Day 2</td><td class="schedule-off">OFF</td></tr>
+      <tr><td class="schedule-day">Day 3</td><td>Full Body B</td></tr>
+      <tr><td class="schedule-off">Day 4</td><td class="schedule-off">OFF</td></tr>
+      <tr><td class="schedule-day">Day 5</td><td>Full Body C</td></tr>
+      <tr><td class="schedule-off">Day 6-7</td><td class="schedule-off">OFF</td></tr>
+    </table></div>
+
+    <p class="section-title">Full Body A <span class="highlight">(13 sets)</span></p>
+    <div class="table-wrap"><table>
+      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>RIR</th></tr>
+      <tr><td class="exercise-num">1</td><td>Leg Extensions</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">2</td><td>Seated Leg Curls</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">3</td><td>Pec Fly Machine</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">4</td><td>Wide Grip Lat Pulldown</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">5</td><td>Seated Machine OHP</td><td>1</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">6</td><td>SA Preacher Cable Curls</td><td>1</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">7</td><td>SA Tricep Pushdowns</td><td>1</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">8</td><td>Calf Press</td><td>1</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">9</td><td>Ab Crunch Machine</td><td>1</td><td>5-10</td><td>0-1</td></tr>
+    </table></div>
+
+    <p class="section-title">Full Body B <span class="highlight">(15 sets)</span></p>
+    <div class="table-wrap"><table>
+      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>RIR</th></tr>
+      <tr><td class="exercise-num">1</td><td>Seated Leg Curls</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">2</td><td>Leg Extensions</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">3</td><td>Seated Low-to-High Cable Flys</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">4</td><td>Chest Supported T-Bar Row (pronated)</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">5</td><td>SA Cable Lateral Raise</td><td>1</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">6</td><td>Seated DB Curls (arm support)</td><td>1</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">7</td><td>Dip Machine</td><td>1</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">8</td><td>Adduction Machine</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">9</td><td>Glute Bridges</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+    </table></div>
+
+    <p class="section-title">Full Body C <span class="highlight">(13 sets)</span></p>
+    <div class="table-wrap"><table>
+      <tr><th>#</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>RIR</th></tr>
+      <tr><td class="exercise-num">1</td><td>Hack or Pendulum Squats</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">2</td><td>45 Degree Extensions</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">3</td><td>Sternal Pecs Machine Press</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">4</td><td>Chest Supported Machine Row (neutral)</td><td>2</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">5</td><td>Seated Machine OHP</td><td>1</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">6</td><td>Seated DB Hammer Curls (arm support)</td><td>1</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">7</td><td>SA Tricep Pushdowns</td><td>1</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">8</td><td>Ab Crunch Machine</td><td>1</td><td>5-10</td><td>0-1</td></tr>
+      <tr><td class="exercise-num">9</td><td>Calf Press</td><td>1</td><td>5-10</td><td>0-1</td></tr>
+    </table></div>
+  </div>
+</div>
+
+<!-- GENERAL PRINCIPLES -->
+<div class="card">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>General Dean Turner Principles</h2>
+    <div class="meta"><span class="badge yellow">Philosophy</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <ul>
+      <li>All working sets @ <strong>0-1 RIR</strong> (1 RIR preferred for safety)</li>
+      <li>If you can't gauge RIR, just go to failure — but <strong class="warn">never take 50/50 reps on compounds</strong></li>
+      <li><strong>3+ min rest</strong> between working sets (2 min absolute floor)</li>
+      <li>60-90 sec rest between warm-up sets</li>
+      <li>Low volume, high intensity, progressive overload</li>
+      <li>Machine-heavy for safety at high intensity</li>
+      <li>5-10 rep range for most movements, 6-15 for isolation</li>
+    </ul>
+  </div>
+</div>
+
+<p style="text-align:center;color:#444;font-size:0.75em;margin-top:30px;">Routines by Dean Turner (@DeanTTraining). Compiled for reference.<br>Last updated: March 29, 2026</p>
+
+<script>
+function toggle(header) {
+  header.parentElement.classList.toggle('open');
+}
+</script>
+
+</body>
+</html>
