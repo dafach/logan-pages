@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adam's Daily Stack</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; padding: 16px; max-width: 800px; margin: 0 auto; -webkit-font-smoothing: antialiased; }
+  h1 { text-align: center; font-size: 1.6em; margin-bottom: 8px; color: #fff; }
+  .subtitle { text-align: center; color: #888; margin-bottom: 20px; font-size: 0.85em; line-height: 1.4; }
+  .card { background: #161616; border: 1px solid #2a2a2a; border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+  .card-header { padding: 16px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; gap: 12px; -webkit-tap-highlight-color: rgba(255,255,255,0.05); }
+  .card-header:hover { background: #1e1e1e; }
+  .card-header:active { background: #222; }
+  .card-header h2 { font-size: 1em; color: #fff; margin: 0; flex: 1; min-width: 0; }
+  .card-header .meta { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
+  .badge { font-size: 0.7em; padding: 4px 10px; border-radius: 20px; font-weight: 600; white-space: nowrap; }
+  .badge.blue { background: #1a1a2d; color: #6b8bff; }
+  .badge.green { background: #1a2d1a; color: #6bff6b; }
+  .badge.purple { background: #231a2d; color: #b08bff; }
+  .badge.yellow { background: #2d2d1a; color: #ffd96b; }
+  .badge.orange { background: #2d221a; color: #ffaa6b; }
+  .badge.red { background: #2d1a1a; color: #ff6b6b; }
+  .badge.teal { background: #1a2d2d; color: #6bffee; }
+  .arrow { font-size: 1.2em; color: #555; transition: transform 0.3s; flex-shrink: 0; }
+  .card.open .arrow { transform: rotate(90deg); }
+  .card-body { display: none; padding: 0 16px 16px; }
+  .card.open .card-body { display: block; }
+  .item { padding: 10px 0; border-bottom: 1px solid #1a1a1a; }
+  .item:last-child { border-bottom: none; }
+  .item-name { font-size: 0.9em; color: #fff; font-weight: 600; margin-bottom: 3px; }
+  .item-dose { font-size: 0.82em; color: #ccc; }
+  .item-note { font-size: 0.78em; color: #888; margin-top: 2px; line-height: 1.4; }
+  .item-cycle { font-size: 0.75em; color: #b08bff; margin-top: 2px; font-style: italic; }
+  .section-divider { font-size: 0.78em; color: #555; text-transform: uppercase; letter-spacing: 0.05em; padding: 12px 0 6px; border-bottom: 1px solid #222; margin-bottom: 4px; font-weight: 600; }
+  ul { padding-left: 20px; margin: 8px 0; }
+  li { font-size: 0.85em; color: #999; margin-bottom: 5px; line-height: 1.5; }
+  li strong { color: #ccc; }
+  @media (max-width: 480px) {
+    body { padding: 12px; }
+    h1 { font-size: 1.35em; }
+    .card-header { padding: 14px 12px; }
+    .card-header h2 { font-size: 0.9em; }
+    .card-body { padding: 0 12px 14px; }
+    .badge { font-size: 0.62em; padding: 3px 8px; }
+    .item-name { font-size: 0.85em; }
+    .item-dose { font-size: 0.78em; }
+    .item-note { font-size: 0.74em; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Adam's Daily Stack</h1>
+<p class="subtitle">Full supplement, peptide, and injection protocol.<br>Optimized for cognition, body composition, longevity, and sleep.<br>Last updated: March 29, 2026</p>
+
+<!-- COGNITIVE — AM FASTED -->
+<div class="card open">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>5:30-6 AM — Cognitive (fasted, pre-workout)</h2>
+    <div class="meta"><span class="badge blue">AM Fasted</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <div class="item">
+      <div class="item-name">L-Tyrosine</div>
+      <div class="item-dose">500mg — empty stomach</div>
+      <div class="item-note">Dopamine precursor. Best absorbed without competing amino acids.</div>
+    </div>
+    <div class="item">
+      <div class="item-name">Modafinil</div>
+      <div class="item-dose">100mg — before 8 AM</div>
+      <div class="item-note">12-15hr half-life. Take early to protect sleep.</div>
+      <div class="item-cycle">Cycle: 3-5 days on, 2 off</div>
+    </div>
+    <div class="item">
+      <div class="item-name">Alpha-GPC</div>
+      <div class="item-dose">300mg</div>
+      <div class="item-note">Prevents modafinil headaches from choline depletion.</div>
+    </div>
+    <div class="item">
+      <div class="item-name">L-Theanine</div>
+      <div class="item-dose">200-400mg</div>
+      <div class="item-note">Smooths stimulant edge. Promotes calm focus.</div>
+    </div>
+    <div class="item">
+      <div class="item-name">Bromantane</div>
+      <div class="item-dose">25-50mg sublingual</div>
+      <div class="item-note">Optional — increases dopamine synthesis without tolerance buildup.</div>
+    </div>
+    <div class="item">
+      <div class="item-name">Pinealon</div>
+      <div class="item-dose">2mg oral</div>
+      <div class="item-note">Bioregulator peptide — CNS support.</div>
+      <div class="item-cycle">Cycle: 20-30 days on / 60 off</div>
+    </div>
+    <div class="item">
+      <div class="item-name">Testosterone Cypionate + HGH</div>
+      <div class="item-dose">T pin 20mg subQ + GH pin 2IU subQ</div>
+      <div class="item-note">Daily AM fasted. GH before training.</div>
+    </div>
+    <div class="item">
+      <div class="item-name">ConcenTrace Mineral Drops</div>
+      <div class="item-dose">10-20 drops in water</div>
+      <div class="item-note">Full-spectrum trace minerals. Supports electrolyte balance.</div>
+    </div>
+    <div class="item">
+      <div class="item-name">Coffee + Salt</div>
+      <div class="item-dose">Coffee with a pinch of salt</div>
+      <div class="item-note">Sodium improves hydration and blunts coffee bitterness.</div>
+    </div>
+  </div>
+</div>
+
+<!-- FIRST MEAL -->
+<div class="card open">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>First Meal (with fat)</h2>
+    <div class="meta"><span class="badge green">With Food</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <div class="item">
+      <div class="item-name">Pure Encapsulations O.N.E. Multivitamin</div>
+      <div class="item-dose">1 capsule</div>
+      <div class="item-note">Comprehensive multi. Methylated B vitamins.</div>
+    </div>
+    <div class="item">
+      <div class="item-name">Pure Encapsulations D3+K2</div>
+      <div class="item-dose">3 capsules — 12,000 IU D3 + 300mcg K2</div>
+      <div class="item-note">Repletion dose. K2 directs calcium to bones, not arteries.</div>
+      <div class="item-cycle">Repletion dose — drop to 2 capsules after retest ~mid-May. Target: 50-70 ng/dL.</div>
+    </div>
+    <div class="item">
+      <div class="item-name">SM Nutrition DIM</div>
+      <div class="item-dose">1 capsule — 300mg DIM + 100mg CDG + BioPerine</div>
+      <div class="item-note">Estrogen metabolism support. Important on TRT.</div>
+    </div>
+    <div class="item">
+      <div class="item-name">Creatine Monohydrate</div>
+      <div class="item-dose">5g daily — no cycling</div>
+      <div class="item-note">Strength, cognition, cellular energy. Most studied supplement in existence.</div>
+    </div>
+  </div>
+</div>
+
+<!-- AS NEEDED -->
+<div class="card">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>As Needed (fasting/low-protein days)</h2>
+    <div class="meta"><span class="badge yellow">Conditional</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <div class="item">
+      <div class="item-name">OptimalAmino EAA Tabs</div>
+      <div class="item-dose">10 tablets — 10g essential amino acids</div>
+      <div class="item-note">Use on tirzepatide fasting days or when protein intake is low. Preserves muscle during caloric restriction.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PM STACK -->
+<div class="card open">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>PM (30-60 min before bed)</h2>
+    <div class="meta"><span class="badge purple">Sleep</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <div class="item">
+      <div class="item-name">Moon Juice Magnesi-om</div>
+      <div class="item-dose">1 tsp — 310mg Mg + 112mg L-theanine</div>
+      <div class="item-note">Magnesium + theanine combo for relaxation and sleep onset.</div>
+    </div>
+    <div class="item">
+      <div class="item-name">Magnesium L-Threonate</div>
+      <div class="item-dose">1-2g</div>
+      <div class="item-note">Crosses BBB — synaptic plasticity, memory, BDNF. Enhances deep sleep architecture.</div>
+    </div>
+    <div class="item">
+      <div class="item-name">Pure Encapsulations Glycine</div>
+      <div class="item-dose">3 capsules — 1,500mg</div>
+      <div class="item-note">Lowers core body temperature, improves sleep quality. Also supports collagen synthesis.</div>
+    </div>
+    <div class="item">
+      <div class="item-name">Epitalon</div>
+      <div class="item-dose">6mg oral</div>
+      <div class="item-note">Telomerase activator — longevity bioregulator peptide.</div>
+      <div class="item-cycle">Cycle: 20-30 days on / 60 off (same cycle as Pinealon)</div>
+    </div>
+  </div>
+</div>
+
+<!-- INJECTION PROTOCOL -->
+<div class="card open">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>Injection Protocol</h2>
+    <div class="meta"><span class="badge red">Pins</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <div class="item">
+      <div class="item-name">Testosterone Cypionate</div>
+      <div class="item-dose">20mg/day subQ — daily, AM fasted</div>
+      <div class="item-note">140mg/week. Daily dosing = stable levels, minimal E2 spikes.</div>
+    </div>
+    <div class="item">
+      <div class="item-name">Human Growth Hormone</div>
+      <div class="item-dose">2IU/day subQ — daily, AM fasted, before training</div>
+      <div class="item-note">Fat loss, recovery, sleep quality, collagen synthesis.</div>
+    </div>
+    <div class="item">
+      <div class="item-name">HCG</div>
+      <div class="item-dose">250 IU subQ — MWF</div>
+      <div class="item-note">Maintains testicular function and intratesticular testosterone on TRT.</div>
+    </div>
+    <div class="item">
+      <div class="item-name">Tirzepatide</div>
+      <div class="item-dose">2.5mg subQ — titrating</div>
+      <div class="item-note">GLP-1/GIP dual agonist. Variable dose and frequency during titration.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ORAL COMPOUNDS -->
+<div class="card">
+  <div class="card-header" onclick="toggle(this)">
+    <h2>Oral Compounds (as scheduled)</h2>
+    <div class="meta"><span class="badge teal">Compounds</span><span class="arrow">&#9654;</span></div>
+  </div>
+  <div class="card-body">
+    <div class="item">
+      <div class="item-name">Dihexa</div>
+      <div class="item-dose">20-30mg oral — 3x/week</div>
+      <div class="item-note">Cognitive compound — potent BDNF/NGF potentiator. Supports neuroplasticity and memory.</div>
+    </div>
+    <div class="item">
+      <div class="item-name">Bromantane</div>
+      <div class="item-dose">25-50mg sublingual — AM</div>
+      <div class="item-note">Included in morning cognitive stack. Upregulates dopamine synthesis via tyrosine hydroxylase.</div>
+    </div>
+  </div>
+</div>
+
+<p style="text-align:center;color:#444;font-size:0.75em;margin-top:30px;">Stack managed by Logan. Evidence-based, physician-supervised.<br>Last updated: March 29, 2026</p>
+
+<script>
+function toggle(header) {
+  header.parentElement.classList.toggle('open');
+}
+</script>
+
+</body>
+</html>
