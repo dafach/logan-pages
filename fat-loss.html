@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fat Loss Tracker — May 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; padding: 16px; max-width: 900px; margin: 0 auto; -webkit-font-smoothing: antialiased; }
+  h1 { text-align: center; font-size: 2em; margin-bottom: 8px; color: #fff; }
+  .subtitle { text-align: center; color: #888; margin-bottom: 24px; font-size: 0.95em; line-height: 1.5; }
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px; }
+  .stat-card { background: #161616; border: 1px solid #2a2a2a; border-radius: 12px; padding: 16px; text-align: center; }
+  .stat-label { color: #888; font-size: 0.9em; margin-bottom: 8px; }
+  .stat-value { font-size: 2em; font-weight: 700; color: #fff; }
+  .stat-unit { font-size: 0.8em; color: #666; margin-left: 4px; }
+  .chart { background: #161616; border: 1px solid #2a2a2a; border-radius: 12px; padding: 24px; margin-bottom: 24px; }
+  .chart h2 { font-size: 1.1em; margin-bottom: 16px; color: #fff; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
+  th { text-align: left; font-size: 0.85em; color: #666; padding: 12px 8px; border-bottom: 1px solid #222; font-weight: 600; }
+  td { padding: 12px 8px; font-size: 0.9em; border-bottom: 1px solid #1a1a1a; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover { background: #0f0f0f; }
+  .weight { color: #ff8bcc; font-weight: 600; }
+  .bf { color: #6bffdd; font-weight: 600; }
+  .delta-down { color: #6bff6b; }
+  .delta-up { color: #ff6b6b; }
+  .protocol-box { background: #161616; border: 1px solid #2a2a2a; border-radius: 12px; padding: 20px; margin-bottom: 24px; }
+  .protocol-box h3 { font-size: 1em; margin-bottom: 12px; color: #fff; }
+  .macro-row { display: flex; justify-content: space-between; padding: 8px 0; font-size: 0.9em; }
+  .macro-label { color: #999; }
+  .macro-value { color: #fff; font-weight: 600; }
+  .target { color: #ffd96b; }
+  .goal-section { background: #1a2d1a; border: 1px solid #2d5a2d; border-radius: 12px; padding: 16px; margin-bottom: 24px; }
+  .goal-section h3 { color: #6bff6b; margin-bottom: 8px; }
+  .goal-section p { font-size: 0.9em; color: #aaa; line-height: 1.6; }
+  .week-num { color: #888; font-size: 0.85em; font-weight: 600; }
+  .progress-bar { width: 100%; height: 8px; background: #222; border-radius: 4px; margin-top: 8px; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, #ff6b6b, #ffd96b, #6bff6b); border-radius: 4px; transition: width 0.3s; }
+  .timestamp { color: #555; font-size: 0.8em; margin-top: 16px; text-align: right; }
+  @media (max-width: 600px) {
+    h1 { font-size: 1.5em; }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .stat-value { font-size: 1.5em; }
+    .chart { padding: 16px; }
+    th, td { padding: 10px 6px; font-size: 0.85em; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Fat Loss Tracker</h1>
+<p class="subtitle">May 1 — Ongoing 2026<br>Target: 0.75–1% body weight loss per week</p>
+
+<!-- Key Stats -->
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="stat-label">Current Weight</div>
+    <div class="stat-value">173.2<span class="stat-unit">lbs</span></div>
+    <div class="stat-label" style="margin-top: 8px; font-size: 0.8em; color: #666;">18% BF</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Weekly Target Loss</div>
+    <div class="stat-value">1.3–1.7<span class="stat-unit">lbs</span></div>
+    <div class="stat-label" style="margin-top: 8px; font-size: 0.8em; color: #666;">500–750 cal deficit</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Goal BF%</div>
+    <div class="stat-value">12–15<span class="stat-unit">%</span></div>
+    <div class="stat-label" style="margin-top: 8px; font-size: 0.8em; color: #666;">Est. 159–163 lbs</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Daily Calories</div>
+    <div class="stat-value">1,800<span class="stat-unit">cal</span></div>
+    <div class="stat-label" style="margin-top: 8px; font-size: 0.8em; color: #666;">Fixed baseline</div>
+  </div>
+</div>
+
+<!-- Protocol -->
+<div class="protocol-box">
+  <h3>Daily Macros (Locked)</h3>
+  <div class="macro-row">
+    <span class="macro-label">Protein</span>
+    <span class="macro-value target">173g</span>
+  </div>
+  <div class="macro-row">
+    <span class="macro-label">Fat (minimum)</span>
+    <span class="macro-value target">52g</span>
+  </div>
+  <div class="macro-row">
+    <span class="macro-label">Carbs</span>
+    <span class="macro-value">Fill remaining calories</span>
+  </div>
+  <div class="macro-row" style="margin-top: 8px; padding-top: 12px; border-top: 1px solid #2a2a2a; font-weight: 700;">
+    <span class="macro-label">Total</span>
+    <span class="macro-value target">1,800 cal/day</span>
+  </div>
+</div>
+
+<!-- Goal -->
+<div class="goal-section">
+  <h3>✅ Goal: Lose 1–1.5 lbs/week</h3>
+  <p><strong>Week 1–4 (May 1–29):</strong> Lose 4–6 lbs → 167–169 lbs, ~17% BF</p>
+  <p><strong>Week 5–8 (May 30–Jun 26):</strong> Lose 4–6 lbs → 161–165 lbs, ~15–16% BF</p>
+  <p><strong>Week 9–12:</strong> Assess progress, maintain at goal or continue to 12–13% if desired</p>
+  <p style="margin-top: 12px; font-size: 0.85em; color: #888;"><em>Protein & training stay hard. Muscle loss minimal if compliant.</em></p>
+</div>
+
+<!-- Tracker Table -->
+<div class="chart">
+  <h2>Weekly Weigh-Ins</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Week</th>
+        <th>Date</th>
+        <th>Weight</th>
+        <th>BF%</th>
+        <th>Loss</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="week-num">START</span></td>
+        <td>May 1, 2026</td>
+        <td class="weight">173.2 lbs</td>
+        <td class="bf">18%</td>
+        <td>—</td>
+        <td>Baseline</td>
+      </tr>
+      <tr>
+        <td><span class="week-num">W1</span></td>
+        <td>May 8, 2026</td>
+        <td class="weight">— lbs</td>
+        <td class="bf">—%</td>
+        <td><span class="delta-down">TBD</span></td>
+        <td>Pending</td>
+      </tr>
+      <tr>
+        <td><span class="week-num">W2</span></td>
+        <td>May 15, 2026</td>
+        <td class="weight">— lbs</td>
+        <td class="bf">—%</td>
+        <td><span class="delta-down">TBD</span></td>
+        <td>Pending</td>
+      </tr>
+      <tr>
+        <td><span class="week-num">W3</span></td>
+        <td>May 22, 2026</td>
+        <td class="weight">— lbs</td>
+        <td class="bf">—%</td>
+        <td><span class="delta-down">TBD</span></td>
+        <td>Pending</td>
+      </tr>
+      <tr>
+        <td><span class="week-num">W4</span></td>
+        <td>May 29, 2026</td>
+        <td class="weight">— lbs</td>
+        <td class="bf">—%</td>
+        <td><span class="delta-down">TBD</span></td>
+        <td>Review & Adjust</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="progress-bar">
+    <div class="progress-fill" style="width: 0%;"></div>
+  </div>
+</div>
+
+<!-- Compliance -->
+<div class="chart">
+  <h2>Compliance Checklist</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Target</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Daily Protein</td>
+        <td class="target">173g</td>
+        <td>Non-negotiable. Lock in first.</td>
+      </tr>
+      <tr>
+        <td>Daily Calories</td>
+        <td class="target">1,800 cal</td>
+        <td>Track via Cronometer or manual count.</td>
+      </tr>
+      <tr>
+        <td>Training Intensity</td>
+        <td class="target">Hard</td>
+        <td>Don't cut volume. Maintain lift numbers.</td>
+      </tr>
+      <tr>
+        <td>Sleep</td>
+        <td class="target">7–9 hrs</td>
+        <td>Track via Fitbit. Less than 6 hrs stalls progress.</td>
+      </tr>
+      <tr>
+        <td>Hydration</td>
+        <td class="target">1 gal+ daily</td>
+        <td>Supports recovery & fullness on deficit.</td>
+      </tr>
+      <tr>
+        <td>Whole Foods</td>
+        <td class="target">80%+</td>
+        <td>Chicken, rice, eggs, broccoli, salmon, sweet potato.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Adjustment Logic -->
+<div class="chart">
+  <h2>Weekly Adjustment Logic</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Weekly Loss</th>
+        <th>Action</th>
+        <th>New Calorie Target</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="delta-down">1–1.5 lbs</span></td>
+        <td>✅ Stay at current</td>
+        <td class="target">1,800 cal</td>
+      </tr>
+      <tr>
+        <td><span class="delta-down">&lt;1 lb</span></td>
+        <td>⬇️ Cut 100 cal</td>
+        <td class="target">1,700 cal</td>
+      </tr>
+      <tr>
+        <td><span class="delta-up">&gt;1.5 lbs</span></td>
+        <td>⬆️ Add 100 cal</td>
+        <td class="target">1,900 cal</td>
+      </tr>
+      <tr>
+        <td><span class="delta-up">Gaining</span></td>
+        <td>⬇️ Cut 200 cal (check compliance first)</td>
+        <td class="target">1,600 cal</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Footer -->
+<p class="timestamp">Fat Loss Protocol — Started May 1, 2026 | Last updated: May 1, 2026</p>
+
+</body>
+</html>
