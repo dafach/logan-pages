@@ -7,17 +7,30 @@
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { -webkit-text-size-adjust: 100%; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; padding: 16px; max-width: 900px; margin: 0 auto; -webkit-font-smoothing: antialiased; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; padding: 16px; max-width: 1000px; margin: 0 auto; -webkit-font-smoothing: antialiased; }
   h1 { text-align: center; font-size: 2em; margin-bottom: 8px; color: #fff; }
   .subtitle { text-align: center; color: #888; margin-bottom: 24px; font-size: 0.95em; line-height: 1.5; }
-  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px; }
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 24px; }
   .stat-card { background: #161616; border: 1px solid #2a2a2a; border-radius: 12px; padding: 16px; text-align: center; }
   .stat-label { color: #888; font-size: 0.9em; margin-bottom: 8px; }
   .stat-value { font-size: 2em; font-weight: 700; color: #fff; }
   .stat-unit { font-size: 0.8em; color: #666; margin-left: 4px; }
-  .chart { background: #161616; border: 1px solid #2a2a2a; border-radius: 12px; padding: 24px; margin-bottom: 24px; }
-  .chart h2 { font-size: 1.1em; margin-bottom: 16px; color: #fff; }
-  table { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
+  .section { background: #161616; border: 1px solid #2a2a2a; border-radius: 12px; padding: 24px; margin-bottom: 24px; }
+  .section h2 { font-size: 1.2em; margin-bottom: 16px; color: #fff; }
+  .macros-row { display: flex; justify-content: space-between; padding: 8px 0; font-size: 0.9em; }
+  .macro-label { color: #999; }
+  .macro-value { color: #fff; font-weight: 600; }
+  .target { color: #ffd96b; }
+  .meals-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-top: 12px; }
+  .meal-tile { background: #0f0f0f; border: 1px solid #2a2a2a; border-radius: 8px; padding: 12px; cursor: pointer; transition: all 0.2s; text-align: center; }
+  .meal-tile:hover { background: #1a1a1a; border-color: #444; }
+  .meal-tile.open { background: #1a2d1a; border-color: #2d5a2d; }
+  .meal-name { font-size: 0.9em; font-weight: 600; color: #fff; margin-bottom: 8px; }
+  .meal-macros { font-size: 0.75em; color: #999; line-height: 1.5; }
+  .meal-macro { display: flex; justify-content: space-between; }
+  .meal-detail { display: none; font-size: 0.8em; color: #aaa; margin-top: 8px; padding-top: 8px; border-top: 1px solid #2a2a2a; }
+  .meal-tile.open .meal-detail { display: block; }
+  table { width: 100%; border-collapse: collapse; margin-top: 12px; }
   th { text-align: left; font-size: 0.85em; color: #666; padding: 12px 8px; border-bottom: 1px solid #222; font-weight: 600; }
   td { padding: 12px 8px; font-size: 0.9em; border-bottom: 1px solid #1a1a1a; }
   tr:last-child td { border-bottom: none; }
@@ -26,12 +39,6 @@
   .bf { color: #6bffdd; font-weight: 600; }
   .delta-down { color: #6bff6b; }
   .delta-up { color: #ff6b6b; }
-  .protocol-box { background: #161616; border: 1px solid #2a2a2a; border-radius: 12px; padding: 20px; margin-bottom: 24px; }
-  .protocol-box h3 { font-size: 1em; margin-bottom: 12px; color: #fff; }
-  .macro-row { display: flex; justify-content: space-between; padding: 8px 0; font-size: 0.9em; }
-  .macro-label { color: #999; }
-  .macro-value { color: #fff; font-weight: 600; }
-  .target { color: #ffd96b; }
   .goal-section { background: #1a2d1a; border: 1px solid #2d5a2d; border-radius: 12px; padding: 16px; margin-bottom: 24px; }
   .goal-section h3 { color: #6bff6b; margin-bottom: 8px; }
   .goal-section p { font-size: 0.9em; color: #aaa; line-height: 1.6; }
@@ -39,11 +46,14 @@
   .progress-bar { width: 100%; height: 8px; background: #222; border-radius: 4px; margin-top: 8px; overflow: hidden; }
   .progress-fill { height: 100%; background: linear-gradient(90deg, #ff6b6b, #ffd96b, #6bff6b); border-radius: 4px; transition: width 0.3s; }
   .timestamp { color: #555; font-size: 0.8em; margin-top: 16px; text-align: right; }
+  .withings-link { display: inline-block; margin-top: 12px; padding: 8px 12px; background: #1a3a1a; border: 1px solid #2d5a2d; border-radius: 6px; color: #6bff6b; text-decoration: none; font-size: 0.85em; }
+  .withings-link:hover { background: #1d4d1d; }
   @media (max-width: 600px) {
     h1 { font-size: 1.5em; }
     .stats-grid { grid-template-columns: 1fr 1fr; }
     .stat-value { font-size: 1.5em; }
-    .chart { padding: 16px; }
+    .section { padding: 16px; }
+    .meals-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
     th, td { padding: 10px 6px; font-size: 0.85em; }
   }
 </style>
@@ -72,29 +82,101 @@
   </div>
   <div class="stat-card">
     <div class="stat-label">Daily Calories</div>
-    <div class="stat-value">1,800<span class="stat-unit">cal</span></div>
+    <div class="stat-value">1,804<span class="stat-unit">cal</span></div>
     <div class="stat-label" style="margin-top: 8px; font-size: 0.8em; color: #666;">Fixed baseline</div>
   </div>
 </div>
 
 <!-- Protocol -->
-<div class="protocol-box">
-  <h3>Daily Macros (Locked)</h3>
-  <div class="macro-row">
+<div class="section">
+  <h2>Daily Macros (Locked)</h2>
+  <div class="macros-row">
     <span class="macro-label">Protein</span>
-    <span class="macro-value target">173g</span>
+    <span class="macro-value target">170g</span>
   </div>
-  <div class="macro-row">
+  <div class="macros-row">
     <span class="macro-label">Fat (minimum)</span>
     <span class="macro-value target">52g</span>
   </div>
-  <div class="macro-row">
+  <div class="macros-row">
     <span class="macro-label">Carbs</span>
     <span class="macro-value">Fill remaining calories</span>
   </div>
-  <div class="macro-row" style="margin-top: 8px; padding-top: 12px; border-top: 1px solid #2a2a2a; font-weight: 700;">
+  <div class="macros-row" style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #2a2a2a; font-weight: 700;">
     <span class="macro-label">Total</span>
-    <span class="macro-value target">1,800 cal/day</span>
+    <span class="macro-value target">1,804 cal/day</span>
+  </div>
+</div>
+
+<!-- Meal Plans -->
+<div class="section">
+  <h2>Meal Plan Options (Dean Turner)</h2>
+  <p style="font-size: 0.9em; color: #999; margin-bottom: 16px;">Click a tile to expand details. Mix and match daily.</p>
+  <div class="meals-grid">
+    <div class="meal-tile" onclick="toggleMeal(this)">
+      <div class="meal-name">Breakfast A</div>
+      <div class="meal-macros">
+        <div class="meal-macro"><span>Egg White Scramble</span> <span>325cal</span></div>
+        <div class="meal-macro"><span>35p / 20c / 10f</span></div>
+      </div>
+      <div class="meal-detail">Egg whites (26p), turkey (22p), toast (4p), spinach, 1 tsp oil</div>
+    </div>
+    <div class="meal-tile" onclick="toggleMeal(this)">
+      <div class="meal-name">Breakfast B</div>
+      <div class="meal-macros">
+        <div class="meal-macro"><span>Oatmeal Stack</span> <span>300cal</span></div>
+        <div class="meal-macro"><span>30p / 35c / 8f</span></div>
+      </div>
+      <div class="meal-detail">Oats (5g), whey (25p), banana, honey, almond butter</div>
+    </div>
+    <div class="meal-tile" onclick="toggleMeal(this)">
+      <div class="meal-name">Lunch A</div>
+      <div class="meal-macros">
+        <div class="meal-macro"><span>Chicken & Rice</span> <span>325cal</span></div>
+        <div class="meal-macro"><span>35p / 30c / 5f</span></div>
+      </div>
+      <div class="meal-detail">5 oz chicken breast, 1 cup jasmine rice, broccoli, 1 tsp oil</div>
+    </div>
+    <div class="meal-tile" onclick="toggleMeal(this)">
+      <div class="meal-name">Lunch B</div>
+      <div class="meal-macros">
+        <div class="meal-macro"><span>Ground Turkey Plate</span> <span>350cal</span></div>
+        <div class="meal-macro"><span>40p / 28c / 6f</span></div>
+      </div>
+      <div class="meal-detail">6 oz lean ground turkey, 1 cup white rice, peppers, 1 tsp oil</div>
+    </div>
+    <div class="meal-tile" onclick="toggleMeal(this)">
+      <div class="meal-name">Snack A</div>
+      <div class="meal-macros">
+        <div class="meal-macro"><span>Greek Yogurt</span> <span>200cal</span></div>
+        <div class="meal-macro"><span>20p / 10c / 7f</span></div>
+      </div>
+      <div class="meal-detail">1 cup plain Greek yogurt, 10 almonds, honey</div>
+    </div>
+    <div class="meal-tile" onclick="toggleMeal(this)">
+      <div class="meal-name">Snack B</div>
+      <div class="meal-macros">
+        <div class="meal-macro"><span>Protein Shake</span> <span>180cal</span></div>
+        <div class="meal-macro"><span>25p / 12c / 2f</span></div>
+      </div>
+      <div class="meal-detail">Whey isolate (25p), oat milk, banana</div>
+    </div>
+    <div class="meal-tile" onclick="toggleMeal(this)">
+      <div class="meal-name">Dinner A</div>
+      <div class="meal-macros">
+        <div class="meal-macro"><span>Salmon & Sweet Potato</span> <span>350cal</span></div>
+        <div class="meal-macro"><span>30p / 30c / 10f</span></div>
+      </div>
+      <div class="meal-detail">4 oz salmon, 1 small sweet potato, asparagus, 1 tsp oil</div>
+    </div>
+    <div class="meal-tile" onclick="toggleMeal(this)">
+      <div class="meal-name">Dinner B</div>
+      <div class="meal-macros">
+        <div class="meal-macro"><span>Lean Beef & Rice</span> <span>370cal</span></div>
+        <div class="meal-macro"><span>35p / 35c / 7f</span></div>
+      </div>
+      <div class="meal-detail">4 oz lean beef, 1 cup white rice, green beans, 1 tsp oil</div>
+    </div>
   </div>
 </div>
 
@@ -108,69 +190,72 @@
 </div>
 
 <!-- Tracker Table -->
-<div class="chart">
-  <h2>Weekly Weigh-Ins</h2>
+<div class="section">
+  <h2>Weekly Weigh-Ins & Averages</h2>
   <table>
     <thead>
       <tr>
         <th>Week</th>
         <th>Date</th>
-        <th>Weight</th>
+        <th>Weekly Avg</th>
+        <th>Weekly Low</th>
+        <th>Weigh-In</th>
         <th>BF%</th>
-        <th>Loss</th>
         <th>Status</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td><span class="week-num">START</span></td>
-        <td>May 1, 2026</td>
-        <td class="weight">173.2 lbs</td>
+        <td>May 1</td>
+        <td class="weight">—</td>
+        <td class="weight">—</td>
+        <td class="weight">173.2</td>
         <td class="bf">18%</td>
-        <td>—</td>
         <td>Baseline</td>
       </tr>
       <tr>
         <td><span class="week-num">W1</span></td>
-        <td>May 8, 2026</td>
+        <td>May 8</td>
+        <td class="weight">— lbs</td>
+        <td class="weight">— lbs</td>
         <td class="weight">— lbs</td>
         <td class="bf">—%</td>
-        <td><span class="delta-down">TBD</span></td>
         <td>Pending</td>
       </tr>
       <tr>
         <td><span class="week-num">W2</span></td>
-        <td>May 15, 2026</td>
+        <td>May 15</td>
+        <td class="weight">— lbs</td>
+        <td class="weight">— lbs</td>
         <td class="weight">— lbs</td>
         <td class="bf">—%</td>
-        <td><span class="delta-down">TBD</span></td>
         <td>Pending</td>
       </tr>
       <tr>
         <td><span class="week-num">W3</span></td>
-        <td>May 22, 2026</td>
+        <td>May 22</td>
+        <td class="weight">— lbs</td>
+        <td class="weight">— lbs</td>
         <td class="weight">— lbs</td>
         <td class="bf">—%</td>
-        <td><span class="delta-down">TBD</span></td>
         <td>Pending</td>
       </tr>
       <tr>
         <td><span class="week-num">W4</span></td>
-        <td>May 29, 2026</td>
+        <td>May 29</td>
+        <td class="weight">— lbs</td>
+        <td class="weight">— lbs</td>
         <td class="weight">— lbs</td>
         <td class="bf">—%</td>
-        <td><span class="delta-down">TBD</span></td>
         <td>Review & Adjust</td>
       </tr>
     </tbody>
   </table>
-  <div class="progress-bar">
-    <div class="progress-fill" style="width: 0%;"></div>
-  </div>
 </div>
 
 <!-- Compliance -->
-<div class="chart">
+<div class="section">
   <h2>Compliance Checklist</h2>
   <table>
     <thead>
@@ -183,12 +268,12 @@
     <tbody>
       <tr>
         <td>Daily Protein</td>
-        <td class="target">173g</td>
+        <td class="target">170g</td>
         <td>Non-negotiable. Lock in first.</td>
       </tr>
       <tr>
         <td>Daily Calories</td>
-        <td class="target">1,800 cal</td>
+        <td class="target">1,804 cal</td>
         <td>Track via Cronometer or manual count.</td>
       </tr>
       <tr>
@@ -215,44 +300,14 @@
   </table>
 </div>
 
-<!-- Adjustment Logic -->
-<div class="chart">
-  <h2>Weekly Adjustment Logic</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Weekly Loss</th>
-        <th>Action</th>
-        <th>New Calorie Target</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="delta-down">1–1.5 lbs</span></td>
-        <td>✅ Stay at current</td>
-        <td class="target">1,800 cal</td>
-      </tr>
-      <tr>
-        <td><span class="delta-down">&lt;1 lb</span></td>
-        <td>⬇️ Cut 100 cal</td>
-        <td class="target">1,700 cal</td>
-      </tr>
-      <tr>
-        <td><span class="delta-up">&gt;1.5 lbs</span></td>
-        <td>⬆️ Add 100 cal</td>
-        <td class="target">1,900 cal</td>
-      </tr>
-      <tr>
-        <td><span class="delta-up">Gaining</span></td>
-        <td>⬇️ Cut 200 cal (check compliance first)</td>
-        <td class="target">1,600 cal</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
 <!-- Footer -->
 <p class="timestamp">Fat Loss Protocol — Started May 1, 2026 | Last updated: May 1, 2026</p>
+
+<script>
+function toggleMeal(el) {
+  el.classList.toggle('open');
+}
+</script>
 
 </body>
 </html>
