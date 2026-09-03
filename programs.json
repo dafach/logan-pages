@@ -1,0 +1,1355 @@
+{
+  "programs": [
+    {
+      "id": "francis-ul-whiteboard",
+      "name": "Francis Melia Upper/Lower",
+      "coach": "Francis Melia",
+      "source": "whiteboard",
+      "frequency": "Upper/Lower",
+      "daysPerWeek": 4,
+      "hasFullPrescriptions": true,
+      "doctrine": {
+        "intensity": "Every set to FAILURE with clean form",
+        "progression": "Standardised technique",
+        "compounds": "Top set + back-off",
+        "isolations": "2-3x10-15",
+        "sessionOrder": "Uppers start with arms"
+      },
+      "sessions": [
+        {
+          "name": "Lower A",
+          "day": "Mon",
+          "totalSets": 12,
+          "exercises": [
+            {"name": "Hack Squat", "sets": "1+1", "reps": "6-8, 10-12", "notes": "Top set + back-off"},
+            {"name": "Leg Press", "sets": "1+1", "reps": "8-10, 10-15", "notes": "Top set + back-off"},
+            {"name": "Paused RDL", "sets": "1", "reps": "6-8"},
+            {"name": "Seated Ham Curl", "sets": "2", "reps": "10-15"},
+            {"name": "Bulgarian Split Squat", "sets": "1", "reps": "10-15"},
+            {"name": "Toe Press", "sets": "2", "reps": "10-15"},
+            {"name": "AB Crunch", "sets": "2", "reps": "10-15"}
+          ]
+        },
+        {
+          "name": "Upper A",
+          "day": "Tue",
+          "totalSets": 17,
+          "exercises": [
+            {"name": "Preacher Curls", "sets": "3", "reps": "10-15"},
+            {"name": "Flat Smith Machine Press", "sets": "1+1", "reps": "6-8, 10-12", "notes": "Top set + back-off"},
+            {"name": "Weighted Dips", "sets": "1+1", "reps": "6-8, 10-12", "notes": "Top set + back-off"},
+            {"name": "Cable Lateral", "sets": "3", "reps": "10-15"},
+            {"name": "Chin-ups", "sets": "1+1", "reps": "6-8, 10-12", "notes": "Top set + back-off"},
+            {"name": "Machine Row", "sets": "1+1", "reps": "6-8, 10-12", "notes": "Top set + back-off"},
+            {"name": "DB Skullcrusher", "sets": "3", "reps": "10-15"}
+          ]
+        },
+        {
+          "name": "Lower B",
+          "day": "Thu",
+          "totalSets": 13,
+          "exercises": [
+            {"name": "Deadlift", "sets": "2", "reps": "6-8"},
+            {"name": "Lying Ham Curl", "sets": "2", "reps": "10-15"},
+            {"name": "Leg Extension", "sets": "2", "reps": "10-15"},
+            {"name": "Pendulum Squat", "sets": "1+1", "reps": "6-8, 10-12", "notes": "Top set + back-off"},
+            {"name": "Hip Thrust", "sets": "1", "reps": "10-15"},
+            {"name": "Calf Raise", "sets": "2", "reps": "10-15"},
+            {"name": "Cable Crunch", "sets": "2", "reps": "10-15"}
+          ]
+        },
+        {
+          "name": "Upper B",
+          "day": "Sat",
+          "totalSets": 17,
+          "exercises": [
+            {"name": "Machine Lateral Raise", "sets": "3", "reps": "10-15"},
+            {"name": "Incline DB Press", "sets": "1+1", "reps": "6-8, 10-12", "notes": "Top set + back-off"},
+            {"name": "Shoulder Press Machine", "sets": "1+1", "reps": "6-8, 10-12", "notes": "Top set + back-off"},
+            {"name": "Wide Grip Pulldown", "sets": "1+1", "reps": "8-10, 10-12", "notes": "Top set + back-off"},
+            {"name": "Wide Grip Cable Row", "sets": "1+1", "reps": "8-10, 10-12", "notes": "Top set + back-off"},
+            {"name": "Seated Incline Curls", "sets": "3", "reps": "10-15"},
+            {"name": "Rope Overhead Extension", "sets": "3", "reps": "10-15"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "logan-schedule-friendly-ul-apr28",
+      "name": "Schedule-Friendly U/L (Apr 28, 2026)",
+      "coach": "Dean Turner",
+      "source": "logan-pages",
+      "frequency": "Upper A/B + Lower A/B",
+      "daysPerWeek": "3-4",
+      "hasFullPrescriptions": true,
+      "badge": "orange",
+      "sessions": [
+        {
+          "name": "Upper A",
+          "totalSets": "13-18",
+          "exercises": [
+            {"name": "Seated/Flat Chest Press Machine", "sets": "2-3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Wide Grip Lat Pulldown", "sets": "2-3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Seated Low to High Cable Flys", "sets": "1-2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Chest Supported Machine Rows (Neutral)", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Seated Machine OHP", "sets": "2-3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Seated Machine Curls (Upper Arm Support)", "sets": "1-2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Incline Bench Cable Tricep Pushdowns", "sets": "2-3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Seated DB Hammer Curls (Upper Arm Support)", "sets": "1-2", "reps": "5-10", "rir": "0-1"}
+          ]
+        },
+        {
+          "name": "Lower A",
+          "totalSets": "15-19",
+          "exercises": [
+            {"name": "Leg Extensions", "sets": "2-3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Seated Leg Curls", "sets": "2-3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Pendulum/Hack Squats", "sets": "2-3", "reps": "5-10", "rir": "0-1"},
+            {"name": "45° Extension Machine", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Adduction Machine", "sets": "2-3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Ab Crunch Machine", "sets": "2-3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Calf Press on Leg Press", "sets": "2-3", "reps": "5-10", "rir": "0-1", "notes": "Partial: dorsiflexed → neutral"}
+          ]
+        },
+        {
+          "name": "Upper B",
+          "totalSets": "13-18",
+          "exercises": [
+            {"name": "Incline Machine Press", "sets": "2-3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Chest Supported Machine Rows (Pronated)", "sets": "2-3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Pec Fly Machine", "sets": "1-2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Single Arm Lat Pulldown", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Cuffed Cable Lateral Raises", "sets": "2-3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Preacher Curls", "sets": "2-3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Overhead Tricep Extension Machine", "sets": "2-3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Seated DB Hammer Curls (Upper Arm Support)", "sets": "1-2", "reps": "5-10", "rir": "0-1"}
+          ]
+        },
+        {
+          "name": "Lower B",
+          "totalSets": "14-18",
+          "exercises": [
+            {"name": "Seated Leg Curls", "sets": "2-3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Leg Extensions", "sets": "2-3", "reps": "5-10", "rir": "0-1"},
+            {"name": "45° Extension Machine", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Calf Press on Leg Press", "sets": "2-3", "reps": "5-10", "rir": "0-1", "notes": "Partial: dorsiflexed → neutral"},
+            {"name": "45° Leg Press", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Ab Crunch Machine", "sets": "2-3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Machine Hip Thrusts", "sets": "2", "reps": "5-10", "rir": "0-1"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "logan-apr-2026-current",
+      "name": "Apr 2026 — Most Current",
+      "coach": "Dean Turner",
+      "source": "logan-pages",
+      "frequency": "Upper A/B + Lower A/B",
+      "daysPerWeek": 4,
+      "hasFullPrescriptions": true,
+      "badge": "pink",
+      "sessions": [
+        {
+          "name": "Upper A",
+          "totalSets": 16,
+          "exercises": [
+            {"name": "Supine Plate Loaded Chest Press Machine", "sets": "2", "reps": "5-7", "rir": "~1"},
+            {"name": "Chest Supported T-Bar Rows (elbows flared)", "sets": "2", "reps": "5-10", "rir": "~1"},
+            {"name": "Seated Low to High Cable Flys", "sets": "2", "reps": "6-10", "rir": "~1"},
+            {"name": "Single Arm Lat Pulldown", "sets": "2", "reps": "8-12", "rir": "~1"},
+            {"name": "Cuffed Single Arm Cable Lateral Raises", "sets": "2", "reps": "6-12", "rir": "~1"},
+            {"name": "Preacher Curl Machine", "sets": "2", "reps": "6-12", "rir": "~1"},
+            {"name": "Seated Cable Tricep Pushdowns (Vulken Attachment)", "sets": "1", "reps": "6-12", "rir": "~1"},
+            {"name": "Dumbbell Hammer Curls (upper arm support)", "sets": "2", "reps": "6-12", "rir": "~1"},
+            {"name": "Overhead Tricep Extension Machine", "sets": "1", "reps": "6-12", "rir": "~1"}
+          ]
+        },
+        {
+          "name": "Lower A",
+          "totalSets": 14,
+          "exercises": [
+            {"name": "Single Leg Press", "sets": "1", "reps": "6-12", "rir": "~1"},
+            {"name": "Seated Leg Curls", "sets": "2", "reps": "5-10", "rir": "~1"},
+            {"name": "Leg Extensions", "sets": "2", "reps": "6-12", "rir": "~1"},
+            {"name": "Plate Stack 45° Extensions", "sets": "1", "reps": "6-12", "rir": "~1"},
+            {"name": "Adduction Machine", "sets": "2", "reps": "6-12", "rir": "~1"},
+            {"name": "Single Leg Calf Press", "sets": "2", "reps": "5-8", "rir": "~1", "notes": "Partial: dorsiflexed → neutral"},
+            {"name": "Ab Crunch Machine", "sets": "2", "reps": "5-10", "rir": "~1"},
+            {"name": "Hip Thrusts Machine", "sets": "1", "reps": "5-8", "rir": "~1"}
+          ]
+        },
+        {
+          "name": "Upper B",
+          "totalSets": 16,
+          "exercises": [
+            {"name": "Seated (Vertical) Plate Loaded Chest Press", "sets": "2", "reps": "5-7", "rir": "~1"},
+            {"name": "Wide Grip Lat Pulldown", "sets": "2", "reps": "8-12", "rir": "~1"},
+            {"name": "Plate Loaded Incline Machine Press", "sets": "2", "reps": "5-8", "rir": "~1"},
+            {"name": "Chest Supported Machine Rows (elbows tucked)", "sets": "2", "reps": "5-8", "rir": "~1"},
+            {"name": "Seated Pin Loaded Machine OHP", "sets": "2", "reps": "6-12", "rir": "~1"},
+            {"name": "Preacher Curl Machine", "sets": "2", "reps": "6-12", "rir": "~1"},
+            {"name": "Seated Cable Tricep Pushdowns (Vulken Attachment)", "sets": "1", "reps": "6-12", "rir": "~1"},
+            {"name": "Dumbbell Hammer Curls (upper arm support)", "sets": "2", "reps": "6-12", "rir": "~1"},
+            {"name": "Overhead Tricep Extension Machine", "sets": "1", "reps": "6-12", "rir": "~1"}
+          ]
+        },
+        {
+          "name": "Lower B",
+          "totalSets": 15,
+          "exercises": [
+            {"name": "Reverse Band Smith Squats", "sets": "1", "reps": "6-10", "rir": "~1"},
+            {"name": "Seated Leg Curls", "sets": "2", "reps": "5-10", "rir": "~1"},
+            {"name": "Single Leg Extensions", "sets": "2", "reps": "6-12", "rir": "~1"},
+            {"name": "RDLs", "sets": "2", "reps": "5-10", "rir": "~1"},
+            {"name": "Adduction Machine", "sets": "2", "reps": "6-12", "rir": "~1"},
+            {"name": "Calf Press", "sets": "2", "reps": "5-8", "rir": "~1", "notes": "Partial: dorsiflexed → neutral"},
+            {"name": "Ab Crunch Machine", "sets": "2", "reps": "5-10", "rir": "~1"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "logan-standard-upper-lower-4x-week",
+      "name": "Standard Upper/Lower 4x/Week",
+      "coach": "Dean Turner",
+      "source": "logan-pages",
+      "frequency": "Upper/Lower",
+      "daysPerWeek": 4,
+      "hasFullPrescriptions": true,
+      "badge": "blue",
+      "sessions": [
+        {
+          "name": "Upper A",
+          "totalSets": "13-20",
+          "exercises": [
+            {"name": "Sternal Pecs Machine Press", "sets": "2-3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Wide Grip Lat Pulldown", "sets": "2-3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Clavicular Pecs Machine Press", "sets": "1-2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Chest Supported Machine Row (neutral)", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Seated Machine OHP", "sets": "2-3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Seated DB Curls", "sets": "1-2", "reps": "5-10", "rir": "0-1"},
+            {"name": "SA Tricep Pushdowns", "sets": "2-3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Seated Hammer Curls (arm support)", "sets": "1-2", "reps": "5-10", "rir": "0-1"}
+          ]
+        },
+        {
+          "name": "Lower A",
+          "totalSets": "14-20",
+          "exercises": [
+            {"name": "Leg Extensions", "sets": "2-3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Seated Leg Curls", "sets": "2-3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Hack Squats", "sets": "2-3", "reps": "5-10", "rir": "0-1"},
+            {"name": "45 Degree Extensions", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Adduction Machine", "sets": "2-3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Ab Crunch Machine", "sets": "2-3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Calf Press on Leg Press", "sets": "2-3", "reps": "5-10", "rir": "0-1"}
+          ]
+        },
+        {
+          "name": "Upper B",
+          "totalSets": "13-20",
+          "exercises": [
+            {"name": "Clavicular Pecs Machine Press", "sets": "2-3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Chest Supported Machine Row (pronated)", "sets": "2-3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Sternal Pecs Machine Press", "sets": "1-2", "reps": "5-10", "rir": "0-1"},
+            {"name": "SA Lat Pulldown", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Cuffed SA Cable Lateral Raises", "sets": "2-3", "reps": "5-10", "rir": "0-1"},
+            {"name": "SA Preacher Curls", "sets": "1-2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Overhead Tricep Extensions", "sets": "2-3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Seated Hammer Curls (arm support)", "sets": "1-2", "reps": "5-10", "rir": "0-1"}
+          ]
+        },
+        {
+          "name": "Lower B",
+          "totalSets": "14-19",
+          "exercises": [
+            {"name": "Seated Leg Curls", "sets": "2-3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Leg Extensions", "sets": "2-3", "reps": "5-10", "rir": "0-1"},
+            {"name": "SLDLs", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Calf Press on Leg Press", "sets": "2-3", "reps": "5-10", "rir": "0-1"},
+            {"name": "45 Degree Leg Press", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Ab Crunch Machine", "sets": "2-3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Smith/Machine Glute Bridges", "sets": "2", "reps": "5-10", "rir": "0-1"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "logan-minimalist-4x-ul",
+      "name": "Minimalist 4x/Week Upper Lower",
+      "coach": "Dean Turner",
+      "source": "logan-pages",
+      "frequency": "Upper/Lower",
+      "daysPerWeek": 4,
+      "hasFullPrescriptions": true,
+      "badge": "blue",
+      "sessions": [
+        {
+          "name": "Upper A",
+          "totalSets": 15,
+          "exercises": [
+            {"name": "Sternal Pecs Press", "sets": "3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Chest Supported Row", "sets": "3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Seated Overhead Press", "sets": "3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Elbow Flexion (curls)", "sets": "3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Elbow Extension (triceps)", "sets": "3", "reps": "5-10", "rir": "0-1"}
+          ]
+        },
+        {
+          "name": "Lower A",
+          "totalSets": 15,
+          "exercises": [
+            {"name": "Squat Pattern", "sets": "3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Hinge Pattern", "sets": "3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Bridge Exercise", "sets": "3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Calf Exercise", "sets": "3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Spinal Flexion (abs)", "sets": "3", "reps": "5-10", "rir": "0-1"}
+          ]
+        },
+        {
+          "name": "Upper B",
+          "totalSets": 15,
+          "exercises": [
+            {"name": "Clavicular Pecs Press", "sets": "3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Vertical Pull", "sets": "3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Lateral Raise", "sets": "3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Elbow Flexion (curls)", "sets": "3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Elbow Extension (triceps)", "sets": "3", "reps": "5-10", "rir": "0-1"}
+          ]
+        },
+        {
+          "name": "Lower B",
+          "totalSets": 15,
+          "exercises": [
+            {"name": "Squat Pattern (variation)", "sets": "3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Hinge Pattern (variation)", "sets": "3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Bridge Exercise (variation)", "sets": "3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Calf Exercise (variation)", "sets": "3", "reps": "5-10", "rir": "0-1"},
+            {"name": "Spinal Flexion (variation)", "sets": "3", "reps": "5-10", "rir": "0-1"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "logan-3x-ulu",
+      "name": "3x/Week — Upper/Lower/Upper",
+      "coach": "Dean Turner",
+      "source": "logan-pages",
+      "frequency": "Upper/Lower/Upper",
+      "daysPerWeek": 3,
+      "hasFullPrescriptions": true,
+      "badge": "teal",
+      "sessions": [
+        {
+          "name": "Upper A",
+          "totalSets": "13-14",
+          "exercises": [
+            {"name": "Clavicular Pecs Machine Press", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Wide Grip Lat Pulldown", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Pec Fly Machine", "sets": "1", "reps": "5-10", "rir": "0-1"},
+            {"name": "Chest Supported Machine Row (neutral)", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Seated Machine OHP", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Seated DB Curls", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "SA Tricep Pushdowns", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Ab Crunch Machine (optional)", "sets": "1-2", "reps": "5-10", "rir": "0-1"}
+          ]
+        },
+        {
+          "name": "Lower",
+          "totalSets": 14,
+          "exercises": [
+            {"name": "Leg Extensions", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Seated Leg Curls", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Hack or Pendulum Squats", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "SLDLs", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Adduction Machine", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Glute Bridges", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Calf Press", "sets": "2", "reps": "5-10", "rir": "0-1"}
+          ]
+        },
+        {
+          "name": "Upper B",
+          "totalSets": "13-14",
+          "exercises": [
+            {"name": "Chest Supported Machine Row (pronated)", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Sternal Pecs Machine Press", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "SA Cable Lat Pulldown", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Seated Low-to-High Cable Flys", "sets": "1", "reps": "5-10", "rir": "1"},
+            {"name": "SA Cable Lateral Raise", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Dip Machine", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Seated DB Hammer Curls", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Ab Crunch Machine (optional)", "sets": "1-2", "reps": "5-10", "rir": "0-1"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "logan-3x-fb-abc",
+      "name": "3x/Week — Full Body A/B/C",
+      "coach": "Dean Turner",
+      "source": "logan-pages",
+      "frequency": "Full Body A/B/C",
+      "daysPerWeek": 3,
+      "hasFullPrescriptions": true,
+      "badge": "green",
+      "sessions": [
+        {
+          "name": "Full Body A",
+          "totalSets": 13,
+          "exercises": [
+            {"name": "Leg Extensions", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Seated Leg Curls", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Pec Fly Machine", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Wide Grip Lat Pulldown", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Seated Machine OHP", "sets": "1", "reps": "5-10", "rir": "0-1"},
+            {"name": "SA Preacher Cable Curls", "sets": "1", "reps": "5-10", "rir": "0-1"},
+            {"name": "SA Tricep Pushdowns", "sets": "1", "reps": "5-10", "rir": "0-1"},
+            {"name": "Calf Press", "sets": "1", "reps": "5-10", "rir": "0-1"},
+            {"name": "Ab Crunch Machine", "sets": "1", "reps": "5-10", "rir": "0-1"}
+          ]
+        },
+        {
+          "name": "Full Body B",
+          "totalSets": 15,
+          "exercises": [
+            {"name": "Seated Leg Curls", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Leg Extensions", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Seated Low-to-High Cable Flys", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Chest Supported T-Bar Row (pronated)", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "SA Cable Lateral Raise", "sets": "1", "reps": "5-10", "rir": "0-1"},
+            {"name": "Seated DB Curls (arm support)", "sets": "1", "reps": "5-10", "rir": "0-1"},
+            {"name": "Dip Machine", "sets": "1", "reps": "5-10", "rir": "0-1"},
+            {"name": "Adduction Machine", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Glute Bridges", "sets": "2", "reps": "5-10", "rir": "0-1"}
+          ]
+        },
+        {
+          "name": "Full Body C",
+          "totalSets": 13,
+          "exercises": [
+            {"name": "Hack or Pendulum Squats", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "45 Degree Extensions", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Sternal Pecs Machine Press", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Chest Supported Machine Row (neutral)", "sets": "2", "reps": "5-10", "rir": "0-1"},
+            {"name": "Seated Machine OHP", "sets": "1", "reps": "5-10", "rir": "0-1"},
+            {"name": "Seated DB Hammer Curls (arm support)", "sets": "1", "reps": "5-10", "rir": "0-1"},
+            {"name": "SA Tricep Pushdowns", "sets": "1", "reps": "5-10", "rir": "0-1"},
+            {"name": "Ab Crunch Machine", "sets": "1", "reps": "5-10", "rir": "0-1"},
+            {"name": "Calf Press", "sets": "1", "reps": "5-10", "rir": "0-1"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "logan-personal-oct-2024",
+      "name": "Dean's Personal Routine (Oct 2024)",
+      "coach": "Dean Turner",
+      "source": "logan-pages",
+      "frequency": "Upper/Lower",
+      "daysPerWeek": 4,
+      "hasFullPrescriptions": true,
+      "badge": "purple",
+      "sessions": [
+        {
+          "name": "Upper A",
+          "day": "Mon",
+          "totalSets": 10,
+          "exercises": [
+            {"name": "Clavicular Pecs Machine Press", "sets": "2", "reps": "5-10", "rir": "0"},
+            {"name": "Lat Pulldown", "sets": "2", "reps": "5-10", "rir": "0"},
+            {"name": "Sternal Pecs Machine Press", "sets": "1", "reps": "5-10", "rir": "0"},
+            {"name": "Chest Supported T-Bar Rows", "sets": "1", "reps": "5-10", "rir": "0"},
+            {"name": "SA Cable Lateral Raises", "sets": "1", "reps": "6-15", "rir": "0"},
+            {"name": "Dip Machine", "sets": "1", "reps": "5-10", "rir": "0"},
+            {"name": "SA Preacher Cable Curls", "sets": "2", "reps": "5-10", "rir": "0"}
+          ]
+        },
+        {
+          "name": "Lower A",
+          "day": "Tue",
+          "totalSets": 12,
+          "exercises": [
+            {"name": "Hack Squats", "sets": "1", "reps": "5-10", "rir": "0"},
+            {"name": "Leg Extensions", "sets": "2", "reps": "6-15", "rir": "0"},
+            {"name": "Seated Leg Curls", "sets": "3", "reps": "5-10", "rir": "0"},
+            {"name": "Adduction Machine", "sets": "2", "reps": "6-15", "rir": "0"},
+            {"name": "Calf Press on Leg Press", "sets": "2", "reps": "4-8", "rir": "RPE 10"},
+            {"name": "Weighted Decline Sit-Ups", "sets": "2", "reps": "6-15", "rir": "0"}
+          ]
+        },
+        {
+          "name": "Upper B",
+          "day": "Thu",
+          "totalSets": 10,
+          "exercises": [
+            {"name": "Sternal Pecs Machine Press", "sets": "2", "reps": "5-10", "rir": "0"},
+            {"name": "Chest Supported Seated Cable Rows", "sets": "2", "reps": "5-10", "rir": "0"},
+            {"name": "Clavicular Pecs Machine Press", "sets": "1", "reps": "5-10", "rir": "0"},
+            {"name": "SA Lat Pulldown", "sets": "1", "reps": "5-10", "rir": "0"},
+            {"name": "Seated Machine OHP", "sets": "1", "reps": "5-10", "rir": "0"},
+            {"name": "SA Preacher Cable Curls", "sets": "2", "reps": "5-10", "rir": "0"},
+            {"name": "Dip Machine", "sets": "1", "reps": "5-10", "rir": "0"}
+          ]
+        },
+        {
+          "name": "Lower B",
+          "day": "Fri",
+          "totalSets": 10,
+          "exercises": [
+            {"name": "Leg Press", "sets": "1", "reps": "6-15", "rir": "0"},
+            {"name": "Leg Extensions", "sets": "2", "reps": "6-15", "rir": "0"},
+            {"name": "Seated Leg Curls", "sets": "1", "reps": "5-10", "rir": "0"},
+            {"name": "Barbell RDLs", "sets": "1", "reps": "5-10", "rir": "1"},
+            {"name": "Calf Press on Leg Press", "sets": "2", "reps": "4-8", "rir": "RPE 10"},
+            {"name": "Smith Glute Bridges", "sets": "1", "reps": "6-15", "rir": "0"},
+            {"name": "Ab Crunch Machine", "sets": "2", "reps": "5-10", "rir": "0"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "logan-quad-builder",
+      "name": "Quad Builder — Dean's Exact Lower Days",
+      "coach": "Dean Turner",
+      "source": "logan-pages",
+      "frequency": "Lower only",
+      "daysPerWeek": 2,
+      "hasFullPrescriptions": true,
+      "badge": "red",
+      "sessions": [
+        {
+          "name": "Lower A",
+          "day": "Sat",
+          "totalSets": 9,
+          "exercises": [
+            {"name": "Leg Press", "sets": "2", "reps": "6-10", "rir": "1, 0", "notes": "Ramp: 1st set 1 RIR, 2nd to failure"},
+            {"name": "Leg Extensions", "sets": "2", "reps": "8-15", "rir": "0"},
+            {"name": "Seated Leg Curls", "sets": "1", "reps": "6-10", "rir": "0"},
+            {"name": "Trap Bar RDLs", "sets": "1", "reps": "6-10", "rir": "1-2", "notes": "Only exercise NOT to failure"},
+            {"name": "Standing Calf Raises", "sets": "2", "reps": "1-6", "rir": "0", "notes": "8s stretched holds between reps"},
+            {"name": "Smith Glute Bridges", "sets": "1", "reps": "8-15", "rir": "0"}
+          ]
+        },
+        {
+          "name": "Lower B",
+          "day": "Tue",
+          "totalSets": 10,
+          "exercises": [
+            {"name": "Reverse Band Smith Squats", "sets": "2", "reps": "6-10+", "rir": "1, 0", "notes": "Feet forward, ramp approach"},
+            {"name": "Leg Extensions", "sets": "1", "reps": "8-15", "rir": "0"},
+            {"name": "Seated Leg Curls", "sets": "3", "reps": "6-10", "rir": "0"},
+            {"name": "Adduction Machine", "sets": "2", "reps": "6-10", "rir": "0"},
+            {"name": "Standing Calf Raises", "sets": "2", "reps": "1-6", "rir": "0", "notes": "8s stretched holds, max hold to finish"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "logan-mar-2026-current",
+      "name": "Dean's Current Program (Mar 2026)",
+      "coach": "Dean Turner",
+      "source": "logan-pages",
+      "frequency": "Upper/Lower",
+      "daysPerWeek": 4,
+      "hasFullPrescriptions": true,
+      "badge": "purple",
+      "sessions": [
+        {
+          "name": "Upper A",
+          "totalSets": 16,
+          "exercises": [
+            {"name": "Supine Plate Loaded Chest Press", "sets": "2", "reps": "5-7", "rir": "~1"},
+            {"name": "Chest Supported T-Bar Row (flared)", "sets": "2", "reps": "5-8", "rir": "~1"},
+            {"name": "Plate Loaded Incline Machine Press", "sets": "2", "reps": "5-8", "rir": "~1"},
+            {"name": "SA Lat Pulldown", "sets": "2", "reps": "6-10", "rir": "~1"},
+            {"name": "Cuffed SA Cable Lateral Raises", "sets": "2", "reps": "6-10", "rir": "~1"},
+            {"name": "Seated BTB Cable Curls", "sets": "2", "reps": "6-10", "rir": "~1"},
+            {"name": "Overhead Tricep Extension Machine", "sets": "2", "reps": "6-10", "rir": "~1"},
+            {"name": "DB Hammer Curls (arm support)", "sets": "2", "reps": "6-10", "rir": "~1"}
+          ]
+        },
+        {
+          "name": "Lower A",
+          "totalSets": 14,
+          "exercises": [
+            {"name": "Pendulum Squats / Leg Press", "sets": "2", "reps": "5-10", "rir": "~1"},
+            {"name": "Seated Leg Curls", "sets": "2", "reps": "6-10", "rir": "~1"},
+            {"name": "Leg Extensions", "sets": "2", "reps": "6-10", "rir": "~1"},
+            {"name": "Plate Stack 45 Degree Extensions", "sets": "2", "reps": "5-10", "rir": "~1"},
+            {"name": "Adduction Machine", "sets": "2", "reps": "6-10", "rir": "~1"},
+            {"name": "Calf Press", "sets": "2", "reps": "5-8", "rir": "~1"},
+            {"name": "Ab Crunch Machine", "sets": "2", "reps": "5-10", "rir": "~1"}
+          ]
+        },
+        {
+          "name": "Upper B",
+          "totalSets": 16,
+          "exercises": [
+            {"name": "Seated Plate Loaded Chest Press", "sets": "2", "reps": "5-7", "rir": "~1"},
+            {"name": "Wide Grip Lat Pulldown", "sets": "2", "reps": "6-10", "rir": "~1"},
+            {"name": "Plate Loaded Incline Machine Press", "sets": "2", "reps": "5-8", "rir": "~1"},
+            {"name": "Chest Supported Machine Row (tucked)", "sets": "2", "reps": "5-8", "rir": "~1"},
+            {"name": "Seated Pin Loaded Machine OHP", "sets": "2", "reps": "5-10", "rir": "~1"},
+            {"name": "SA Preacher Cable Curls", "sets": "2", "reps": "6-10", "rir": "~1"},
+            {"name": "Overhead Tricep Extension Machine", "sets": "2", "reps": "6-10", "rir": "~1"},
+            {"name": "DB Hammer Curls (arm support)", "sets": "2", "reps": "6-10", "rir": "~1"}
+          ]
+        },
+        {
+          "name": "Lower B",
+          "totalSets": 15,
+          "exercises": [
+            {"name": "Pendulum Squats / Leg Press", "sets": "2", "reps": "5-10", "rir": "~1"},
+            {"name": "Seated Leg Curls", "sets": "2", "reps": "6-10", "rir": "~1"},
+            {"name": "Leg Extensions", "sets": "2", "reps": "6-10", "rir": "~1"},
+            {"name": "Plate Stack 45 Degree Extensions", "sets": "2", "reps": "5-10", "rir": "~1"},
+            {"name": "Adduction Machine", "sets": "2", "reps": "6-10", "rir": "~1"},
+            {"name": "Calf Press", "sets": "2", "reps": "5-8", "rir": "~1"},
+            {"name": "Ab Crunch Machine", "sets": "2", "reps": "5-10", "rir": "~1"},
+            {"name": "Hip Thrusts Machine", "sets": "1", "reps": "5-8", "rir": "~1"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "logan-home-gym-3x",
+      "name": "Home Gym 3x/Week (Rotating U/L)",
+      "coach": "Dean Turner",
+      "source": "logan-pages",
+      "frequency": "Rotating U/L",
+      "daysPerWeek": 3,
+      "hasFullPrescriptions": true,
+      "badge": "green",
+      "sessions": [
+        {
+          "name": "Upper A",
+          "totalSets": 19,
+          "exercises": [
+            {"name": "Flat BB Bench Press", "sets": "3", "reps": "5-10", "rir": "~1"},
+            {"name": "Wide Grip Pull-Ups", "sets": "3", "reps": "5-10", "rir": "~1"},
+            {"name": "Incline DB Press", "sets": "2", "reps": "5-10", "rir": "~1"},
+            {"name": "Chest Supported DB Row (pronated)", "sets": "2", "reps": "5-10", "rir": "~1"},
+            {"name": "Seated DB OHP", "sets": "3", "reps": "5-10", "rir": "~1"},
+            {"name": "Seated DB Curls", "sets": "3", "reps": "5-10", "rir": "~1"},
+            {"name": "SA Banded Tricep Pushdowns", "sets": "3", "reps": "5-10", "rir": "~1"}
+          ]
+        },
+        {
+          "name": "Lower A",
+          "totalSets": 14,
+          "exercises": [
+            {"name": "Barbell Squats", "sets": "3", "reps": "5-10", "rir": "~1"},
+            {"name": "Leg Extensions", "sets": "3", "reps": "5-10", "rir": "~1"},
+            {"name": "Seated/Lying Leg Curls", "sets": "3", "reps": "5-10", "rir": "~1"},
+            {"name": "Barbell Glute Bridges", "sets": "2", "reps": "5-10", "rir": "~1"},
+            {"name": "SL DB Standing Calf Raises", "sets": "3", "reps": "5-10", "rir": "~1"}
+          ]
+        },
+        {
+          "name": "Upper B",
+          "totalSets": 18,
+          "exercises": [
+            {"name": "Incline DB Bench Press", "sets": "3", "reps": "5-10", "rir": "~1"},
+            {"name": "Chest Supported DB Rows (neutral)", "sets": "3", "reps": "5-10", "rir": "~1"},
+            {"name": "Flat BB Bench Press", "sets": "2", "reps": "5-10", "rir": "~1"},
+            {"name": "Wide Grip Pull-Ups", "sets": "2", "reps": "5-10", "rir": "~1"},
+            {"name": "Standing DB Lateral Raises", "sets": "3", "reps": "5-10", "rir": "~1"},
+            {"name": "Seated DB Hammer Curls", "sets": "3", "reps": "5-10", "rir": "~1"},
+            {"name": "Overhead Tricep Extensions", "sets": "2", "reps": "5-10", "rir": "~1"}
+          ]
+        },
+        {
+          "name": "Lower B",
+          "totalSets": 15,
+          "exercises": [
+            {"name": "Barbell SLDLs", "sets": "2", "reps": "5-10", "rir": "~1"},
+            {"name": "DB Bulgarian Split Squats", "sets": "3", "reps": "5-10", "rir": "~1"},
+            {"name": "Seated/Lying Leg Curls", "sets": "2", "reps": "5-10", "rir": "~1"},
+            {"name": "Leg Extensions", "sets": "2", "reps": "5-10", "rir": "~1"},
+            {"name": "Weighted Floor Crunches", "sets": "3", "reps": "5-10", "rir": "~1"},
+            {"name": "SL DB Standing Calf Raises", "sets": "3", "reps": "5-10", "rir": "~1"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "th-mens-4x-gym-ul-1714564058",
+      "name": "Men's 4x Gym U/L",
+      "coach": "Dean Turner",
+      "source": "trainheroic",
+      "trainheroicId": "1714564058",
+      "frequency": "Upper/Lower",
+      "daysPerWeek": 4,
+      "hasFullPrescriptions": false,
+      "paywalled": true,
+      "sessions": [
+        {
+          "name": "Upper A",
+          "exercises": [
+            {"name": "Sternal Pecs Machine Press"},
+            {"name": "Wide Grip Lat Pull-Down"},
+            {"name": "Seated Machine OHP"},
+            {"name": "CS Neutral Rows"},
+            {"name": "SA Tricep Push-Down"},
+            {"name": "Seated DB Curls (support supinated)"}
+          ]
+        },
+        {
+          "name": "Lower A",
+          "exercises": [
+            {"name": "Leg Ext"},
+            {"name": "Hack or Pendulum"},
+            {"name": "Seated Curl"},
+            {"name": "Glute Bridges"},
+            {"name": "Calf Press"}
+          ]
+        },
+        {
+          "name": "Upper B",
+          "exercises": [
+            {"name": "Clavicular Pecs Press"},
+            {"name": "SA Cable Lat Row"},
+            {"name": "SA Cable Lateral (wrist)"},
+            {"name": "CS Plate Loaded Pronated Rows"},
+            {"name": "Dip Machine"},
+            {"name": "BTB Cable Curls (seated if possible)"}
+          ]
+        },
+        {
+          "name": "Lower B",
+          "exercises": [
+            {"name": "RDLs"},
+            {"name": "45 Leg Press"},
+            {"name": "Calf Press"},
+            {"name": "Adduction"},
+            {"name": "Ab Crunch"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "th-mens-3x-ul-rotation-1715288580",
+      "name": "Men's 3x U/L Rotation",
+      "coach": "Dean Turner",
+      "source": "trainheroic",
+      "trainheroicId": "1715288580",
+      "frequency": "U/L Rotating",
+      "daysPerWeek": 3,
+      "hasFullPrescriptions": false,
+      "paywalled": true,
+      "sessions": [
+        {
+          "name": "Upper A",
+          "exercises": [
+            {"name": "Sternal Pecs Machine Press"},
+            {"name": "Wide Grip Lat Pull-Down"},
+            {"name": "Seated Machine OHP"},
+            {"name": "CS Neutral Rows"},
+            {"name": "SA Tricep Push-Down"},
+            {"name": "Seated DB Curls (support supinated)"}
+          ]
+        },
+        {
+          "name": "Lower A",
+          "exercises": [
+            {"name": "Leg Ext"},
+            {"name": "Hack or Pendulum"},
+            {"name": "Seated Curl"},
+            {"name": "Glute Bridges"},
+            {"name": "Calf Press"}
+          ]
+        },
+        {
+          "name": "Upper B",
+          "exercises": [
+            {"name": "Clavicular Pecs Press"},
+            {"name": "SA Cable Lat Row"},
+            {"name": "SA Cable Lateral (wrist)"},
+            {"name": "CS Plate Loaded Pronated Rows"},
+            {"name": "Dip Machine"},
+            {"name": "BTB Cable Curls (seated if possible)"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "th-mens-5x-ulppl-1714613282",
+      "name": "Men's 5x U/L/P/P/L",
+      "coach": "Dean Turner",
+      "source": "trainheroic",
+      "trainheroicId": "1714613282",
+      "frequency": "U/L/Push/Pull/L",
+      "daysPerWeek": 5,
+      "hasFullPrescriptions": false,
+      "paywalled": true,
+      "sessions": [
+        {
+          "name": "Upper",
+          "exercises": [
+            {"name": "Sternal Press"},
+            {"name": "Low-to-High Cable Fly"},
+            {"name": "Wide Pulldown"},
+            {"name": "Seated OHP"},
+            {"name": "CS Neutral Row"},
+            {"name": "SA Tricep PD"},
+            {"name": "Seated DB Curls"}
+          ]
+        },
+        {
+          "name": "Lower A",
+          "exercises": [
+            {"name": "Leg Ext"},
+            {"name": "Hack/Pendulum"},
+            {"name": "Seated Curl"},
+            {"name": "Glute Bridges"},
+            {"name": "Calf"}
+          ]
+        },
+        {
+          "name": "Pull",
+          "exercises": [
+            {"name": "SA Cable Lat Row"},
+            {"name": "CS Plate Pronated"},
+            {"name": "Wide Pulldown"},
+            {"name": "Rear Delt Fly"},
+            {"name": "SA Preacher Cable Curl"},
+            {"name": "BTB Curls"}
+          ]
+        },
+        {
+          "name": "Push",
+          "exercises": [
+            {"name": "Clavicular Press"},
+            {"name": "Seated Machine Flys"},
+            {"name": "Seated OHP"},
+            {"name": "SA Cable Lateral (wrist)"},
+            {"name": "Dip Machine"},
+            {"name": "SA Tricep PD"}
+          ]
+        },
+        {
+          "name": "Lower B",
+          "exercises": [
+            {"name": "RDLs"},
+            {"name": "45 Leg Press"},
+            {"name": "Calf"},
+            {"name": "Adduction"},
+            {"name": "Ab Crunch"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "th-womens-3x-glute-ul-1723657450",
+      "name": "Women's 3x Glute U/L",
+      "coach": "Dean Turner",
+      "source": "trainheroic",
+      "trainheroicId": "1723657450",
+      "frequency": "U/L Rotating",
+      "daysPerWeek": 3,
+      "hasFullPrescriptions": false,
+      "paywalled": true,
+      "sessions": [
+        {
+          "name": "Upper A",
+          "exercises": [
+            {"name": "Wide Pulldown"},
+            {"name": "SA Cable Lateral (wrist)"},
+            {"name": "SA DB Neutral Row"},
+            {"name": "Sternal Press"},
+            {"name": "Seated DB Curls"},
+            {"name": "SA Tricep PD"}
+          ]
+        },
+        {
+          "name": "Lower A",
+          "exercises": [
+            {"name": "Glute Bridges"},
+            {"name": "RDLs"},
+            {"name": "ABduction"},
+            {"name": "ADduction"},
+            {"name": "Hack/Pendulum"},
+            {"name": "Seated Curl"}
+          ]
+        },
+        {
+          "name": "Upper B",
+          "exercises": [
+            {"name": "SA Cable Lat Row"},
+            {"name": "Seated OHP"},
+            {"name": "Seated Cable Pronated Row"},
+            {"name": "SA Cable Lateral (lowest)"},
+            {"name": "BTB Curls"},
+            {"name": "Dip Machine"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "th-womens-4x-glute-1715196432",
+      "name": "Women's 4x Glute",
+      "coach": "Dean Turner",
+      "source": "trainheroic",
+      "trainheroicId": "1715196432",
+      "frequency": "Upper/Lower",
+      "daysPerWeek": 4,
+      "hasFullPrescriptions": false,
+      "paywalled": true,
+      "sessions": [
+        {
+          "name": "Upper A",
+          "exercises": [
+            {"name": "Wide Pulldown"},
+            {"name": "SA Cable Lateral (wrist)"},
+            {"name": "SA DB Neutral Row"},
+            {"name": "Sternal Press"},
+            {"name": "Seated DB Curls"},
+            {"name": "SA Tricep PD"}
+          ]
+        },
+        {
+          "name": "Lower A",
+          "exercises": [
+            {"name": "Glute Bridges"},
+            {"name": "RDLs"},
+            {"name": "ABduction"},
+            {"name": "ADduction"},
+            {"name": "Hack/Pendulum"},
+            {"name": "Seated Curl"}
+          ]
+        },
+        {
+          "name": "Upper B",
+          "exercises": [
+            {"name": "SA Cable Lat Row"},
+            {"name": "Seated OHP"},
+            {"name": "Seated Cable Pronated Row"},
+            {"name": "SA Cable Lateral (lowest)"},
+            {"name": "BTB Curls"},
+            {"name": "Dip Machine"}
+          ]
+        },
+        {
+          "name": "Lower B",
+          "exercises": [
+            {"name": "Glute Bridges"},
+            {"name": "45 Ext"},
+            {"name": "45 Leg Press"},
+            {"name": "Leg Ext"},
+            {"name": "Ab Crunch"},
+            {"name": "Calf"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "th-mens-4x-home-1728561452",
+      "name": "Men's 4x HOME",
+      "coach": "Dean Turner",
+      "source": "trainheroic",
+      "trainheroicId": "1728561452",
+      "frequency": "Upper/Lower",
+      "daysPerWeek": 4,
+      "hasFullPrescriptions": false,
+      "paywalled": true,
+      "sessions": [
+        {
+          "name": "Upper A",
+          "exercises": [
+            {"name": "Flat BB Bench"},
+            {"name": "WG Pull-Ups"},
+            {"name": "Seated DB OHP"},
+            {"name": "CS DB Pronated Row"},
+            {"name": "SA Banded Tricep PD"},
+            {"name": "Seated DB Curls"}
+          ]
+        },
+        {
+          "name": "Lower A",
+          "exercises": [
+            {"name": "Reverse Nordics"},
+            {"name": "Heels-Elevated HB Squat"},
+            {"name": "Nordics"},
+            {"name": "Glute Bridges"},
+            {"name": "SL DB Calf"}
+          ]
+        },
+        {
+          "name": "Upper B",
+          "exercises": [
+            {"name": "Incline DB"},
+            {"name": "CS DB Neutral Row"},
+            {"name": "SA lengthened DB laterals"},
+            {"name": "WG Pull-Ups"},
+            {"name": "Dips"},
+            {"name": "SA Preacher DB"}
+          ]
+        },
+        {
+          "name": "Lower B",
+          "exercises": [
+            {"name": "BB SLDL"},
+            {"name": "SL DB BSS"},
+            {"name": "Copenhagen"},
+            {"name": "Floor Crunch"},
+            {"name": "SL DB Calf"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "th-womens-4x-home-1728994782",
+      "name": "Women's 4x HOME",
+      "coach": "Dean Turner",
+      "source": "trainheroic",
+      "trainheroicId": "1728994782",
+      "frequency": "Lower/Upper/Lower/Upper",
+      "daysPerWeek": 4,
+      "hasFullPrescriptions": false,
+      "paywalled": true,
+      "sessions": [
+        {"name": "Lower A", "exercises": []},
+        {"name": "Upper A", "exercises": []},
+        {"name": "Lower B", "exercises": []},
+        {"name": "Upper B", "exercises": []}
+      ]
+    },
+    {
+      "id": "th-3x-fb-1727797049",
+      "name": "3x Full Body",
+      "coach": "Dean Turner",
+      "source": "trainheroic",
+      "trainheroicId": "1727797049",
+      "frequency": "Full Body A/B/C",
+      "daysPerWeek": 3,
+      "hasFullPrescriptions": false,
+      "paywalled": true,
+      "sessions": [
+        {"name": "Full Body A", "exercises": []},
+        {"name": "Full Body B", "exercises": []},
+        {"name": "Full Body C", "exercises": []}
+      ]
+    },
+    {
+      "id": "th-4x-fb-fb-u-l-1728336894",
+      "name": "4x FB/FB/U/L",
+      "coach": "Dean Turner",
+      "source": "trainheroic",
+      "trainheroicId": "1728336894",
+      "frequency": "FB/FB/Upper/Lower",
+      "daysPerWeek": 4,
+      "hasFullPrescriptions": false,
+      "paywalled": true,
+      "sessions": [
+        {"name": "Full Body A", "exercises": []},
+        {"name": "Full Body B", "exercises": []},
+        {"name": "Upper", "exercises": []},
+        {"name": "Lower", "exercises": []}
+      ]
+    },
+    {
+      "id": "th-womens-5x-ulppl-1723763155",
+      "name": "Women's 5x U/L/P/P/L",
+      "coach": "Dean Turner",
+      "source": "trainheroic",
+      "trainheroicId": "1723763155",
+      "frequency": "U/L/Push/Pull/L",
+      "daysPerWeek": 5,
+      "hasFullPrescriptions": false,
+      "paywalled": true,
+      "sessions": [
+        {"name": "Upper", "exercises": []},
+        {"name": "Lower A", "exercises": []},
+        {"name": "Push", "exercises": []},
+        {"name": "Pull", "exercises": []},
+        {"name": "Lower B", "exercises": []}
+      ]
+    },
+    {
+      "id": "th-mens-4x-pf-1740433669",
+      "name": "Men's 4x Planet Fitness",
+      "coach": "Dean Turner",
+      "source": "trainheroic",
+      "trainheroicId": "1740433669",
+      "frequency": "Upper/Lower",
+      "daysPerWeek": 4,
+      "hasFullPrescriptions": false,
+      "paywalled": true,
+      "sessions": [
+        {
+          "name": "Upper A",
+          "exercises": [
+            {"name": "Sternal"},
+            {"name": "WG Pulldown"},
+            {"name": "Clavicular"},
+            {"name": "CS Neutral Row"},
+            {"name": "Seated OHP"},
+            {"name": "Seated DB Curls"},
+            {"name": "SA Tricep PD"}
+          ]
+        },
+        {
+          "name": "Lower A",
+          "exercises": [
+            {"name": "Leg Ext"},
+            {"name": "Seated Curl"},
+            {"name": "Heels-elevated feet-forward Smith squat"},
+            {"name": "45 Ext"},
+            {"name": "ADduction"},
+            {"name": "Calf"},
+            {"name": "Ab"}
+          ]
+        },
+        {
+          "name": "Upper B",
+          "exercises": [
+            {"name": "Clavicular"},
+            {"name": "CS Pronated Row"},
+            {"name": "Sternal"},
+            {"name": "SA Lat PD"},
+            {"name": "SA Cable Lateral (wrist)"},
+            {"name": "Dip"},
+            {"name": "Seated Hammer"}
+          ]
+        },
+        {
+          "name": "Lower B",
+          "exercises": [
+            {"name": "Seated Curl"},
+            {"name": "Leg Ext"},
+            {"name": "45 Ext"},
+            {"name": "45 Press"},
+            {"name": "Calf"},
+            {"name": "Smith Glute Bridge"},
+            {"name": "Ab"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "th-womens-4x-pf-1740493382",
+      "name": "Women's 4x Planet Fitness",
+      "coach": "Dean Turner",
+      "source": "trainheroic",
+      "trainheroicId": "1740493382",
+      "frequency": "Upper/Lower",
+      "daysPerWeek": 4,
+      "hasFullPrescriptions": false,
+      "paywalled": true,
+      "sessions": [
+        {"name": "Upper A", "exercises": []},
+        {"name": "Lower A", "exercises": []},
+        {"name": "Upper B", "exercises": []},
+        {"name": "Lower B", "exercises": []}
+      ]
+    },
+    {
+      "id": "th-3x-ull-mislabeled-1741201655",
+      "name": "3x Upper/Lower/Lower (actually UA/L/UB)",
+      "coach": "Dean Turner",
+      "source": "trainheroic",
+      "trainheroicId": "1741201655",
+      "frequency": "UA / Lower / UB",
+      "daysPerWeek": 3,
+      "hasFullPrescriptions": false,
+      "paywalled": true,
+      "notes": "Titled Upper/Lower/Lower but actually UA / Lower / UB",
+      "sessions": [
+        {"name": "Upper A", "exercises": []},
+        {"name": "Lower", "exercises": []},
+        {"name": "Upper B", "exercises": []}
+      ]
+    },
+    {
+      "id": "th-chest-focused-4x-1727124074",
+      "name": "Chest Focused 4x",
+      "coach": "Dean Turner",
+      "source": "trainheroic",
+      "trainheroicId": "1727124074",
+      "frequency": "Body Part Focus",
+      "daysPerWeek": 4,
+      "hasFullPrescriptions": false,
+      "paywalled": true,
+      "sessions": []
+    },
+    {
+      "id": "th-shoulder-focused-4x-1726744960",
+      "name": "Shoulder Focused 4x",
+      "coach": "Dean Turner",
+      "source": "trainheroic",
+      "trainheroicId": "1726744960",
+      "frequency": "Body Part Focus",
+      "daysPerWeek": 4,
+      "hasFullPrescriptions": false,
+      "paywalled": true,
+      "sessions": []
+    },
+    {
+      "id": "th-arms-focused-4x-1726679455",
+      "name": "Arms Focused 4x",
+      "coach": "Dean Turner",
+      "source": "trainheroic",
+      "trainheroicId": "1726679455",
+      "frequency": "Body Part Focus",
+      "daysPerWeek": 4,
+      "hasFullPrescriptions": false,
+      "paywalled": true,
+      "sessions": []
+    },
+    {
+      "id": "th-back-focused-4x-1740600696",
+      "name": "Back Focused 4x",
+      "coach": "Dean Turner",
+      "source": "trainheroic",
+      "trainheroicId": "1740600696",
+      "frequency": "Body Part Focus",
+      "daysPerWeek": 4,
+      "hasFullPrescriptions": false,
+      "paywalled": true,
+      "sessions": []
+    },
+    {
+      "id": "th-10day-ppl-ab-1742250886",
+      "name": "10-day PPL A/B",
+      "coach": "Dean Turner",
+      "source": "trainheroic",
+      "trainheroicId": "1742250886",
+      "frequency": "Push/Pull/Legs A/B",
+      "daysPerWeek": 5,
+      "hasFullPrescriptions": false,
+      "paywalled": true,
+      "notes": "Week 1 = PushA PullA LowerA PushB PullB (no Lower B)",
+      "sessions": [
+        {"name": "Push A", "exercises": []},
+        {"name": "Pull A", "exercises": []},
+        {"name": "Lower A", "exercises": []},
+        {"name": "Push B", "exercises": []},
+        {"name": "Pull B", "exercises": []}
+      ]
+    },
+    {
+      "id": "th-4x-ulpp-hybrid-1748301295",
+      "name": "4x U/L/Push/Pull (Hybrid)",
+      "coach": "Dean Turner",
+      "source": "trainheroic",
+      "trainheroicId": "1748301295",
+      "frequency": "U/L/Push/Pull",
+      "daysPerWeek": 4,
+      "hasFullPrescriptions": false,
+      "paywalled": true,
+      "sessions": [
+        {
+          "name": "Upper",
+          "exercises": [
+            {"name": "Clavicular"},
+            {"name": "WG Pulldown"},
+            {"name": "Sternal"},
+            {"name": "CS Pronated Row"},
+            {"name": "Seated OHP"},
+            {"name": "Seated DB Curls"},
+            {"name": "Dip"},
+            {"name": "Ab"}
+          ]
+        },
+        {
+          "name": "Lower",
+          "exercises": [
+            {"name": "Leg Ext"},
+            {"name": "Seated Curl"},
+            {"name": "Hack/Pendulum"},
+            {"name": "45 Ext"},
+            {"name": "ADduction"},
+            {"name": "Smith Glute Bridge"},
+            {"name": "Calf"}
+          ]
+        },
+        {
+          "name": "Push",
+          "exercises": [
+            {"name": "Sternal"},
+            {"name": "Low-to-High Cable Fly"},
+            {"name": "Pec Fly"},
+            {"name": "SA Cable Lateral"},
+            {"name": "Seated OHP"},
+            {"name": "SA Tricep PD"},
+            {"name": "Dip"},
+            {"name": "Ab"}
+          ]
+        },
+        {
+          "name": "Pull",
+          "exercises": [
+            {"name": "CS Pronated"},
+            {"name": "SA Cable Lat PD"},
+            {"name": "CS Neutral"},
+            {"name": "WG Pulldown"},
+            {"name": "Rear Delt Fly"},
+            {"name": "SA Preacher Cable Curl"},
+            {"name": "Seated Hammer (support)"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "th-team-block5-sample",
+      "name": "Team Block #5 Sample",
+      "coach": "Dean Turner",
+      "source": "trainheroic",
+      "trainheroicId": "team-block-5",
+      "frequency": "Upper/Lower",
+      "daysPerWeek": 4,
+      "hasFullPrescriptions": false,
+      "paywalled": true,
+      "sessions": [
+        {
+          "name": "W1 Upper A",
+          "exercises": [
+            {"name": "Incline Converging Press"},
+            {"name": "SA Lat PD"},
+            {"name": "SA Cable Lateral (wrist)"},
+            {"name": "CS Pronated Row"},
+            {"name": "Dip"},
+            {"name": "Seated Hammer"},
+            {"name": "Kelso Shrugs"}
+          ]
+        },
+        {
+          "name": "W1 Lower A",
+          "exercises": [
+            {"name": "Hack/Pendulum"},
+            {"name": "Leg Ext"},
+            {"name": "Seated Curl"},
+            {"name": "Glute Bridges"},
+            {"name": "Calf"},
+            {"name": "Ab"}
+          ]
+        },
+        {
+          "name": "W1 Upper B",
+          "exercises": [
+            {"name": "Flat Converging Press"},
+            {"name": "CS Neutral Row"},
+            {"name": "Seated OHP"},
+            {"name": "Lat PD"},
+            {"name": "SA Cable Tricep PD"},
+            {"name": "SA Preacher Cable Curl"},
+            {"name": "CS Y Raises"}
+          ]
+        },
+        {
+          "name": "W1 Lower B",
+          "exercises": [
+            {"name": "BB SLDL"},
+            {"name": "Lying Curl"},
+            {"name": "Leg Press"},
+            {"name": "Adduction"},
+            {"name": "Standing Calf"},
+            {"name": "Pallof"}
+          ]
+        }
+      ]
+    }
+  ],
+  "defaultCompare": ["francis-ul-whiteboard", "logan-standard-upper-lower-4x-week", "logan-apr-2026-current"]
+}
