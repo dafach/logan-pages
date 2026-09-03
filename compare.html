@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Program Comparison — Francis vs Dean</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; padding: 16px; max-width: 1200px; margin: 0 auto; -webkit-font-smoothing: antialiased; }
+  h1 { text-align: center; font-size: 1.5em; margin-bottom: 6px; color: #fff; }
+  .subtitle { text-align: center; color: #888; margin-bottom: 20px; font-size: 0.85em; line-height: 1.4; }
+  .subtitle a { color: #6b8bff; text-decoration: none; }
+  .subtitle a:hover { text-decoration: underline; }
+  
+  .doctrine-strip { background: #161616; border: 1px solid #2a2a2a; border-radius: 10px; padding: 12px 16px; margin-bottom: 16px; display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: center; }
+  .doctrine-item { font-size: 0.78em; color: #999; }
+  .doctrine-item strong { color: #ccc; }
+  .doctrine-item .francis { color: #ff9f6b; }
+  .doctrine-item .dean { color: #6b8bff; }
+  
+  .controls { background: #161616; border: 1px solid #2a2a2a; border-radius: 10px; padding: 14px 16px; margin-bottom: 16px; }
+  .controls-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 10px; }
+  .controls-row:last-child { margin-bottom: 0; }
+  .controls label { font-size: 0.8em; color: #888; }
+  .controls select, .controls input { background: #0a0a0a; border: 1px solid #333; border-radius: 6px; padding: 8px 10px; color: #e0e0e0; font-size: 0.85em; }
+  .controls select { min-width: 180px; max-width: 100%; }
+  .controls input[type="text"] { flex: 1; min-width: 150px; }
+  .btn { background: #1a1a2d; border: 1px solid #3a3a5a; border-radius: 6px; padding: 8px 14px; color: #6b8bff; font-size: 0.8em; cursor: pointer; transition: background 0.2s; }
+  .btn:hover { background: #252540; }
+  .btn.active { background: #2a2a4d; border-color: #6b8bff; }
+  .btn-small { padding: 5px 10px; font-size: 0.75em; }
+  
+  .share-link { background: #0a0a0a; border: 1px solid #333; border-radius: 6px; padding: 8px 10px; color: #6b8bff; font-size: 0.75em; word-break: break-all; margin-top: 10px; display: none; }
+  .share-link.show { display: block; }
+  
+  .compare-grid { display: grid; gap: 12px; margin-bottom: 20px; }
+  .compare-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+  .compare-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+  
+  .program-col { background: #161616; border: 1px solid #2a2a2a; border-radius: 10px; overflow: hidden; }
+  .program-header { padding: 12px 14px; border-bottom: 1px solid #2a2a2a; position: sticky; top: 0; background: #161616; z-index: 10; }
+  .program-header h3 { font-size: 0.9em; color: #fff; margin-bottom: 4px; }
+  .program-meta { font-size: 0.72em; color: #666; }
+  .program-meta .coach { color: #888; }
+  .program-meta .freq { color: #6b8bff; margin-left: 8px; }
+  
+  .badge { display: inline-block; font-size: 0.65em; padding: 3px 8px; border-radius: 12px; font-weight: 600; margin-left: 6px; vertical-align: middle; }
+  .badge.paywalled { background: #2d1a1a; color: #ff6b6b; }
+  .badge.full { background: #1a2d1a; color: #6bff6b; }
+  .badge.francis { background: #2d221a; color: #ff9f6b; }
+  .badge.blue { background: #1a1a2d; color: #6b8bff; }
+  .badge.green { background: #1a2d1a; color: #6bff6b; }
+  .badge.purple { background: #231a2d; color: #b08bff; }
+  .badge.yellow { background: #2d2d1a; color: #ffd96b; }
+  .badge.orange { background: #2d221a; color: #ffaa6b; }
+  .badge.red { background: #2d1a1a; color: #ff6b6b; }
+  .badge.teal { background: #1a2d2d; color: #6bffdd; }
+  .badge.pink { background: #2d1a28; color: #ff8bcc; }
+  
+  .session { border-bottom: 1px solid #1a1a1a; }
+  .session:last-child { border-bottom: none; }
+  .session-header { padding: 10px 14px; background: #121212; display: flex; justify-content: space-between; align-items: center; }
+  .session-name { font-size: 0.82em; font-weight: 600; color: #ccc; }
+  .session-day { font-size: 0.7em; color: #555; }
+  .session-sets { font-size: 0.7em; color: #ffd96b; }
+  
+  .exercise-list { padding: 8px 14px 12px; }
+  .exercise { display: flex; justify-content: space-between; align-items: flex-start; padding: 5px 0; border-bottom: 1px solid #1a1a1a; gap: 8px; }
+  .exercise:last-child { border-bottom: none; }
+  .exercise-name { font-size: 0.78em; color: #ccc; flex: 1; }
+  .exercise-prescription { font-size: 0.72em; color: #888; text-align: right; white-space: nowrap; }
+  .exercise-prescription .sets { color: #6b8bff; }
+  .exercise-prescription .reps { color: #6bff6b; }
+  .exercise-prescription .rir { color: #ffd96b; }
+  .exercise-notes { font-size: 0.68em; color: #555; font-style: italic; display: block; margin-top: 2px; }
+  
+  .names-only-notice { font-size: 0.7em; color: #ff6b6b; padding: 8px 14px; background: #1a1212; text-align: center; }
+  
+  .library { background: #161616; border: 1px solid #2a2a2a; border-radius: 10px; margin-top: 20px; overflow: hidden; }
+  .library-header { padding: 14px 16px; border-bottom: 1px solid #2a2a2a; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+  .library-header h2 { font-size: 1em; color: #fff; }
+  .library-filters { display: flex; gap: 8px; flex-wrap: wrap; }
+  .filter-btn { background: #0a0a0a; border: 1px solid #333; border-radius: 20px; padding: 5px 12px; font-size: 0.72em; color: #888; cursor: pointer; transition: all 0.2s; }
+  .filter-btn:hover { border-color: #555; color: #ccc; }
+  .filter-btn.active { background: #1a1a2d; border-color: #6b8bff; color: #6b8bff; }
+  
+  .library-list { max-height: 400px; overflow-y: auto; }
+  .library-item { padding: 12px 16px; border-bottom: 1px solid #1a1a1a; display: flex; justify-content: space-between; align-items: center; gap: 10px; cursor: pointer; transition: background 0.2s; }
+  .library-item:hover { background: #1e1e1e; }
+  .library-item:last-child { border-bottom: none; }
+  .library-item.selected { background: #1a1a2d; }
+  .library-item-info { flex: 1; min-width: 0; }
+  .library-item-name { font-size: 0.85em; color: #ccc; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .library-item-meta { font-size: 0.7em; color: #555; }
+  .library-item-meta span { margin-right: 12px; }
+  .library-item-actions { display: flex; gap: 6px; flex-shrink: 0; }
+  
+  .thumbnail-link { display: inline-block; margin-top: 10px; font-size: 0.75em; color: #6b8bff; text-decoration: none; }
+  .thumbnail-link:hover { text-decoration: underline; }
+  
+  .lightbox { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.95); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
+  .lightbox.show { display: flex; }
+  .lightbox img { max-width: 100%; max-height: 90vh; border-radius: 8px; }
+  .lightbox-close { position: absolute; top: 20px; right: 20px; font-size: 2em; color: #fff; cursor: pointer; }
+  
+  .back-link { display: inline-block; margin-bottom: 16px; font-size: 0.85em; color: #6b8bff; text-decoration: none; }
+  .back-link:hover { text-decoration: underline; }
+  .back-link::before { content: '← '; }
+  
+  @media (max-width: 768px) {
+    body { padding: 12px; }
+    h1 { font-size: 1.3em; }
+    .compare-grid.cols-2, .compare-grid.cols-3 { grid-template-columns: 1fr; }
+    .program-col { margin-bottom: 8px; }
+    .doctrine-strip { flex-direction: column; gap: 8px; align-items: flex-start; }
+    .controls select { min-width: 100%; }
+    .library-item { flex-direction: column; align-items: flex-start; }
+    .library-item-actions { margin-top: 8px; width: 100%; justify-content: flex-end; }
+  }
+</style>
+</head>
+<body>
+
+<a href="index.html" class="back-link">Back to Hub</a>
+
+<h1>Program Comparison</h1>
+<p class="subtitle">Francis Melia vs Dean Turner — side by side<br>
+<a href="routines.html">View all Dean Turner routines →</a></p>
+
+<div class="doctrine-strip">
+  <div class="doctrine-item"><strong class="francis">Francis:</strong> Every set to failure, clean form</div>
+  <div class="doctrine-item"><strong class="francis">Francis:</strong> Compounds = top set + back-off</div>
+  <div class="doctrine-item"><strong class="dean">Dean:</strong> Machines, 0–1 RIR, 2 sets default</div>
+  <div class="doctrine-item"><strong class="dean">Dean:</strong> 5–10 reps, 3–5 min rest</div>
+</div>
+
+<div class="controls">
+  <div class="controls-row">
+    <label>Compare:</label>
+    <select id="slot1"></select>
+    <select id="slot2"></select>
+    <select id="slot3"></select>
+  </div>
+  <div class="controls-row">
+    <button class="btn" onclick="toggleColumns()">Toggle 2/3 Columns</button>
+    <button class="btn" onclick="generateShareLink()">Share Link</button>
+    <button class="btn" onclick="resetToDefaults()">Reset</button>
+  </div>
+  <div class="share-link" id="shareLink"></div>
+</div>
+
+<div class="compare-grid cols-3" id="compareGrid"></div>
+
+<div class="library">
+  <div class="library-header">
+    <h2>Program Library</h2>
+    <div class="library-filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="francis">Francis</button>
+      <button class="filter-btn" data-filter="dean-full">Dean (Full)</button>
+      <button class="filter-btn" data-filter="trainheroic">TrainHeroic</button>
+      <button class="filter-btn" data-filter="4x">4x/week</button>
+      <button class="filter-btn" data-filter="3x">3x/week</button>
+    </div>
+  </div>
+  <div class="library-list" id="libraryList"></div>
+</div>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close">&times;</span>
+  <img src="" alt="Francis Whiteboard" id="lightboxImg">
+</div>
+
+<script>
+let programs = [];
+let selectedPrograms = [];
+let numColumns = 3;
+let activeFilter = 'all';
+
+async function init() {
+  const response = await fetch('programs.json');
+  const data = await response.json();
+  programs = data.programs;
+  
+  const params = new URLSearchParams(window.location.search);
+  const compareParam = params.get('compare');
+  
+  if (compareParam) {
+    selectedPrograms = compareParam.split(',').slice(0, 3);
+    numColumns = selectedPrograms.length;
+  } else {
+    selectedPrograms = data.defaultCompare.slice(0, 3);
+  }
+  
+  populateSelects();
+  renderComparison();
+  renderLibrary();
+  setupFilterButtons();
+}
+
+function populateSelects() {
+  const slots = [document.getElementById('slot1'), document.getElementById('slot2'), document.getElementById('slot3')];
+  
+  slots.forEach((select, i) => {
+    select.innerHTML = '<option value="">— Select Program —</option>';
+    programs.forEach(p => {
+      const opt = document.createElement('option');
+      opt.value = p.id;
+      opt.textContent = `${p.coach === 'Francis Melia' ? '🟠' : '🔵'} ${p.name}`;
+      if (p.paywalled) opt.textContent += ' 🔒';
+      select.appendChild(opt);
+    });
+    select.value = selectedPrograms[i] || '';
+    select.onchange = () => {
+      selectedPrograms[i] = select.value;
+      renderComparison();
+    };
+  });
+  
+  updateColumnCount();
+}
+
+function updateColumnCount() {
+  const grid = document.getElementById('compareGrid');
+  grid.className = `compare-grid cols-${numColumns}`;
+  
+  const slot3 = document.getElementById('slot3');
+  slot3.style.display = numColumns === 3 ? '' : 'none';
+}
+
+function toggleColumns() {
+  numColumns = numColumns === 3 ? 2 : 3;
+  updateColumnCount();
+  renderComparison();
+}
+
+function renderComparison() {
+  const grid = document.getElementById('compareGrid');
+  grid.innerHTML = '';
+  
+  const toRender = selectedPrograms.slice(0, numColumns).filter(id => id);
+  
+  toRender.forEach(id => {
+    const program = programs.find(p => p.id === id);
+    if (!program) return;
+    
+    const col = document.createElement('div');
+    col.className = 'program-col';
+    
+    let badgeHtml = '';
+    if (program.coach === 'Francis Melia') {
+      badgeHtml = '<span class="badge francis">Francis</span>';
+    } else if (program.paywalled) {
+      badgeHtml = '<span class="badge paywalled">Paywalled</span>';
+    } else if (program.badge) {
+      badgeHtml = `<span class="badge ${program.badge}">${program.source}</span>`;
+    } else {
+      badgeHtml = '<span class="badge full">Full Rx</span>';
+    }
+    
+    col.innerHTML = `
+      <div class="program-header">
+        <h3>${program.name}${badgeHtml}</h3>
+        <div class="program-meta">
+          <span class="coach">${program.coach}</span>
+          <span class="freq">${program.frequency} • ${program.daysPerWeek}x/wk</span>
+        </div>
+        ${program.id === 'francis-ul-whiteboard' ? '<a href="#" class="thumbnail-link" onclick="openLightbox(); return false;">View whiteboard photo →</a>' : ''}
+      </div>
+      ${program.paywalled && !program.hasFullPrescriptions ? '<div class="names-only-notice">⚠️ Exercise names only — prescriptions paywalled on TrainHeroic</div>' : ''}
+      ${renderSessions(program)}
+    `;
+    
+    grid.appendChild(col);
+  });
+}
+
+function renderSessions(program) {
+  if (!program.sessions || program.sessions.length === 0) {
+    return '<div class="exercise-list" style="color:#555;font-size:0.8em;padding:20px;text-align:center;">No session data available</div>';
+  }
+  
+  return program.sessions.map(session => `
+    <div class="session">
+      <div class="session-header">
+        <span class="session-name">${session.name}</span>
+        <span>
+          ${session.day ? `<span class="session-day">${session.day}</span>` : ''}
+          ${session.totalSets ? `<span class="session-sets">${session.totalSets} sets</span>` : 
+            (session.exercises?.length ? `<span class="session-sets">${session.exercises.length} exercises</span>` : '')}
+        </span>
+      </div>
+      <div class="exercise-list">
+        ${renderExercises(session.exercises, program.hasFullPrescriptions)}
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderExercises(exercises, hasFullRx) {
+  if (!exercises || exercises.length === 0) {
+    return '<div style="color:#555;font-size:0.75em;font-style:italic;">Exercise list not available</div>';
+  }
+  
+  return exercises.map(ex => {
+    let prescription = '';
+    if (hasFullRx && (ex.sets || ex.reps)) {
+      prescription = `
+        <span class="sets">${ex.sets || ''}</span>
+        ${ex.reps ? `<span class="reps"> × ${ex.reps}</span>` : ''}
+        ${ex.rir ? `<span class="rir"> @${ex.rir}</span>` : ''}
+      `;
+    }
+    
+    return `
+      <div class="exercise">
+        <span class="exercise-name">
+          ${ex.name}
+          ${ex.notes ? `<span class="exercise-notes">${ex.notes}</span>` : ''}
+        </span>
+        ${prescription ? `<span class="exercise-prescription">${prescription}</span>` : ''}
+      </div>
+    `;
+  }).join('');
+}
+
+function renderLibrary() {
+  const list = document.getElementById('libraryList');
+  
+  const filtered = programs.filter(p => {
+    if (activeFilter === 'all') return true;
+    if (activeFilter === 'francis') return p.coach === 'Francis Melia';
+    if (activeFilter === 'dean-full') return p.coach === 'Dean Turner' && p.source === 'logan-pages';
+    if (activeFilter === 'trainheroic') return p.source === 'trainheroic';
+    if (activeFilter === '4x') return p.daysPerWeek === 4 || p.daysPerWeek === '3-4';
+    if (activeFilter === '3x') return p.daysPerWeek === 3;
+    return true;
+  });
+  
+  list.innerHTML = filtered.map(p => {
+    const isSelected = selectedPrograms.includes(p.id);
+    const coachIcon = p.coach === 'Francis Melia' ? '🟠' : '🔵';
+    const sourceLabel = p.source === 'trainheroic' ? 'TrainHeroic' : (p.source === 'logan-pages' ? 'Full Rx' : p.source);
+    
+    return `
+      <div class="library-item ${isSelected ? 'selected' : ''}" data-id="${p.id}">
+        <div class="library-item-info">
+          <div class="library-item-name">${coachIcon} ${p.name}${p.paywalled ? ' 🔒' : ''}</div>
+          <div class="library-item-meta">
+            <span>${p.coach}</span>
+            <span>${p.frequency}</span>
+            <span>${p.daysPerWeek}x/wk</span>
+            <span>${sourceLabel}</span>
+            ${p.trainheroicId ? `<span>TH#${p.trainheroicId}</span>` : ''}
+          </div>
+        </div>
+        <div class="library-item-actions">
+          <button class="btn btn-small" onclick="addToSlot('${p.id}', 0)">→ Slot 1</button>
+          <button class="btn btn-small" onclick="addToSlot('${p.id}', 1)">→ Slot 2</button>
+          <button class="btn btn-small" onclick="addToSlot('${p.id}', 2)">→ Slot 3</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function addToSlot(programId, slotIndex) {
+  selectedPrograms[slotIndex] = programId;
+  document.getElementById(`slot${slotIndex + 1}`).value = programId;
+  renderComparison();
+  renderLibrary();
+}
+
+function setupFilterButtons() {
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.onclick = () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeFilter = btn.dataset.filter;
+      renderLibrary();
+    };
+  });
+}
+
+function generateShareLink() {
+  const ids = selectedPrograms.filter(id => id).join(',');
+  const url = `${window.location.origin}${window.location.pathname}?compare=${ids}`;
+  
+  const linkEl = document.getElementById('shareLink');
+  linkEl.textContent = url;
+  linkEl.classList.add('show');
+  
+  navigator.clipboard?.writeText(url);
+}
+
+function resetToDefaults() {
+  fetch('programs.json')
+    .then(r => r.json())
+    .then(data => {
+      selectedPrograms = data.defaultCompare.slice(0, 3);
+      numColumns = 3;
+      populateSelects();
+      renderComparison();
+      renderLibrary();
+      document.getElementById('shareLink').classList.remove('show');
+      history.replaceState(null, '', window.location.pathname);
+    });
+}
+
+function openLightbox() {
+  const img = document.getElementById('lightboxImg');
+  img.src = 'circle-splits/francis-ul-whiteboard.png';
+  document.getElementById('lightbox').classList.add('show');
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('show');
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeLightbox();
+});
+
+init();
+</script>
+
+</body>
+</html>
